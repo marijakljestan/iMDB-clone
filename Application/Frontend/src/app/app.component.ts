@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MovieListComponent } from './movies/movie-list/movie-list.component';
 
 @Component({
   selector: 'pm-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular: Getting Started';
+  title : string = 'CINEMATIC';
 }
