@@ -43,10 +43,14 @@
     margin-left: 10%;
     margin-right: 10%;
 }
-
+.btn-wrap{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
 .btn{
+    width: 100%;
     color: rgb(52, 150, 189);
     background-color: rgb(66, 60, 60);
-    margin-top: 20px;
 }
 
