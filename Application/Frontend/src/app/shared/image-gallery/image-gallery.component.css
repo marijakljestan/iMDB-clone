@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     z-index: 10;
-    width: 3.5%;
+    width: 3%;
 }
 .btn-left{
     margin-right: -2%;
@@ -28,6 +28,9 @@
     border-color: rgb(143, 140, 140);
     height: 15%;
     border-radius: 7px;
+}
+.btn-arrow:disabled{
+    display: none;
 }
 .fa{
     color:rgba(255, 255, 255, 0.8);

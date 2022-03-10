@@ -40,6 +40,21 @@ export class AppComponent {
         averageGrade : 8.5,
         image: "../../../assets/images/lavitaebella.jpg"
       },
+      {
+        name: "Schindler's List",
+        averageGrade : 8.7,
+        image: "../../../assets/images/schindler.jpg"
+      },
+      {
+        name: 'Pulp Fiction',
+        averageGrade : 8.5,
+        image: "../../../assets/images/pulp fiction.jpg"
+      },
+      {
+        name: 'Joker',
+        averageGrade : 8.3,
+        image: "../../../assets/images/joker.jpg"
+      }
     ];
 
     this.trendingList = [
