@@ -11,6 +11,7 @@ export class AppComponent {
   topRatedList: any[] = [];
   watchList: any[] = [];
   trendingList: any[] = [];
+  images: string[] = [];
 
   ngOnInit() : void {
     this.topRatedList = [
@@ -67,6 +68,15 @@ export class AppComponent {
         averageGrade : 8.1,
         image: "../../../assets/images/shutter.jfif"
       }
+    ];
+
+    this.images = [
+      "../../../assets/images/cover/batman.jpg",
+      "../../../assets/images/cover/dark-knight.jpg",
+      "../../../assets/images/cover/fight-club.jpg",
+      "../../../assets/images/cover/inception.jpg",
+      "../../../assets/images/cover/la-vitta-e-bella.jpg",
+      "../../../assets/images/cover/godfather.jpg"
     ];
   }
 }

@@ -1,0 +1,37 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    height: 66vh;
+    margin: 4% 1%;
+}
+.img{
+    align-self: center;
+    width: 65%;
+    height: 100%;
+}
+.btn-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    width: 3.5%;
+}
+.btn-left{
+    margin-right: -2%;
+}
+.btn-right{
+    margin-left: -2%;
+}
+.btn-arrow{
+    background-color: rgba(2, 14, 20, 0.4);
+    border-width: 0.1px;
+    border-color: rgb(143, 140, 140);
+    height: 15%;
+    border-radius: 7px;
+}
+.fa{
+    color:rgba(255, 255, 255, 0.8);
+}
+.fa:hover{
+    color:rgba(196, 178, 21, 0.8);
+}
