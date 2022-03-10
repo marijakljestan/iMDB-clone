@@ -1,0 +1,23 @@
+<div class="title-wrapper">
+    <span class="vl"></span>
+    <h3 class="title">{{title}}</h3>
+</div>
+<div class="movies-wrapper" *ngIf="movies">
+    <div class="arrow-btn-wrapper btn-left">
+        <button  class="btn-arrow" (click)="getPreviousMovie()" [disabled]="!initialMovieIndex"><i class="fa fa-thin fa-3x fa-angle-left"></i></button>
+    </div> 
+    <div class="movie-card" *ngFor="let movie of moviesForDisplay">
+        <div class="img-div">
+            <img class="img-class" src={{movie.image}}/>
+        </div>
+        <div class="movie-details">
+            <span><i class="fas fa-star fa-1x" style="color:#f3ce13"></i> {{movie.averageGrade}}</span><br/>
+            <h5>{{movie.name}}</h5>
+            <div class="btn-wrap"><button class="btn"><i class="fas fa-plus"></i> &nbsp; Watchlist</button></div>
+        </div>
+    </div>
+    <div class="arrow-btn-wrapper btn-right">
+        <button class="btn-arrow" (click)="getNextMovie()" [disabled]="initialMovieIndex == movies.length - 5"><i class="fa fa-thin fa-3x fa-angle-right"></i></button>
+    </div>  
+</div>
+    

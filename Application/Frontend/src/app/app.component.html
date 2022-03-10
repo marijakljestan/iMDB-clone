@@ -1,6 +1,11 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-  ... Starter Files ...
+<div class="page">
+  <navbar></navbar>
+  <div class="body">
+      <image-gallery [images]="images" ></image-gallery>
+      <div class="movie-list">
+        <h1> What to watch</h1><br/>
+        <movie-list [title]="'Top picks'" [movies]="topRatedList"></movie-list>
+        <movie-list [title]="'Fan favorites'" [movies]="trendingList"></movie-list>
+    </div>
+  </div>
 </div>
