@@ -12,11 +12,3 @@
   flex-direction: column;
   text-shadow: 1px 1px 3px #363636;
 }
-.movie-list{
-  min-height: 70vh;
-  margin: 2%;
-}
-h1{
-  color: #f3ce13 ;
-  margin-left: 10%;
-}
