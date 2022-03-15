@@ -1,1 +1,16 @@
-<p>actor-list works!</p>
+<div class="title-wrapper">
+    <span class="vl"></span>
+    <h3 class="title">{{title}}</h3>
+</div>
+<div class="actors-wrapper" *ngIf="actors">
+    <div class="actor-card" *ngFor="let actor of actors">
+        <div class="img-div">
+            <img class="img-class" src={{actor.image}}/>
+        </div>
+        <div class="actor-role">
+            <p class="name"> {{actor.name}} </p>
+            <p class="role"> as {{actor.role}} </p>
+        </div>
+    </div>
+</div>
+    

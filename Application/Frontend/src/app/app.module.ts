@@ -11,6 +11,7 @@ import { HomePageComponent } from './home/home-page.component';
 import { MovieCaptionComponent } from './movies/movie-caption/movie-caption.component';
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 import { ActorListComponent } from './actors/actor-list/actor-list.component';
+import { MovieCommentsComponent } from './movies/movie-comments/movie-comments.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ActorListComponent } from './actors/actor-list/actor-list.component';
     HomePageComponent,
     MovieCaptionComponent,
     MovieDetailsComponent,
-    ActorListComponent
+    ActorListComponent,
+    MovieCommentsComponent
   ],
   imports: [
     BrowserModule,

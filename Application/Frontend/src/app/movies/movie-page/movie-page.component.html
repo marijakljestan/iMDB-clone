@@ -5,22 +5,14 @@
         <movie-details [movie]="movie"></movie-details>
     </div>
     <div class="light-part">
+        <actor-list [title]="title" [actors]="actors"></actor-list>
         <div class="description">
             <div class="title-wrapper">
                 <span class="vl"></span>
                 <h3 class="title">Storyline</h3>
             </div>
-            <div class="storyline">
-                <p>
-                    The Godfather "Don" Vito Corleone is the head of the Corleone mafia family in New York. 
-                    He is at the event of his daughter's wedding. Michael, Vito's youngest son and a decorated WW II Marine 
-                    is also present at the wedding. Michael seems to be uninterested in being a part of the family business. 
-                    Vito is a powerful man, and is kind to all those who give him respect but is ruthless against those who do not. 
-                    But when a powerful and treacherous rival wants to sell drugs and needs the Don's influence for the same, 
-                    Vito refuses to do it. What follows is a clash between Vito's fading old values and the new ways which may cause Michael 
-                    to do the thing he was most reluctant in doing and wage a mob war against all the other mafia families which could tear the Corleone family apart.
-                </p>
-            </div>
+            <div class="storyline"> <p> {{movie.storyline}} </p> </div>
+            <movie-comments [reviews]="movie.reviews"></movie-comments>
         </div>
     </div>
 </div>

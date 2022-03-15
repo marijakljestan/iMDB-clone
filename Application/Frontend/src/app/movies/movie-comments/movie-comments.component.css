@@ -1,0 +1,40 @@
+.title-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin: 2% 18%;
+    justify-content: baseline;
+}
+.vl{
+    border-left: 6px solid #f3ce13;
+    height: 40px;
+}
+.title{
+    margin-left: 15px;
+}
+.comments-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 2% 18%;
+}
+.comment-card{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(248, 244, 238);
+    margin-top: 20px;
+}
+.comment{
+    font-size: 16px;
+}
+.rate{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 10px;
+}
+.content{
+    text-align: justify;
+    flex-wrap: nowrap;
+    padding: 5px 10px;
+}
+
+
