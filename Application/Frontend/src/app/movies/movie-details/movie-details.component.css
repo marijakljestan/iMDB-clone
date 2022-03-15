@@ -1,0 +1,61 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 18%;
+}
+.movie-genre{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+.btn-genre{
+    background-color: transparent;
+    color: whitesmoke;
+    border: solid 1px;
+    border-radius: 20px;
+    width: 80px;
+    height: 30px;
+    margin-right: 10px !important;
+}
+.btn-add{
+    background-color: rgb(49, 47, 47);
+    color: whitesmoke;
+    width: 250px;
+    height: 50px;
+    border: none;
+}
+.btn-add:hover{
+    background-color: rgb(92, 86, 86);
+    color: whitesmoke;
+    width: 250px;
+    height: 50px;
+    border: none;
+}
+.fa{
+    margin-right: 10px;
+}
+.description{
+    color:white;
+    margin-top: 25px;
+}
+hr{
+    border: 1px solid white;
+}
+.crew{
+    color: white;
+    font-size: 15px;
+}
+.role{
+    font-weight: bold;
+    font-size: 17px !important;
+    margin-right: 2%;
+    margin-left: 2% !important;
+}
+.stars{
+    margin-left: 2% !important;
+}
+.multiple{
+    margin-right: 2%;
+}

@@ -8,6 +8,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ImageGalleryComponent } from './shared/image-gallery/image-gallery.component';
 import { MoviePageComponent } from './movies/movie-page/movie-page.component';
 import { HomePageComponent } from './home/home-page.component';
+import { MovieCaptionComponent } from './movies/movie-caption/movie-caption.component';
+import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
+import { ActorListComponent } from './actors/actor-list/actor-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { HomePageComponent } from './home/home-page.component';
     NavbarComponent,
     ImageGalleryComponent,
     MoviePageComponent,
-    HomePageComponent
+    HomePageComponent,
+    MovieCaptionComponent,
+    MovieDetailsComponent,
+    ActorListComponent
   ],
   imports: [
     BrowserModule,

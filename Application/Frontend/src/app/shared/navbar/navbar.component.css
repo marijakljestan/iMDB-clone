@@ -3,6 +3,7 @@
     flex-direction: row;
     background-color: #181818;
     justify-content: space-evenly;
+    margin-bottom: 0px;
   }
   #logo{
     color:rgba(255, 255, 255, 0.88);
