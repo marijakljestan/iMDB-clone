@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'pm-movie-page',
@@ -9,6 +9,9 @@ export class MoviePageComponent implements OnInit {
   movie: any = {};
   title: string = 'Top cast';
   actors: any[] = [];
+  recommendation: string = "More like this";
+  moviesRecommended: any[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -26,6 +29,44 @@ export class MoviePageComponent implements OnInit {
     
     ];
 
+    this.moviesRecommended = [
+      {
+        id: 1,
+        name: 'The Godfather',
+        averageGrade : 9.1,
+        image: "../../../assets/images/godfather.jpg",
+        year: 1972
+      },
+      {
+        id: 2,
+        name: 'The Dark Knight',
+        averageGrade : 8.8,
+        image: "../../../assets/images/dark-knight.jfif",
+        year: 2008
+      },
+      {
+        id: 3,
+        name: 'Fight club',
+        averageGrade : 8.7,
+        image: "../../../assets/images/fight-club.jpg",
+        year: 1999
+      },
+      {
+        id: 13,
+        name: 'Inception',
+        averageGrade : 8.6,
+        image: "../../../assets/images/inception.jpg",
+        year: 2010
+      },
+      {
+        id: 10,
+        name: 'Pulp Fiction',
+        averageGrade : 8.5,
+        image: "../../../assets/images/pulp fiction.jpg",
+        year: 1994
+      }
+    ];
+
     this.movie = {
       id: 1,
       name: 'The Godfather',
@@ -37,6 +78,8 @@ export class MoviePageComponent implements OnInit {
       genre: [
         'Action', 'Drama', 'Crime'
       ],
+      countryOfOrigin: 'USA',
+      runtime: 175,
       year: 1972,
       directors: ['Francis Ford Coppola'],
       writters: ['Mario Puzo', 'Francis Ford Coppola'],
