@@ -36,5 +36,8 @@
     flex-wrap: nowrap;
     padding: 5px 10px;
 }
+.rating-star{
+    margin-left: 93%;
+}
 
 
