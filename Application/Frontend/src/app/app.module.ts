@@ -12,7 +12,6 @@ import { MovieCaptionComponent } from './movies/movie-caption/movie-caption.comp
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 import { ActorListComponent } from './actors/actor-list/actor-list.component';
 import { MovieCommentsComponent } from './movies/movie-comments/movie-comments.component';
-import { UserRegistrationComponent } from './registration/user-registration/user-registration.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { UserRegistrationComponent } from './registration/user-registration/user
     MovieCaptionComponent,
     MovieDetailsComponent,
     ActorListComponent,
-    MovieCommentsComponent,
-    UserRegistrationComponent
+    MovieCommentsComponent
   ],
   imports: [
     BrowserModule,
