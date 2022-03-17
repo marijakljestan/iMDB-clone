@@ -1,0 +1,51 @@
+.page, .dark-part{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(31, 30, 30);
+}
+.light-part{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.title-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin: 3% 18%;
+    justify-content: baseline;
+}
+.vl{
+    border-left: 6px solid #f3ce13;
+    height: 40px;
+    margin-right: 15px;
+}
+.storyline{
+    margin: 0% 18%;
+    font-size: 16px;
+}
+.storyline > p{
+    text-align: justify;
+}
+.dark-footer{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(31, 30, 30);
+    margin: 2% 10%;
+}
+.details-light{
+    display: flex;
+    flex-direction: column;
+    margin: 1% 18%;
+}
+.crew{
+    font-size: 15px;
+}
+.role{
+    font-weight: bold;
+    font-size: 17px !important;
+    margin-right: 2%;
+    margin-left: 2% !important;
+}
+.multiple-details{
+    padding-right: 40em;
+}  

@@ -10,6 +10,7 @@ export class MovieListComponent implements OnInit {
   @Input() title : string = "";
   @Input() movies : any[] = [];
   moviesForDisplay: any[] = [];
+  @Input() displayedMoviesLength: number = 5 ;
   initialMovieIndex: number = 0;
 
   constructor() { }
@@ -36,7 +37,7 @@ export class MovieListComponent implements OnInit {
 
   displayMovieList() : void{
     this.moviesForDisplay = [];
-    for(let i = this.initialMovieIndex; i < this.initialMovieIndex + 5; i++)
-      this.moviesForDisplay.push(this.movies[i]);
+    for(let i = this.initialMovieIndex; i < this.initialMovieIndex + this.displayedMoviesLength ; i++)
+      this.moviesForDisplay.push(this.movies[i]); 
   }
 }

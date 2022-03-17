@@ -8,16 +8,16 @@
     </div> 
     <div class="movie-card" *ngFor="let movie of moviesForDisplay">
         <div class="img-div">
-            <img class="img-class" src={{movie.image}}/>
+            <a class="link-light item" [routerLink]="['/movie', movie.id]"><img class="img-class" src={{movie.image}}/></a>
         </div>
         <div class="movie-details">
             <span><i class="fas fa-star fa-1x" style="color:#f3ce13"></i> {{movie.averageGrade}}</span><br/>
-            <h5>{{movie.name}}</h5>
+            <h5><a class="link-light item" [routerLink]="['/movie', movie.id]"> {{movie.name}} </a></h5>
             <div class="btn-wrap"><button class="btn"><i class="fas fa-plus"></i> &nbsp; Watchlist</button></div>
         </div>
     </div>
     <div class="arrow-btn-wrapper btn-right">
-        <button class="btn-arrow" (click)="getNextMovie()" [disabled]="initialMovieIndex == movies.length - 5"><i class="fa fa-thin fa-3x fa-angle-right"></i></button>
+        <button class="btn-arrow" (click)="getNextMovie()" [disabled]="initialMovieIndex == movies.length - displayedMoviesLength"><i class="fa fa-thin fa-3x fa-angle-right"></i></button>
     </div>  
 </div>
     

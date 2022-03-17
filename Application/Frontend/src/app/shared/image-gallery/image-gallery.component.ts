@@ -1,14 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'image-gallery',
   templateUrl: './image-gallery.component.html',
   styleUrls: ['./image-gallery.component.css']
 })
-export class ImageGalleryComponent {
+export class ImageGalleryComponent implements OnInit{
   @Input() images: string[] = [];
   currentImageSource: string = "../assets/images/cover/batman.jpg";
   currentImageIndex: number = 0;
+
+  ngOnInit() : void {
+    if(this.images)
+      this.currentImageSource = this.images[0];
+  }
 
   getNextMovieImage() : void {
     if(this.currentImageIndex === this.images.length - 1)

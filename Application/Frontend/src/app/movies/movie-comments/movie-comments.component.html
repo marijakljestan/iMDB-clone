@@ -1,0 +1,15 @@
+<div class="title-wrapper">
+    <span class="vl"></span>
+    <h3 class="title">{{title}}</h3>
+</div>
+<div class="comments-wrapper" *ngIf="reviews">
+    <div class="comment-card" *ngFor="let review of reviews">
+        <div class="comment">
+            <div class="rate">
+                <span class="rating-star"><i class="fas fa-star fa-1x" style="color:#f3ce13"></i>  {{review.grade}}/10</span>
+            </div>
+            <p class="content"> {{review.content}} </p>
+        </div>
+    </div>
+</div>
+    
