@@ -1,12 +1,16 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   title : string = 'CINEMATIC';
+  loggedUser: any;
+
+  ngOnInit(): void {
+  }
 
   openLoginModal(event: MouseEvent): void {
     event.preventDefault();
@@ -24,6 +28,16 @@ export class NavbarComponent {
 
   closeSignupModal() : void{
     (document.querySelector('#sign-up-modal') as HTMLElement).style.display = 'none';
+  }
+
+  logUser() : void{
+    this.loggedUser = {
+      id: 1,
+      name: 'John',
+      surname: 'Doe',
+      email: 'johndoe@gmail.com'
+    }
+    this.closeLoginModal();
   }
 
 }

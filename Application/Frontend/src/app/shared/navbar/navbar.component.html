@@ -3,7 +3,7 @@
     <div class="sign-up-content">
       <div class="name"><i class="fas fa-user fa-2x"></i>     <input type="text" placeholder="Name*"          class="form-input"> </div><br/>
       <div class="name"><i class="fas fa-user fa-2x"></i>     <input type="text" placeholder="Surname*"       class="form-input"></div><br/>
-      <div class="email"><i class="fas fa-at fa-2x"></i> <input type="text" placeholder="Email address*" class="form-input"> </div><br/>
+      <div class="email"><i class="fas fa-at fa-2x"></i> <input type="text" placeholder="Email address*"      class="form-input"> </div><br/>
       <div class="name"><i class="fas fa-lock fa-2x"></i>     <input type="password" placeholder="Password*"  class="form-input"> </div><br/>
       <div class="name"><i class="fas fa-lock fa-2x"></i>     <input type="password" placeholder="Confirm password*" class="form-input"></div>
     </div><hr/>
@@ -16,7 +16,7 @@
     <div class="email"><i class="fas fa-at fa-2x"></i> <input type="text"    placeholder="Email address*" class="form-input"> </div><br/>
     <div class="name"><i class="fas fa-lock fa-2x"></i>     <input type="password" placeholder="Password*"  class="form-input"> </div><br/>
   </div><hr/>
-  <div class="btn-login-wrapper"><button class="btn-submit">CONFIRM</button></div>
+  <div class="btn-login-wrapper"><button class="btn-submit" (click)="logUser()">CONFIRM</button></div>
 </div>
 
 <div class="header">
@@ -32,8 +32,11 @@
       </div>
       <input id="search-field" type="text">
     </div>
-    <div class="login">
+    <div class="login" *ngIf="!loggedUser">
       <a href="#" class="link-light item" (click)="openSignUpModal($event)">Sign up</a>
       <a href="#" class="link-light item" (click)="openLoginModal($event)" >Log in</a>
+    </div>
+    <div class="login" *ngIf="loggedUser">
+      <a class="link-light item" [routerLink]="['/user', loggedUser.id]" > My profile</a>
     </div>
 </div>
