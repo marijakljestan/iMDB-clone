@@ -57,10 +57,11 @@ export class UserProfileComponent implements OnInit {
 
   editProfile(event: MouseEvent) : void{
     event.preventDefault();
-    (document.querySelector('#sign-up-modal') as HTMLElement).style.display = 'flex';
+    (document.querySelector('#edit-profile-modal') as HTMLElement).style.display = 'flex';
   }
 
   closeModal() : void{
-    (document.querySelector('#sign-up-modal') as HTMLElement).style.display = 'none';
+    (document.querySelector('.password') as HTMLElement).style.display = 'none';
+    (document.querySelector('#edit-profile-modal') as HTMLElement).style.display = 'none';
   }
 }

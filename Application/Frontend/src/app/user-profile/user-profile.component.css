@@ -6,6 +6,7 @@
     color: white;
     display: flex;
     flex-direction: column;
+    background: black;
 }
 .user-details{
     padding: 2% 12%;
@@ -14,12 +15,12 @@
     justify-content: space-between;
 }
 
-#sign-up-modal{
+#edit-profile-modal{
     display: none;
     flex-direction: column;
     position: fixed;
     width: 35%;
-    height: 75%;
+    height: 80%;
     background-color: rgb(15, 15, 15);
     margin: 5% 30%;
 }
@@ -37,8 +38,8 @@
     justify-content: center;
     height: 50%;
     width: 100%;
-    margin-top: 7%;
-    margin-bottom: 7%;
+    margin-top: 8%;
+    margin-bottom: 6%;
 }
 .name{
     display: flex;
@@ -56,7 +57,7 @@
 }
 .form-input{
     width: 65%;
-    height: 2em;
+    height: 2.1em;
     border-width: 1px;
     border-radius: 10px;
     text-indent: 10px;
@@ -85,14 +86,10 @@
     justify-content: center;
     height: 10%;
 }
-.btn-login-wrapper{
-    display: flex;
-    justify-content: center;
-    height: 40%;
-}
 .btn-submit{
+    margin-top: 5%;
     width: 25%;
-    height: 3em;
+    height: 2em;
     color: black;
     font-family: sans-serif;
     background-color: #f3ce13;
