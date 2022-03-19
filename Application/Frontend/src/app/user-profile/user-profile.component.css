@@ -1,0 +1,97 @@
+.profile{
+    margin-left: 15%;
+    height: 100%;
+    width: 70%;
+    background-color: rgba(27, 27, 27, 0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background: black;
+}
+.user-details{
+    padding: 2% 12%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#edit-profile-modal{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    width: 35%;
+    height: 80%;
+    background-color: rgb(15, 15, 15);
+    margin: 5% 30%;
+}
+.header-modal{
+    width: 100%;
+    height: 10%;
+    font-size: 30px;
+    color: rgb(238, 220, 55);
+    padding: 4% 34%;
+    padding-bottom: 7%;
+}
+.sign-up-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    width: 100%;
+    margin-top: 8%;
+    margin-bottom: 6%;
+}
+.name{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+}
+.email{
+    display: flex;
+    flex-direction: row;
+    margin-left: 9%;
+}
+.change-password{
+    margin-left:35%;
+    color:rgb(238, 220, 55);
+}
+.form-input{
+    width: 65%;
+    height: 2.1em;
+    border-width: 1px;
+    border-radius: 10px;
+    text-indent: 10px;
+    margin: 1% 5%;
+}
+.password{
+    display: none;
+}
+.fas{
+    color: #f3ce13;
+}
+.fa-pen{
+    color: white;
+}
+.close{
+    position: absolute;
+    top:0;
+    right: 3%;
+    font-size: 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    color: #797575;
+}
+.btn-submit-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 10%;
+}
+.btn-submit{
+    margin-top: 5%;
+    width: 25%;
+    height: 2em;
+    color: black;
+    font-family: sans-serif;
+    background-color: #f3ce13;
+    border: none;
+} 

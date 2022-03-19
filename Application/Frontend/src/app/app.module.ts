@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
@@ -12,6 +13,7 @@ import { MovieCaptionComponent } from './movies/movie-caption/movie-caption.comp
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 import { ActorListComponent } from './actors/actor-list/actor-list.component';
 import { MovieCommentsComponent } from './movies/movie-comments/movie-comments.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,17 @@ import { MovieCommentsComponent } from './movies/movie-comments/movie-comments.c
     MovieCaptionComponent,
     MovieDetailsComponent,
     ActorListComponent,
-    MovieCommentsComponent
+    MovieCommentsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot([
+       { path: 'user/:id',  component: UserProfileComponent},
        { path: 'movie/:id', component: MoviePageComponent},
        { path: 'home', component: HomePageComponent },
-       { path: '', redirectTo: 'home', pathMatch: 'full'},
+       { path: '',   redirectTo: 'home', pathMatch: 'full'},
        { path: '**', redirectTo: 'home', pathMatch: 'full'}
     ])
   ],
