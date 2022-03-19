@@ -20,6 +20,7 @@ export class MovieCommentsComponent implements OnInit {
   }
 
   closeModal() : void{
+    this.newRate = 0;
     (document.querySelector('#add-comment-modal') as HTMLElement).style.display = 'none';
   }
 

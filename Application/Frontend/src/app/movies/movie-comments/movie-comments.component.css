@@ -3,7 +3,7 @@
     flex-direction: column;
     width: 64%;
     height: 70%;
-    color: #f0ca0d;
+    color: whitesmoke;
     font-weight: bold;
     background-color: rgb(199, 194, 194);
     margin-left: 18%;
@@ -67,36 +67,6 @@
 .cancel-btn:hover{
     background-color: rgb(218, 216, 216);
 }
-.stars{  
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: white; 
-    font-size: 20px;
-    color: rgb(51, 49, 49);
-    border-radius: 10px;
-}
-.starrating > input {display: none;}  /* Remove radio buttons */
-
-.starrating > label:before { 
-  content: "\f005"; /* Star */
-  margin: 2px;
-  font-size: 2em;
-  font-family: FontAwesome;
-  display: inline-block; 
-}
-
-.starrating > label
-{ color: rgb(88, 86, 86); } /* Start color when not clicked */
-
-.starrating > input:checked ~ label
-{ color: #ffca08 ; } /* Set yellow color when star checked */
-
-.starrating > input:hover ~ label
-{ color: #ffca08 ;  } /* Set yellow color when star hover */
-
-
 .title-wrapper{
     display: flex;
     flex-direction: row;

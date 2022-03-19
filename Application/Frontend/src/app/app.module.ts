@@ -14,6 +14,7 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
 import { ActorListComponent } from './actors/actor-list/actor-list.component';
 import { MovieCommentsComponent } from './movies/movie-comments/movie-comments.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MovieDetailsComponent,
     ActorListComponent,
     MovieCommentsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,
