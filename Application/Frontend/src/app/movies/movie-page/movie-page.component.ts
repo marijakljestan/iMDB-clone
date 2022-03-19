@@ -71,6 +71,7 @@ export class MoviePageComponent implements OnInit {
       id: 1,
       name: 'The Godfather',
       averageGrade : 9.1,
+      coverImage: "../../../assets/images/godfather.jpg",
       images: [
         "../../../assets/images/cover/godfather-2.jpg",
         "../../../assets/images/cover/godfather.jpg"
