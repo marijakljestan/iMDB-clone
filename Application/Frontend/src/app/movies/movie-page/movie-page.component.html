@@ -13,7 +13,7 @@
             </div>
             <div class="storyline"> <p> {{movie.storyline}} </p> </div>
             <actor-list [title]="title" [actors]="actors"></actor-list>
-            <movie-comments [reviews]="movie.reviews"></movie-comments>
+            <movie-comments [movie]="movie" [reviews]="[movie.reviews[0]]"></movie-comments>
         </div>
         <div class="details">
             <div class="title-wrapper">

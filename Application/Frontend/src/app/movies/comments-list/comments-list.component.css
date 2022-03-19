@@ -1,0 +1,10 @@
+.page, .dark-part{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(31, 30, 30);
+}
+.light-part{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}

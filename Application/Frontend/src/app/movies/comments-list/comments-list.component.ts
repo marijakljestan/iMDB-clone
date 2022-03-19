@@ -1,72 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'pm-movie-page',
-  templateUrl: './movie-page.component.html',
-  styleUrls: ['./movie-page.component.css']
+  selector: 'comments-list',
+  templateUrl: './comments-list.component.html',
+  styleUrls: ['./comments-list.component.css']
 })
-export class MoviePageComponent implements OnInit {
+export class CommentsListComponent implements OnInit {
   movie: any = {};
-  title: string = 'Top cast';
-  actors: any[] = [];
-  recommendation: string = "More like this";
-  moviesRecommended: any[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.actors = [
-      {
-        name: 'Marlon Brando',
-        role: 'Don Vito Corleone',
-        image: '../../../assets/images/actors/marlon-brando.jpg'
-      },
-      {
-        name: 'Al Pacino',
-        role: 'Michael Corleone',
-        image: '../../../assets/images/actors/al-pacino.jpg'
-      },
-    
-    ];
-
-    this.moviesRecommended = [
-      {
-        id: 1,
-        name: 'The Godfather',
-        averageGrade : 9.1,
-        image: "../../../assets/images/godfather.jpg",
-        year: 1972
-      },
-      {
-        id: 2,
-        name: 'The Dark Knight',
-        averageGrade : 8.8,
-        image: "../../../assets/images/dark-knight.jfif",
-        year: 2008
-      },
-      {
-        id: 3,
-        name: 'Fight club',
-        averageGrade : 8.7,
-        image: "../../../assets/images/fight-club.jpg",
-        year: 1999
-      },
-      {
-        id: 13,
-        name: 'Inception',
-        averageGrade : 8.6,
-        image: "../../../assets/images/inception.jpg",
-        year: 2010
-      },
-      {
-        id: 10,
-        name: 'Pulp Fiction',
-        averageGrade : 8.5,
-        image: "../../../assets/images/pulp fiction.jpg",
-        year: 1994
-      }
-    ];
-
     this.movie = {
       id: 1,
       name: 'The Godfather',
