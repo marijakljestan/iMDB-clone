@@ -7,9 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MovieCommentsComponent implements OnInit {
   @Input() movie: any = {};
+  @Input() reviews: any[] = [];
   title: string = 'User reviews';
   newRate: number = 0;
-
 
   ngOnInit(): void {
   }

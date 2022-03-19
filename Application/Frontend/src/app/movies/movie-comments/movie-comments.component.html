@@ -1,7 +1,9 @@
 <div class="title-wrapper">
     <span class="title-wrap">
         <span class="vl"></span>
-        <h3 class="title"> &nbsp;{{title}}</h3>
+        <h3 class="title"> &nbsp; {{title}}</h3>
+        <span class="number-of-rates"> {{movie.reviews.length}} </span>
+        <a class="link-light item" [routerLink]="['/comments', movie.id]" *ngIf="reviews.length === 1"><i class="fas fa-thin fa-chevron-right fa-3x"></i></a>
     </span>
     <button class="add-review-btn" (click)="addComment($event)"><i class="fas fa-plus"></i>&nbsp; <span> Review </span></button>
 </div>
@@ -28,7 +30,7 @@
 </div>
 
 <div class="comments-wrapper" *ngIf="movie.reviews">
-    <div class="comment-card" *ngFor="let review of movie.reviews">
+    <div class="comment-card" *ngFor="let review of reviews">
         <div class="comment">
             <div class="rate">
                 <span class="rating-star"><i class="fas fa-star fa-1x" style="color:#f3ce13"></i>  {{review.grade}}/10</span>
