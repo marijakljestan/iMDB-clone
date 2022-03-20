@@ -1,0 +1,114 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(31, 30, 30);
+    background: black;
+}
+.title-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin: 2% 14%;
+    justify-content: baseline;
+    align-items: center;
+}
+.vl{
+    border-left: 6px solid #f3ce13;
+    height: 40px;
+}
+h1{
+    color: white;
+    margin-left: 10px;
+}
+.form-wrapper{
+    margin: 2% 10%;
+    display: flex;
+    flex-direction: row;
+}
+.left-side{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-left: 5%;
+}
+.right-side{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 2%;
+}
+.form-input{
+    width: 75%;
+    height: 50px;
+    border-width: 1px;
+    border-radius: 10px;
+    text-indent: 10px;
+}
+.description{
+    font-size: 16px;
+    width: 75%;
+    height: 200px;
+    border-radius: 10px;
+}
+.storyline{
+    font-size: 16px;
+    width: 75%;
+    height: 300px;
+    border-radius: 10px;
+}
+h6, p{
+    color: white;
+}
+.multiple-inputs{
+    display: flex;
+    width: 75%;
+    align-items: center;
+    margin-bottom: 2em;
+    justify-content: space-between;
+}
+.icons span{
+    margin-left: 10px;
+}
+.fa-plus-square, .fa-minus-square {
+    color: white;
+}
+hr{
+    width: 75%;
+    color: white;
+}
+.genres{
+    display: flex;
+    flex-direction: column;
+}
+.upload-images{
+    margin-right: 200px;
+}
+.images-preview{
+    display: contents;
+    width: 40%;
+    height: 30%;
+}
+.images-preview img{
+    width:50%;
+    height: 50%;
+}
+.file-upload{
+    margin-left: 45%;  
+}
+.btn-div{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20%;
+}
+.cancel-button {
+    background-color: white;
+    border-color: rgb(218, 214, 214);
+    color: #2c3e50;
+    width: 120px;
+    margin-right:  10px;
+}
+.save-button {
+    background-color: #429949;
+    color: white;
+    width: 120px;
+    margin-left: 10px;
+}

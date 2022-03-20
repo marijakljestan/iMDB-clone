@@ -16,6 +16,8 @@ import { MovieCommentsComponent } from './movies/movie-comments/movie-comments.c
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { CommentsListComponent } from './movies/comments-list/comments-list.component';
+import { AddMovieComponent } from './movies/add-movie/add-movie.component';
+import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,15 @@ import { CommentsListComponent } from './movies/comments-list/comments-list.comp
     MovieCommentsComponent,
     UserProfileComponent,
     StarRatingComponent,
-    CommentsListComponent
+    CommentsListComponent,
+    AddMovieComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
+       { path: 'add-movie', component: AddMovieComponent},
        { path: 'user/:id',  component: UserProfileComponent},
        { path: 'comments/:id', component: CommentsListComponent},
        { path: 'movie/:id', component: MoviePageComponent},
