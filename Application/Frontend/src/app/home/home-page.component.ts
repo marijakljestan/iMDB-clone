@@ -10,6 +10,7 @@ export class HomePageComponent implements OnInit {
   watchList: any[] = [];
   trendingList: any[] = [];
   images: string[] = [];
+  searchParam: string = "";
 
   ngOnInit() : void {
     this.topRatedList = [

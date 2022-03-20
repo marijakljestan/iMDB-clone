@@ -30,7 +30,28 @@
             <a class="dropdown-item" href="#">TV shows</a>
           </div>
       </div>
-      <input id="search-field" type="text">
+      <div class="search-field-wrapper">
+        <input id="search-field" class="link-dark dropdown-toggle item" type="text" [(ngModel)]='searchParam' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <table  class="dropdown-menu drop" aria-labelledby="search-field" style="width: 54%;"> 
+          <tr class="dropdown-item result-header">
+              <img class="movie-img" src="../../../assets/images/godfather.jpg" />
+              <div class="title-and-image">
+                  <label> The Godfather </label>
+                  <label>1972</label>
+                  <label>Marlon Brando, Al Pacino</label>
+              </div><hr/>
+          </tr>
+          <tr class="dropdown-item result-header">
+            <img class="movie-img" src="../../../assets/images/cover/godfather-2.jpg" />
+            <div class="title-and-image">
+                <label> The Godfather II</label>
+                <label>1974</label>
+                <label>Rober De Niro, Al Pacino</label>
+            </div><hr/>
+          </tr>
+        </table>
+      </div>
+      
     </div>
     <div class="login" *ngIf="!loggedUser">
       <a href="#" class="link-light item" (click)="openSignUpModal($event)">Sign up</a>

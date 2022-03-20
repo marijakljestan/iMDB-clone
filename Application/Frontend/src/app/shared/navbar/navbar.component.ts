@@ -8,9 +8,10 @@ import { Component, OnInit} from '@angular/core';
 export class NavbarComponent implements OnInit{
   title : string = 'CINEMATIC';
   loggedUser: any;
+  searchParam: string = "";
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
 
   openLoginModal(event: MouseEvent): void {
     event.preventDefault();
@@ -39,5 +40,4 @@ export class NavbarComponent implements OnInit{
     }
     this.closeLoginModal();
   }
-
 }
