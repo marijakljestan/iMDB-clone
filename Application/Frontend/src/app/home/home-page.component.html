@@ -1,5 +1,5 @@
 <div class="page">
-    <navbar></navbar>
+    <navbar (displaySearchResults)="displaySearchResults($event)" [searchResults]="searchResults"></navbar>
     <image-gallery [images]="images" ></image-gallery>
     <div class="movie-list">
         <h1> What to watch</h1><br/>

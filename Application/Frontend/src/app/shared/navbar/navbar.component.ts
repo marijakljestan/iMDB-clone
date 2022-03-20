@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 
 @Component({
   selector: 'navbar',
@@ -8,8 +8,19 @@ import { Component, OnInit} from '@angular/core';
 export class NavbarComponent implements OnInit{
   title : string = 'CINEMATIC';
   loggedUser: any;
+  searchParam: string = "";
+  @Output() displaySearchResults = new EventEmitter<string>();
+  @Input() searchResults: any[] = [];
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onAddSearchParam() {
+    this.displaySearchResults.emit(this.searchParam);
+  }
+
+  onFocusLost($event: Event) : void {
+    this.searchParam = "";
+    this.searchResults = [];
   }
 
   openLoginModal(event: MouseEvent): void {
@@ -39,5 +50,4 @@ export class NavbarComponent implements OnInit{
     }
     this.closeLoginModal();
   }
-
 }

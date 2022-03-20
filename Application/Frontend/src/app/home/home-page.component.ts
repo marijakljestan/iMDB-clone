@@ -10,6 +10,8 @@ export class HomePageComponent implements OnInit {
   watchList: any[] = [];
   trendingList: any[] = [];
   images: string[] = [];
+  searchParam: string = "";
+  searchResults: any[] = [];
 
   ngOnInit() : void {
     this.topRatedList = [
@@ -117,5 +119,13 @@ export class HomePageComponent implements OnInit {
       "../../../assets/images/cover/la-vitta-e-bella.jpg",
       "../../../assets/images/cover/godfather.jpg"
     ];
+  }
+
+  displaySearchResults(eventData: string){
+    this.searchResults = [];
+    for(let movie of this.topRatedList){
+      if(movie.name.toLowerCase().indexOf(eventData) !== -1)
+        this.searchResults.push(movie);
+    }
   }
 }
