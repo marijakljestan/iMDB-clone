@@ -31,23 +31,16 @@
           </div>
       </div>
       <div class="search-field-wrapper">
-        <input id="search-field" class="link-dark dropdown-toggle item" type="text" [(ngModel)]='searchParam' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <input id="search-field" class="link-dark dropdown-toggle item" type="text" (keyup.enter)="onAddSearchParam()" (focusout)="onFocusLost($event)" [(ngModel)]='searchParam' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <table  class="dropdown-menu drop" aria-labelledby="search-field" style="width: 54%;"> 
-          <tr class="dropdown-item result-header">
-              <img class="movie-img" src="../../../assets/images/godfather.jpg" />
+          <label *ngIf="searchResults.length === 0">No results found</label>
+          <tr class="dropdown-item result-header" *ngFor="let movie of searchResults">
+              <img class="movie-img" [src]=movie.image />
               <div class="title-and-image">
-                  <label> The Godfather </label>
-                  <label>1972</label>
+                  <label> {{movie.name}} </label>
+                  <label>{{movie.year}}</label>
                   <label>Marlon Brando, Al Pacino</label>
               </div><hr/>
-          </tr>
-          <tr class="dropdown-item result-header">
-            <img class="movie-img" src="../../../assets/images/cover/godfather-2.jpg" />
-            <div class="title-and-image">
-                <label> The Godfather II</label>
-                <label>1974</label>
-                <label>Rober De Niro, Al Pacino</label>
-            </div><hr/>
           </tr>
         </table>
       </div>
