@@ -26,12 +26,12 @@ export class AddMovieComponent implements OnInit {
   imagePoster: string = "";
   imagesFrontend: string[] = [];
 
+
   constructor() {
     this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
    }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   increaseActorsNum(event: Event) : void {
     this.actorsNum += 1;
@@ -95,6 +95,8 @@ export class AddMovieComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 }
+
+/*  https://stackoverflow.com/questions/60170651/how-to-assign-a-blob-to-an-image-src-using-angular  */
 
 @Pipe({ name: 'safeResourceUrl' })
 export class SafeUrlPipe implements PipeTransform {

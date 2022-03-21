@@ -79,6 +79,19 @@ hr{
     display: flex;
     flex-direction: column;
 }
+.genre-inputs{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 10%;
+    color: white;
+}
+.genre-inputs label{
+    margin-left: 2%;
+}
+input[type=checkbox] {
+    transform: scale(1.5);
+}
 .upload-images{
     margin-right: 200px;
 }

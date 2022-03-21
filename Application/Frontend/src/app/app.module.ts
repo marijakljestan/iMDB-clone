@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
@@ -40,6 +41,7 @@ import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
   imports: [
     BrowserModule,
     FormsModule,
+    [SweetAlert2Module.forRoot()],
     RouterModule.forRoot([
        { path: 'add-movie', component: AddMovieComponent},
        { path: 'user/:id',  component: UserProfileComponent},

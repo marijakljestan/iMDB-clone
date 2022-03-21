@@ -25,14 +25,14 @@
       <div class="filter">
           <a href="#" class="link-light dropdown-toggle item" 
            role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All</a>
-          <div class="dropdown-menu drop" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#">Movies</a>
             <a class="dropdown-item" href="#">TV shows</a>
           </div>
       </div>
       <div class="search-field-wrapper">
         <input id="search-field" class="link-dark dropdown-toggle item" type="text" (keyup.enter)="onAddSearchParam()" (focusout)="onFocusLost($event)" [(ngModel)]='searchParam' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <table  class="dropdown-menu drop" aria-labelledby="search-field" style="width: 54%;"> 
+        <table  class="dropdown-menu dropdown-menu-dark" aria-labelledby="search-field" style="width: 54%;"> 
           <label *ngIf="searchResults.length === 0">No results found</label>
           <tr class="dropdown-item result-header" *ngFor="let movie of searchResults">
               <img class="movie-img" [src]=movie.image />

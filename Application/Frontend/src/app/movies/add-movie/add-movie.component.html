@@ -39,12 +39,60 @@
         </div>
 
         <div class="right-side">
+            <!-- Movie genres-->
             <div class="genre">
-                <h6>Genres: </h6>
-                <select>
-                    <option>Action</option>
-                </select>
-            </div><br/><hr/><br/>
+                <h6> Genre: </h6>
+                <div class="genre-inputs">
+                    <span>
+                        <input type="checkbox" id="action" value="0" [(ngModel)]="newMovie.genre">
+                        <label for="action">Action</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="comedy" value="1" [(ngModel)]="newMovie.genre">
+                        <label for="comedy">Comedy</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="crime" value="2" [(ngModel)]="newMovie.genre">
+                        <label for="crime">Crime</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="drama" value="3" [(ngModel)]="newMovie.genre">
+                        <label for="drama">Drama</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="fantasy" value="4" [(ngModel)]="newMovie.genre">
+                        <label for="fantasy">Fantasy</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="horror" value="5" [(ngModel)]="newMovie.genre">
+                        <label for="horror">Horror</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="mystery" value="6" [(ngModel)]="newMovie.genre">
+                        <label for="mystery">Mystery</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="romance" value="7" [(ngModel)]="newMovie.genre">
+                        <label for="romance">Romance</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="scifi" value="8" [(ngModel)]="newMovie.genre">
+                        <label for="scifi">Science Fiction</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="thriller" value="9" [(ngModel)]="newMovie.genre">
+                        <label for="thriller">Thriller</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="western" value="10" [(ngModel)]="newMovie.genre">
+                        <label for="western">Western</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="biography" value="11" [(ngModel)]="newMovie.genre">
+                        <label for="biography">Biography</label>
+                    </span>
+                </div>
+            </div><hr/><br/>
 
             <div class="images">
                 <!--Poster image upload -->
