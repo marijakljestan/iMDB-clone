@@ -48,12 +48,14 @@ h1{
     width: 75%;
     height: 200px;
     border-radius: 10px;
+    text-indent: 10px;
 }
 .storyline{
     font-size: 16px;
     width: 75%;
     height: 300px;
     border-radius: 10px;
+    text-indent: 10px;
 }
 h6, p{
     color: white;
@@ -93,7 +95,7 @@ input[type=checkbox] {
     transform: scale(1.5);
 }
 .upload-images{
-    margin-right: 200px;
+    margin-right: 50%;
 }
 .images-preview{
     display: contents;

@@ -25,11 +25,16 @@ export class AddMovieComponent implements OnInit {
   aNumbers: number[] = Array(this.actorsNum).fill(0).map((x,i)=>i);
   imagePoster: string = "";
   imagesFrontend: string[] = [];
+  genres: any[] = [];
 
 
   constructor() {
     this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
-   }
+      this.genres = [
+        'Action', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Science Fiction', 'Thriller', 'Western',
+        'Biography'
+      ]
+    }
 
   ngOnInit(): void {}
 
@@ -52,6 +57,11 @@ export class AddMovieComponent implements OnInit {
   decreaseWrittersNum(event: Event) : void {
     this.writtersNum -= 1;
     this.wNumbers = Array.from(Array(this.writtersNum),(x,i)=>i);
+  }
+
+  onCheckboxChange(event: Event) {
+    const element = event.currentTarget as HTMLInputElement;
+    this.newMovie.genres.push(element.value);
   }
 
   posterAdded(event: Event) {
