@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Actor } from 'src/app/model/actor.model';
 
 @Component({
   selector: 'actor-list',
@@ -6,12 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./actor-list.component.css']
 })
 export class ActorListComponent implements OnInit {
-  @Input() title: string = "";
-  @Input() actors: any[] = [];
+  @Input() actors: Actor[] = [];
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

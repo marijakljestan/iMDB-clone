@@ -46,7 +46,8 @@ export class NavbarComponent implements OnInit{
       id: 1,
       name: 'John',
       surname: 'Doe',
-      email: 'johndoe@gmail.com'
+      email: 'johndoe@gmail.com',
+      role: 'ADMIN'
     }
     this.closeLoginModal();
   }

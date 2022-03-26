@@ -1,6 +1,6 @@
 <div class="title-wrapper">
     <span class="vl"></span>
-    <h3 class="title">{{title}}</h3>
+    <h3 class="title">Top cast</h3>
 </div>
 <div class="actors-wrapper" *ngIf="actors">
     <div class="actor-card" *ngFor="let actor of actors">
@@ -8,7 +8,7 @@
             <img class="img-class" src={{actor.image}}/>
         </div>
         <div class="actor-role">
-            <p class="name"> {{actor.name}} </p>
+            <p class="name"> {{actor.firstName}}  {{actor.lastName}}</p>
             <p class="role"> as {{actor.role}} </p>
         </div>
     </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Review } from 'src/app/model/review.model';
 
 @Component({
   selector: 'movie-comments',
@@ -7,12 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MovieCommentsComponent implements OnInit {
   @Input() movie: any = {};
-  @Input() reviews: any[] = [];
-  title: string = 'User reviews';
+  @Input() reviews: Review[] = [];
   newRate: number = 0;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   addComment(event: MouseEvent) : void{
     event.preventDefault();
@@ -23,6 +22,4 @@ export class MovieCommentsComponent implements OnInit {
     this.newRate = 0;
     (document.querySelector('#add-comment-modal') as HTMLElement).style.display = 'none';
   }
-
-
 }

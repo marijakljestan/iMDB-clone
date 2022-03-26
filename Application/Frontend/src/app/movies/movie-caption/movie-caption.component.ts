@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Movie } from 'src/app/model/movie.model';
 
 @Component({
   selector: 'movie-caption',
@@ -11,7 +12,5 @@ export class MovieCaptionComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

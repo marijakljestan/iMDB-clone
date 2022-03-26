@@ -40,8 +40,7 @@ export class AddMovieComponent implements OnInit {
 
   increaseActorsNum(event: Event) : void {
     this.actorsNum += 1;
-    this.aNumbers = Array(this.actorsNum).fill(0).map((x,i)=>i);
-    
+    this.aNumbers = Array(this.actorsNum).fill(0).map((x,i)=>i); 
   }
 
   decreaseActorsNum(event: Event) : void {
@@ -68,17 +67,17 @@ export class AddMovieComponent implements OnInit {
     const element = event.currentTarget as HTMLInputElement;
     let file;
     if(element.files !== null){
-       file = element.files[0];
-       this.createBase64Image(file);
-       this.imagePoster = URL.createObjectURL(file);
+      file = element.files[0];
+      this.createBase64Image(file);
+      this.imagePoster = URL.createObjectURL(file);
 
-       const reader= new FileReader();
+      const reader= new FileReader();
       reader.onload = (e) =>{
         let img;
         if(e.target !== null){
-          img = e.target.result;
-          this.newMovie.coverImage = img;
-        }
+            img = e.target.result;
+            this.newMovie.coverImage = img;
+          }
       }
     }
   }

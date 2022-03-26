@@ -19,6 +19,6 @@ public class Movie {
    private int stroryline;
    private String coverImage;
    private List<String> images;
-   private double rate;
+   private double averageGrade;
 
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Actor } from 'src/app/model/actor.model';
 
 @Component({
   selector: 'pm-movie-page',
@@ -7,8 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MoviePageComponent implements OnInit {
   movie: any = {};
-  title: string = 'Top cast';
-  actors: any[] = [];
+  actors: Actor[] = [];
   recommendation: string = "More like this";
   moviesRecommended: any[] = [];
 
@@ -16,17 +16,8 @@ export class MoviePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.actors = [
-      {
-        name: 'Marlon Brando',
-        role: 'Don Vito Corleone',
-        image: '../../../assets/images/actors/marlon-brando.jpg'
-      },
-      {
-        name: 'Al Pacino',
-        role: 'Michael Corleone',
-        image: '../../../assets/images/actors/al-pacino.jpg'
-      },
-    
+      new Actor('Marlon', 'Brando', '../../../assets/images/actors/marlon-brando.jpg', 'Don Vito Corleone'),
+      new Actor('Al', 'Pacino', '../../../assets/images/actors/al-pacino.jpg', 'Michael Corleone')
     ];
 
     this.moviesRecommended = [

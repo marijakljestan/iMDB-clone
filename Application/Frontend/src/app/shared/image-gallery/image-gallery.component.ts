@@ -16,9 +16,11 @@ export class ImageGalleryComponent implements OnInit{
   }
 
   getNextMovieImage() : void {
-    if(this.currentImageIndex === this.images.length - 1)
+    if(this.currentImageIndex === this.images.length - 1){
+      this.currentImageIndex = 0;
+      this.currentImageSource = this.images[this.currentImageIndex];
       return;
-
+    }
     ++this.currentImageIndex;
     this.currentImageSource = this.images[this.currentImageIndex];
   }
