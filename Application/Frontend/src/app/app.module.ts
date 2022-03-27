@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
@@ -16,6 +17,8 @@ import { MovieCommentsComponent } from './movies/movie-comments/movie-comments.c
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { CommentsListComponent } from './movies/comments-list/comments-list.component';
+import { AddMovieComponent } from './movies/add-movie/add-movie.component';
+import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,16 @@ import { CommentsListComponent } from './movies/comments-list/comments-list.comp
     MovieCommentsComponent,
     UserProfileComponent,
     StarRatingComponent,
-    CommentsListComponent
+    CommentsListComponent,
+    AddMovieComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    [SweetAlert2Module.forRoot()],
     RouterModule.forRoot([
+       { path: 'add-movie', component: AddMovieComponent},
        { path: 'user/:id',  component: UserProfileComponent},
        { path: 'comments/:id', component: CommentsListComponent},
        { path: 'movie/:id', component: MoviePageComponent},

@@ -21,10 +21,12 @@
         <div class="user-details">
             <div class="data">
                 <h3> {{user.name}} {{user.surname}} </h3>
-                <h6> {{user.email}}</h6>
+                <h6> {{user.email}}</h6><br/><br/>
+                <a [routerLink]="['/add-movie']" ><div> Add new movie</div></a>
             </div>
             <i class="fas fa-solid fa-pen" (click)="editProfile($event)"></i>
-        </div><br/><hr/><br/>
+        </div><br/>
+        <hr/><br/>
         <movie-list [title]="'Your watchlist'"      [movies]="user.watchlist"  [displayedMoviesLength]="3"></movie-list><br/>
         <movie-list [title]="'Recommended for you'" [movies]="user.watchlist"  [displayedMoviesLength]="3"></movie-list><br/>
     </div>
