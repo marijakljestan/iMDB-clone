@@ -13,5 +13,4 @@ public enum Genre {
    western,
    scienceFiction,
    biography;
-
 }
