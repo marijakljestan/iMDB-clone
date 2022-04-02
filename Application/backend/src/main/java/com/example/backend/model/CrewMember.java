@@ -18,7 +18,7 @@ public class CrewMember {
    @Column(name = "last_name", nullable = false)
    private String lastName;
    @ManyToMany
-   @JoinTable(name="movie_crew_join_table", joinColumns = @JoinColumn(name="crew_member_id", referencedColumnName = "crew_member_id"),
+   @JoinTable(name="movie_crew", joinColumns = @JoinColumn(name="crew_member_id", referencedColumnName = "crew_member_id"),
    inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "movie_id"))
    private Set<Movie> movies;
 }
