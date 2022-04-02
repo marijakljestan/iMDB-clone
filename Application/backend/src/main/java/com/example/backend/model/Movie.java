@@ -1,24 +1,42 @@
 package com.example.backend.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
+import javax.persistence.*;
 import java.util.*;
 
-@Getter
-@NoArgsConstructor
+@Entity
+@Table(name = "movie")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Movie {
-
+   @Id
+   @SequenceGenerator(name = "movieSeqGen", sequenceName = "movieSeqGen")
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movieSeqGen")
+   @Column(name = "movie_id", unique = true, nullable = false)
    private int id;
+   @Column(nullable = false)
    private String name;
+   @Column(nullable = false)
    private int year;
+   @Column(nullable = false)
    private String countryOfOrigin;
+   @Column(nullable = false)
    private int durationInMinutes;
-   private List<Genre> genres;
+   @ElementCollection(fetch = FetchType.EAGER)
+   @CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "movie_id"))
+   @Column(name = "genre", nullable = false)
+   private Set<Genre> genres;
+   @Column(nullable = false)
    private String description;
-   private int stroryline;
+   @Column(nullable = false)
+   private String storyline;
+   @Column(nullable = false)
    private String coverImage;
-   private List<String> images;
-   private double averageGrade;
-
+   @ElementCollection(fetch = FetchType.LAZY)
+   @CollectionTable(name = "movie_images", joinColumns = @JoinColumn(name = "movie_id"))
+   @Column(name = "image", nullable = false)
+   private Set<String> images;
+   @Column
+   private double averageGrade = 10.0;
+   @ManyToMany(mappedBy = "movies")
+   private Set<CrewMember> crew;
 }

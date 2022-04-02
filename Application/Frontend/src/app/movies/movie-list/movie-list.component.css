@@ -15,6 +15,7 @@
 .movies-wrapper{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     background-color: rgba(15, 44, 60, 0.1);
     margin: 2% 10%;
