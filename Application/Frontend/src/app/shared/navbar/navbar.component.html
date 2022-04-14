@@ -1,13 +1,13 @@
 <div id="sign-up-modal">
     <div class="header-modal"><div class="close" (click)="closeSignupModal()">+</div> Sign up</div><hr/>
     <div class="sign-up-content">
-      <div class="name"><i class="fas fa-user fa-2x"></i>     <input type="text" placeholder="Name*"          class="form-input"> </div><br/>
-      <div class="name"><i class="fas fa-user fa-2x"></i>     <input type="text" placeholder="Surname*"       class="form-input"></div><br/>
-      <div class="email"><i class="fas fa-at fa-2x"></i> <input type="text" placeholder="Email address*"      class="form-input"> </div><br/>
-      <div class="name"><i class="fas fa-lock fa-2x"></i>     <input type="password" placeholder="Password*"  class="form-input"> </div><br/>
-      <div class="name"><i class="fas fa-lock fa-2x"></i>     <input type="password" placeholder="Confirm password*" class="form-input"></div>
+      <div class="name"> <i class="fas fa-user fa-2x"></i> <input type="text"     [(ngModel)]="newUser.firstName" placeholder="Name*"           class="form-input"></div><br/>
+      <div class="name"> <i class="fas fa-user fa-2x"></i> <input type="text"     [(ngModel)]="newUser.lastName"  placeholder="Surname*"        class="form-input"></div><br/>
+      <div class="email"><i class="fas fa-at fa-2x">  </i> <input type="text"     [(ngModel)]="newUser.email"     placeholder="Email address*"  class="form-input"></div><br/>
+      <div class="name"> <i class="fas fa-lock fa-2x"></i> <input type="password" [(ngModel)]="newUser.password"  placeholder="Password*"       class="form-input"></div><br/>
+      <div class="name"> <i class="fas fa-lock fa-2x"></i> <input type="password" placeholder="Confirm password*"   class="form-input"></div>
     </div><hr/>
-    <div class="btn-submit-wrapper"><button class="btn-submit">CONFIRM</button></div>
+    <div class="btn-submit-wrapper"><button class="btn-submit" (click)="registerUser($event)">CONFIRM</button></div>
 </div>
 
 <div id="log-in-modal">

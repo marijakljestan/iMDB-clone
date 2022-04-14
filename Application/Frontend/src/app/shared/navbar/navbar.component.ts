@@ -1,4 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
+import { User } from 'src/app/model/user.model';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'navbar',
@@ -8,11 +10,24 @@ import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 export class NavbarComponent implements OnInit{
   title : string = 'CINEMATIC';
   loggedUser: any;
+  newUser: User = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: ''
+  }
   searchParam: string = "";
   @Output() displaySearchResults = new EventEmitter<string>();
   @Input() searchResults: any[] = [];
 
+  constructor(private userService: UserService) {}
+
   ngOnInit(): void {}
+
+  registerUser(event: MouseEvent){
+      event.preventDefault();
+      this.userService.registerUser(this.newUser);
+  }
 
   onAddSearchParam() {
     this.displaySearchResults.emit(this.searchParam);
