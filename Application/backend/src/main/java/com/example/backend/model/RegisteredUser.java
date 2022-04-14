@@ -5,7 +5,10 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class RegisteredUser {
    @Id
    @SequenceGenerator(name = "userSeqGen", sequenceName = "userSeqGen")

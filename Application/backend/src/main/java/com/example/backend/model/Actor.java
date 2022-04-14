@@ -4,7 +4,10 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Actor {
    @Id
    @SequenceGenerator(name = "actorSeqGen", sequenceName = "actorSeqGen", initialValue = 1, allocationSize = 1)
@@ -15,6 +18,6 @@ public class Actor {
    private String firstName;
    @Column(name="last_name", nullable = false)
    private String lastName;
-   @Column(name = "image", nullable = false)
+   @Column(name = "image")
    private String image;
 }
