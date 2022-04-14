@@ -5,7 +5,10 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MovieRole {
    @Id
    @SequenceGenerator(name = "roleSeqGen", sequenceName = "roleSeqGen")

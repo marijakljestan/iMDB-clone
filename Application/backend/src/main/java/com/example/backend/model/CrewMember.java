@@ -6,7 +6,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "crew_member")
-@Getter @NoArgsConstructor @AllArgsConstructor @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CrewMember {
    @Id
    @SequenceGenerator(name = "crewMemberSeqGen", sequenceName = "crewMemberSeqGen", initialValue = 1, allocationSize = 1)
@@ -19,6 +22,6 @@ public class CrewMember {
    private String lastName;
    @ManyToMany
    @JoinTable(name="movie_crew", joinColumns = @JoinColumn(name="crew_member_id", referencedColumnName = "crew_member_id"),
-   inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "movie_id"))
+                          inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "movie_id"))
    private Set<Movie> movies;
 }

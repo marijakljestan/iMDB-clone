@@ -6,7 +6,10 @@ import java.util.*;
 
 @Entity
 @Table(name = "movie")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Movie {
    @Id
    @SequenceGenerator(name = "movieSeqGen", sequenceName = "movieSeqGen")
@@ -27,7 +30,7 @@ public class Movie {
    private Set<Genre> genres;
    @Column(nullable = false)
    private String description;
-   @Column(nullable = false)
+   @Column(nullable = false, length = 1096)
    private String storyline;
    @Column(nullable = false)
    private String coverImage;
