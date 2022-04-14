@@ -28,7 +28,7 @@ public class RegisteredUser {
                            inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "movie_id"))
    private Set<Movie> watchlist;
    @Column(nullable = false)
-   private Boolean blocked;
+   private Boolean blocked = false;
    @Column(nullable = false)
-   private Boolean deleted;
+   private Boolean deleted = false;
 }
