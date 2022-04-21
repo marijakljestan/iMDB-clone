@@ -1,3 +1,6 @@
+INSERT INTO role(id, name) VALUES (nextval('role_seq_gen'), 'ROLE_ADMIN');
+INSERT INTO role(id, name) VALUES (nextval('role_seq_gen'), 'ROLE_USER');
+
 INSERT INTO actor(actor_id, first_name, last_name)
 VALUES (nextval('actor_seq_gen'), 'Marlon', 'Brando'),
        (nextval('actor_seq_gen'), 'Robert', 'De Niro');
