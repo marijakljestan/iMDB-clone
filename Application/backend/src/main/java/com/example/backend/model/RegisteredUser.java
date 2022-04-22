@@ -14,7 +14,7 @@ import java.util.*;
 @Builder
 public class RegisteredUser implements UserDetails {
    @Id
-   @SequenceGenerator(name = "userSeqGen", sequenceName = "userSeqGen")
+   @SequenceGenerator(name = "userSeqGen", sequenceName = "userSeqGen", initialValue = 1, allocationSize = 1)
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSeqGen")
    @Column(name = "user_id", unique = true, nullable = false)
    private Integer id;

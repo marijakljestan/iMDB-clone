@@ -77,7 +77,7 @@ export class HomePageComponent implements OnInit {
       {
         id: 8,
         name: 'Shawshank Redemption',
-        averageGrade : 9.2,
+        averageGrade : 9.3,
         image: "../../../assets/images/shawshank.jfif",
         year: 1994
       },
@@ -105,7 +105,7 @@ export class HomePageComponent implements OnInit {
       {
         id: 12,
         name: 'Shutter Island',
-        averageGrade : 8.1,
+        averageGrade : 8.2,
         image: "../../../assets/images/shutter.jfif",
         year: 2010
       }
