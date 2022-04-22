@@ -1,14 +1,15 @@
-package com.example.backend.service.interfaces;
+package com.example.backend.service;
 
 import com.example.backend.model.Role;
 import com.example.backend.repository.RoleRepository;
+import com.example.backend.service.interfaces.RoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
 

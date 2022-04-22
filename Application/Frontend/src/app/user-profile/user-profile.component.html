@@ -1,9 +1,9 @@
 <div id="edit-profile-modal">
     <div class="header-modal"><div class="close" (click)="closeModal()">+</div> Edit profile</div><hr/>
     <div class="sign-up-content">
-      <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.name"    type="text"     class="form-input"> </div><br/>
-      <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.surname" type="text"     class="form-input"> </div><br/>
-      <div class="email"><i class="fas fa-at fa-2x"></i>  <input [(ngModel)]="user.email"   type="text"     class="form-input"> </div><br/>
+      <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.firstName" type="text"  class="form-input"> </div><br/>
+      <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.lastName"  type="text"  class="form-input"> </div><br/>
+      <div class="email"><i class="fas fa-at fa-2x"></i>  <input [(ngModel)]="user.email"     type="text"  class="form-input"> </div><br/>
       <div class="change-password link-light item"> <label (click)="showChangePasswordForm($event)">Change password?</label> </div><br/>
       <div class="password">
         <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Current password" type="password" class="form-input"></div><br/>
@@ -20,7 +20,7 @@
     <div class="profile">
         <div class="user-details">
             <div class="data">
-                <h3> {{user.name}} {{user.surname}} </h3>
+                <h3> {{user.firstName}} {{user.lastName}} </h3>
                 <h6> {{user.email}}</h6><br/><br/>
                 <a [routerLink]="['/add-movie']" ><div> Add new movie</div></a>
             </div>

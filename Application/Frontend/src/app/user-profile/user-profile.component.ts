@@ -12,7 +12,7 @@ export class UserProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.user = {
+    /*this.user = {
       id: 1,
       name: 'John',
       surname: 'Doe',
@@ -47,7 +47,10 @@ export class UserProfileComponent implements OnInit {
           year: 1994
         }
       ]
-    }
+    }*/
+    setTimeout(() => {
+        this.user = JSON.parse(localStorage.getItem("loggedUser")!);
+     }, 50);
   }
 
   showChangePasswordForm(event: MouseEvent) : void{

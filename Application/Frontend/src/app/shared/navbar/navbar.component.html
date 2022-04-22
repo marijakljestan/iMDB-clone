@@ -3,7 +3,7 @@
     <div class="sign-up-content">
       <div class="name"> <i class="fas fa-user fa-2x"></i> <input type="text"     [(ngModel)]="newUser.firstName" placeholder="Name*"           class="form-input"></div><br/>
       <div class="name"> <i class="fas fa-user fa-2x"></i> <input type="text"     [(ngModel)]="newUser.lastName"  placeholder="Surname*"        class="form-input"></div><br/>
-      <div class="email"><i class="fas fa-at fa-2x">  </i> <input type="text"     [(ngModel)]="newUser.email"     placeholder="Email address*"  class="form-input"></div><br/>
+      <div class="email"><i class="fas fa-at fa-2x">  </i> <input type="email"     [(ngModel)]="newUser.email"     placeholder="Email address*"  class="form-input"></div><br/>
       <div class="name"> <i class="fas fa-lock fa-2x"></i> <input type="password" [(ngModel)]="newUser.password"  placeholder="Password*"       class="form-input"></div><br/>
       <div class="name"> <i class="fas fa-lock fa-2x"></i> <input type="password" placeholder="Confirm password*"   class="form-input"></div>
     </div><hr/>
@@ -13,8 +13,8 @@
 <div id="log-in-modal">
   <div class="header-modal"><div class="close" (click)="closeLoginModal()">+</div> Log in</div><hr/>
   <div class="log-in-content">
-    <div class="email"><i class="fas fa-at fa-2x"></i> <input type="text"    placeholder="Email address*" class="form-input"> </div><br/>
-    <div class="name"><i class="fas fa-lock fa-2x"></i>     <input type="password" placeholder="Password*"  class="form-input"> </div><br/>
+    <div class="email"><i class="fas fa-at fa-2x"></i>  <input type="text"     [(ngModel)]="loginCredentials.email"    placeholder="Email address*" class="form-input"> </div><br/>
+    <div class="name"> <i class="fas fa-lock fa-2x"></i><input type="password" [(ngModel)]="loginCredentials.password" placeholder="Password*"      class="form-input"> </div><br/>
   </div><hr/>
   <div class="btn-login-wrapper"><button class="btn-submit" (click)="logUser()">CONFIRM</button></div>
 </div>
@@ -31,7 +31,7 @@
           </div>
       </div>
       <div class="search-field-wrapper">
-        <input id="search-field" class="link-dark dropdown-toggle item" type="text" (keyup.enter)="onAddSearchParam()" (focusout)="onFocusLost($event)" [(ngModel)]='searchParam' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <input id="search-field" class="link-dark dropdown-toggle item" type="search" (keyup.enter)="onAddSearchParam()" (focusout)="onFocusLost($event)" [(ngModel)]='searchParam' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <table  class="dropdown-menu dropdown-menu-dark" aria-labelledby="search-field" style="width: 54%;"> 
           <label *ngIf="searchResults.length === 0">No results found</label>
           <tr class="dropdown-item result-header" *ngFor="let movie of searchResults">
@@ -47,10 +47,11 @@
       
     </div>
     <div class="login" *ngIf="!loggedUser">
-      <a href="#" class="link-light item" (click)="openSignUpModal($event)">Sign up</a>
-      <a href="#" class="link-light item" (click)="openLoginModal($event)" >Log in</a>
+      <a class="link-light item" (click)="openSignUpModal($event)">Sign up</a>
+      <a class="link-light item" (click)="openLoginModal($event)" >Log in</a>
     </div>
     <div class="login" *ngIf="loggedUser">
-      <a class="link-light item" [routerLink]="['/user', loggedUser.id]" > My profile</a>
+      <a class="link-light item" [routerLink]="['/user', loggedUser.id]"> My profile</a>
+      <a class="link-light item" (click)="logout($event)">Log out</a>
     </div>
 </div>
