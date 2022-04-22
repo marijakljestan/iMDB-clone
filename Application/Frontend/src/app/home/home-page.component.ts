@@ -18,8 +18,7 @@ export class HomePageComponent implements OnInit {
     
     constructor(private movieService: MovieService) {}
     
-    ngOnInit() {
-        
+    ngOnInit() {     
         this.fetchMovies();
       
         this.images = [
@@ -31,7 +30,6 @@ export class HomePageComponent implements OnInit {
             "../../../assets/images/cover/godfather.jpg"
         ];
     }
-
 
     private fetchMovies() {
         this.movieService.getAllMovies().subscribe(response => {

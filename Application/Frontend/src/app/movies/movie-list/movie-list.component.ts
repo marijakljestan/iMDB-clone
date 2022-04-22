@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MovieDto } from 'src/app/model/movie-dto.model';
+import { User } from 'src/app/model/user.model';
 
 @Component({
   selector: 'movie-list',
@@ -13,11 +14,14 @@ export class MovieListComponent implements OnInit {
   moviesForDisplay: any[] = [];
   @Input() displayedMoviesLength: number = 5 ;
   initialMovieIndex: number = 0;
+  loggedUser: User | any;
 
   constructor() { }
 
   ngOnInit() : void {
     this.displayMovieList();
+    if(localStorage.getItem("loggedUser") !== null)
+        this.loggedUser = JSON.parse(localStorage.getItem("loggedUser")!);
   }
 
   getNextMovie() : void {
