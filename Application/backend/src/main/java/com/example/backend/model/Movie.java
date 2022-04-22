@@ -40,6 +40,5 @@ public class Movie {
    private Set<String> images;
    @Column
    private double averageGrade = 10.0;
-   @ManyToMany(mappedBy = "movies")
-   private Set<CrewMember> crew;
+
 }

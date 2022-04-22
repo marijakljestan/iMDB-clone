@@ -8,7 +8,7 @@
     </div> 
     <div class="movie-card" *ngFor="let movie of moviesForDisplay">
         <div class="img-div">
-            <a class="link-light item" [routerLink]="['/movie', movie.id]"><img class="img-class" src={{movie.image}}/></a>
+            <a class="link-light item" [routerLink]="['/movie', movie.id]"><img class="img-class" src={{movie.coverImage}}/></a>
         </div>
         <div class="movie-details">
             <span><i class="fas fa-star fa-1x" style="color:#f3ce13"></i> {{movie.averageGrade}}</span><br/>

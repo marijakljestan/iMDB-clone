@@ -25,35 +25,35 @@ export class MoviePageComponent implements OnInit {
         id: 1,
         name: 'The Godfather',
         averageGrade : 9.1,
-        image: "../../../assets/images/godfather.jpg",
+        coverImage: "../../../assets/images/godfather.jpg",
         year: 1972
       },
       {
         id: 2,
         name: 'The Dark Knight',
         averageGrade : 8.8,
-        image: "../../../assets/images/dark-knight.jfif",
+        coverImage: "../../../assets/images/dark-knight.jfif",
         year: 2008
       },
       {
         id: 3,
         name: 'Fight club',
         averageGrade : 8.7,
-        image: "../../../assets/images/fight-club.jpg",
+        coverImage: "../../../assets/images/fight-club.jpg",
         year: 1999
       },
       {
         id: 13,
         name: 'Inception',
         averageGrade : 8.6,
-        image: "../../../assets/images/inception.jpg",
+        coverImage: "../../../assets/images/inception.jpg",
         year: 2010
       },
       {
         id: 10,
         name: 'Pulp Fiction',
         averageGrade : 8.5,
-        image: "../../../assets/images/pulp fiction.jpg",
+        coverImage: "../../../assets/images/pulp fiction.jpg",
         year: 1994
       }
     ];

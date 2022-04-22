@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MovieDto } from 'src/app/model/movie-dto.model';
 
 @Component({
   selector: 'movie-list',
@@ -8,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MovieListComponent implements OnInit {
   
   @Input() title : string = "";
-  @Input() movies : any[] = [];
+  @Input() movies : MovieDto[] = [];
   moviesForDisplay: any[] = [];
   @Input() displayedMoviesLength: number = 5 ;
   initialMovieIndex: number = 0;

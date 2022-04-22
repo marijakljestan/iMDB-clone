@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -25,5 +26,5 @@ public class MovieDTO {
     private String coverImage;
     private Set<String> images;
     private double averageGrade;
-    private Set<CrewMember> crew;
+    private Set<CrewMember> crew = new HashSet<>();
 }

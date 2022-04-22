@@ -40,13 +40,15 @@
     display: flex;
     flex-direction: column;
     color: whitesmoke;
+    height: 40%;
     margin-left: 10%;
     margin-right: 10%;
 }
 .btn-wrap{
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    margin-top: auto;
+    margin-bottom: 20% !important;
 }
 .btn{
     width: 100%;

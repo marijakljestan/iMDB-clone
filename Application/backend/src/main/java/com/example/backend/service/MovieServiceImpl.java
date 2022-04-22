@@ -20,7 +20,13 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<MovieDTO> getAllMovies() {
-        return CollectionMapper.mapList(this.movieRepository.findAll(), MovieDTO.class);
+        List<Movie> movies = this.movieRepository.findAll();
+        return CollectionMapper.mapList(movies, MovieDTO.class);
+    }
+
+    @Override
+    public List<MovieDTO> getUserWatchlist() {
+        return null;
     }
 
     @Override
