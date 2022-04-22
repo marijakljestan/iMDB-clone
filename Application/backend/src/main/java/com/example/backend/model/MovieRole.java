@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Builder
 public class MovieRole {
    @Id
-   @SequenceGenerator(name = "movieRoleSeqGen", sequenceName = "movieRoleSeqGen")
+   @SequenceGenerator(name = "movieRoleSeqGen", sequenceName = "movieRoleSeqGen", initialValue = 1, allocationSize = 1)
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movieRoleSeqGen")
    @Column(name = "role_id", unique = true, nullable = false)
    private int id;
