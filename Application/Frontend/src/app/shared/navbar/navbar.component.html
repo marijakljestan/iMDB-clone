@@ -47,10 +47,11 @@
       
     </div>
     <div class="login" *ngIf="!loggedUser">
-      <a href="#" class="link-light item" (click)="openSignUpModal($event)">Sign up</a>
-      <a href="#" class="link-light item" (click)="openLoginModal($event)" >Log in</a>
+      <a class="link-light item" (click)="openSignUpModal($event)">Sign up</a>
+      <a class="link-light item" (click)="openLoginModal($event)" >Log in</a>
     </div>
     <div class="login" *ngIf="loggedUser">
-      <a class="link-light item" [routerLink]="['/user', loggedUser.id]" > My profile</a>
+      <a class="link-light item" [routerLink]="['/user', loggedUser.id]"> My profile</a>
+      <a class="link-light item" (click)="logout($event)">Log out</a>
     </div>
 </div>

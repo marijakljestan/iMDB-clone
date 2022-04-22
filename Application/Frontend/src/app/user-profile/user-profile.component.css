@@ -23,6 +23,7 @@
     height: 80%;
     background-color: rgb(15, 15, 15);
     margin: 5% 30%;
+    z-index: 1;
 }
 .header-modal{
     width: 100%;
@@ -62,12 +63,14 @@
     border-radius: 10px;
     text-indent: 10px;
     margin: 1% 5%;
+    z-index: 1;
 }
 .password{
     display: none;
 }
 .fas{
     color: #f3ce13;
+    z-index: 1;
 }
 .fa-pen{
     color: white;
