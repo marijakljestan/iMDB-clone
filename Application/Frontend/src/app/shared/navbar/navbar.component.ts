@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
+import { Authentication } from 'src/app/model/authentication.model';
 import { User } from 'src/app/model/user.model';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -9,24 +11,37 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class NavbarComponent implements OnInit{
   title : string = 'CINEMATIC';
-  loggedUser: any;
+  loggedUser: User | any;
+  user: string = '';
   newUser: User = {
       firstName: '',
       lastName: '',
       email: '',
       password: ''
-  }
+  };
+  loginCredentials: Authentication = {
+      email: '',
+      password: ''
+  };
   searchParam: string = "";
   @Output() displaySearchResults = new EventEmitter<string>();
   @Input() searchResults: any[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private authSerive: AuthenticationService) {}
 
   ngOnInit(): void {}
 
   registerUser(event: MouseEvent){
       event.preventDefault();
       this.userService.registerUser(this.newUser);
+  }
+
+  async logUser() {
+    this.authSerive.login(this.loginCredentials);
+    await this.userService.getLoggedUser().subscribe(data => { 
+        this.loggedUser = data;
+    });
+    this.closeLoginModal();
   }
 
   onAddSearchParam() {
@@ -54,16 +69,5 @@ export class NavbarComponent implements OnInit{
 
   closeSignupModal() : void{
     (document.querySelector('#sign-up-modal') as HTMLElement).style.display = 'none';
-  }
-
-  logUser() : void{
-    this.loggedUser = {
-      id: 1,
-      name: 'John',
-      surname: 'Doe',
-      email: 'johndoe@gmail.com',
-      role: 'ADMIN'
-    }
-    this.closeLoginModal();
   }
 }

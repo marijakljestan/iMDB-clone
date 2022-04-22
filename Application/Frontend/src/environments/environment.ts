@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrlUsers: "http://localhost:8082/user/"
+  baseUrlUsers: "http://localhost:8082/user/",
+  baseUrlAuth:  "http://localhost:8082/auth/"
 };
 
 /*

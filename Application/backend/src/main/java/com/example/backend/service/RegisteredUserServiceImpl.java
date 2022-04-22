@@ -30,4 +30,11 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         userRepository.save(newUser);
         return userDTO;
     }
+
+    @Override
+    public RegisteredUserDTO findLoggedUserByUsername(String username) {
+        RegisteredUser user = this.userRepository.fetchUserWithWatchlist(username);
+        RegisteredUserDTO userDTO = modelMapper.map(user, RegisteredUserDTO.class);
+        return userDTO;
+    }
 }

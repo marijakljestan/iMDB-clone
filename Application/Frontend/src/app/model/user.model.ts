@@ -1,13 +1,12 @@
 import { Movie } from "./movie.model";
 
 export class User{
+   public id?: number;
    public firstName: string;
    public lastName: string;
    public email: string;
    public password: string;
-   public status?: boolean = false;
    public watchlist?: Movie[];
-   public deleted?: boolean = false;
 
    constructor (firstName: string, lastName: string, email: string, password: string, watchlist: Movie[]){
        this.firstName = firstName;
