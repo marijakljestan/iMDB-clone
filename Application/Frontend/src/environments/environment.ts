@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   baseUrlUsers: "http://localhost:8082/user/",
   baseUrlAuth:  "http://localhost:8082/auth/",
-  baseUrlMovie: "http://localhost:8082/movie"
+  baseUrlMovie: "http://localhost:8082/movie/"
 };
 
 /*

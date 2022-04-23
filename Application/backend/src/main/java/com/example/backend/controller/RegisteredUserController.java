@@ -19,7 +19,6 @@ import java.security.Principal;
 public class RegisteredUserController {
 
     private final RegisteredUserService userService;
-    private final TokenUtils tokenUtils;
 
     @PostMapping("/")
     public RegisteredUserDTO registerUser(@RequestBody RegisteredUserDTO userDTO){
@@ -28,7 +27,7 @@ public class RegisteredUserController {
 
     @GetMapping("/whoami")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<RegisteredUserDTO> user(Principal principal) {
+    public ResponseEntity<RegisteredUserDTO> getLoggedInUser(Principal principal) {
         RegisteredUserDTO user = userService.findLoggedUserByUsername(principal.getName());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

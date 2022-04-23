@@ -13,7 +13,7 @@ public class MovieController {
 
     private final MovieService movieService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public Iterable<MovieDTO> getAll(){
         return movieService.getAllMovies();
     }
@@ -21,13 +21,10 @@ public class MovieController {
     @GetMapping("/{id}")
     public MovieDTO getMovieById(@PathVariable("id") Integer id){ return movieService.getMovieById(id); }
 
-    @GetMapping("/watchlist/{id}")
-    public Iterable<MovieDTO> getUserWatchlist(@PathVariable("id") Integer id){ return movieService.getUserWatchlist(); }
-
-    @PostMapping("")
+    @PostMapping("/")
     public MovieDTO addMovie(@RequestBody MovieDTO movieDTO){ return movieService.addMovie(movieDTO); }
 
-    @PutMapping("")
+    @PutMapping("/")
     public MovieDTO editMovie(@RequestBody MovieDTO movieDTO){ return movieService.editMovie(movieDTO); }
 
     @DeleteMapping("/{id}")

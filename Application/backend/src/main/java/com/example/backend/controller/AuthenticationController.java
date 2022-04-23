@@ -28,8 +28,7 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public ResponseEntity<UserTokenState> createAuthenticationToken(
-            @RequestBody JwtAuthenticationRequestDTO authenticationRequest, HttpServletResponse response) throws Exception {
+    public ResponseEntity<UserTokenState> createAuthenticationToken(@RequestBody JwtAuthenticationRequestDTO authenticationRequest)  {
 
         Authentication authentication = null;
         try {

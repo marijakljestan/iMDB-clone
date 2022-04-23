@@ -29,7 +29,7 @@ public class RegisteredUser implements UserDetails {
    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
    @JoinTable(name = "watchlist", joinColumns = @JoinColumn(name = "user_id",  referencedColumnName = "user_id"),
                            inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "movie_id"))
-   private Set<Movie> watchlist;
+   private List<Movie> watchlist;
    @Column(nullable = false)
    private Boolean blocked = false;
    @Column(nullable = false)

@@ -25,11 +25,6 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<MovieDTO> getUserWatchlist() {
-        return null;
-    }
-
-    @Override
     public MovieDTO getMovieById(Integer id) {
         return modelMapper.map(movieRepository.findById(id).get(), MovieDTO.class);
     }
