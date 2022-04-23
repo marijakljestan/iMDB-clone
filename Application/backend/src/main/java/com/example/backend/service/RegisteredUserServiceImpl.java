@@ -40,6 +40,15 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
     @Override
     public RegisteredUserDTO fetchUserWithWatchlist(Integer userId) {
-        return null;
+        RegisteredUser user = this.userRepository.fetchUserWithWatchlist(userId);
+        RegisteredUserDTO userDTO = modelMapper.map(user, RegisteredUserDTO.class);
+        return userDTO;
+    }
+
+    @Override
+    public RegisteredUserDTO saveUser(RegisteredUserDTO userDTO) {
+        RegisteredUser user = modelMapper.map(userDTO, RegisteredUser.class);
+        this.userRepository.save(user);
+        return userDTO;
     }
 }

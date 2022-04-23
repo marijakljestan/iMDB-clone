@@ -9,4 +9,6 @@ public interface RegisteredUserService {
     RegisteredUserDTO findLoggedUserByUsername(String username);
 
     RegisteredUserDTO fetchUserWithWatchlist(Integer userId);
+
+    RegisteredUserDTO saveUser(RegisteredUserDTO userDTO);
 }

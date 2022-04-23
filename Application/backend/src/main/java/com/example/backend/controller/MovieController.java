@@ -3,7 +3,9 @@ package com.example.backend.controller;
 import com.example.backend.dto.MovieDTO;
 import com.example.backend.service.interfaces.MovieService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,19 +16,28 @@ public class MovieController {
     private final MovieService movieService;
 
     @GetMapping("/")
-    public Iterable<MovieDTO> getAll(){
-        return movieService.getAllMovies();
+    public ResponseEntity<Iterable<MovieDTO>> getAll(){
+        return new ResponseEntity<>(movieService.getAllMovies(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public MovieDTO getMovieById(@PathVariable("id") Integer id){ return movieService.getMovieById(id); }
+    public ResponseEntity<MovieDTO> getMovieById(@PathVariable("id") Integer id){
+        return new ResponseEntity<>(movieService.getMovieById(id), HttpStatus.OK);
+    }
 
     @PostMapping("/")
-    public MovieDTO addMovie(@RequestBody MovieDTO movieDTO){ return movieService.addMovie(movieDTO); }
+    public ResponseEntity<MovieDTO> addMovie(@RequestBody MovieDTO movieDTO){
+        return new ResponseEntity<>(movieService.addMovie(movieDTO), HttpStatus.CREATED);
+    }
 
     @PutMapping("/")
-    public MovieDTO editMovie(@RequestBody MovieDTO movieDTO){ return movieService.editMovie(movieDTO); }
+    public ResponseEntity<MovieDTO> editMovie(@RequestBody MovieDTO movieDTO){
+        return new ResponseEntity<>(movieService.editMovie(movieDTO), HttpStatus.OK);
+    }
 
     @DeleteMapping("/{id}")
-    public void  deleteMovie(@PathVariable("id") Integer id){ movieService.deleteMovie(id); }
+    public ResponseEntity<?> deleteMovie(@PathVariable("id") Integer id){
+        movieService.deleteMovie(id);
+        return new ResponseEntity<>("Movie deleted!", HttpStatus.OK);
+    }
 }
