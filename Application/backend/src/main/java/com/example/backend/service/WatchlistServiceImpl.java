@@ -22,14 +22,14 @@ public class WatchlistServiceImpl implements WatchlistService {
     private final RegisteredUserService userService;
 
     @Override
-    public List<MovieDTO> getWatchlistByUserId(Integer userId) {
-        List<Movie> watchlist = userService.fetchUserWithWatchlist(userId).getWatchlist();
+    public List<MovieDTO> getUsersWatchlist(String username) {
+        List<Movie> watchlist = userService.fetchUserWithWatchlist(username).getWatchlist();
         return CollectionMapper.mapList(watchlist, MovieDTO.class);
     }
 
     @Override
-    public RegisteredUserDTO addMovieToWatchlist(Integer userId, MovieDTO movieDTO) {
-        RegisteredUserDTO user = userService.fetchUserWithWatchlist(userId);
+    public RegisteredUserDTO addMovieToWatchlist(String username, MovieDTO movieDTO) {
+        RegisteredUserDTO user = userService.fetchUserWithWatchlist(username);
         Movie movie = modelMapper.map(movieDTO, Movie.class);
         user.getWatchlist().add(movie);
         return userService.saveUser(user);

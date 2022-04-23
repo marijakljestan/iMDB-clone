@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface WatchlistService {
     
-    List<MovieDTO> getWatchlistByUserId(Integer userId);
+    List<MovieDTO> getUsersWatchlist(String username);
 
-    RegisteredUserDTO addMovieToWatchlist(Integer userId, MovieDTO movie);
+    RegisteredUserDTO addMovieToWatchlist(String username, MovieDTO movie);
 }

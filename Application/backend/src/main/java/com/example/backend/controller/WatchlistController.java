@@ -7,7 +7,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 @RequestMapping(value = "/watchlist", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -16,12 +19,16 @@ public class WatchlistController {
 
     private final WatchlistService watchlistService;
 
-    @GetMapping("/watchlist/{id}")
-    public Iterable<MovieDTO> getUserWatchlist(@PathVariable("id") Integer id){ return watchlistService.getWatchlistByUserId(id); }
+    @GetMapping("/")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<Iterable<MovieDTO>> getUserWatchlist(Principal principal){
+        return new ResponseEntity<>(watchlistService.getUsersWatchlist(principal.getName()), HttpStatus.OK);
+    }
 
-    @PostMapping("/watchlist/{id}")
-    public ResponseEntity<RegisteredUserDTO> addMovieToWatchlist(@PathVariable("id") Integer userId, @RequestBody MovieDTO movie){
-        RegisteredUserDTO user = watchlistService.addMovieToWatchlist(userId, movie);
+    @PostMapping("/")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<RegisteredUserDTO> addMovieToWatchlist(Principal principal, @RequestBody MovieDTO movie){
+        RegisteredUserDTO user = watchlistService.addMovieToWatchlist(principal.getName(), movie);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

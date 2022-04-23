@@ -2,7 +2,6 @@ package com.example.backend.controller;
 
 import com.example.backend.dto.RegisteredUserDTO;
 import com.example.backend.service.interfaces.RegisteredUserService;
-import com.example.backend.util.TokenUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,7 +27,7 @@ public class RegisteredUserController {
     @GetMapping("/whoami")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<RegisteredUserDTO> getLoggedInUser(Principal principal) {
-        RegisteredUserDTO user = userService.findLoggedUserByUsername(principal.getName());
+        RegisteredUserDTO user = userService.fetchUserWithWatchlist(principal.getName());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
