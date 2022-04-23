@@ -27,6 +27,10 @@ export class MovieListComponent implements OnInit {
 
   addToWatchlist(movie: MovieDto) {
     this.movieService.addMovieToWatchlist(movie);
+    const index = this.movies.indexOf(movie, 0);
+    if (index > -1) 
+        this.movies.splice(index, 1);
+    
   }
 
   getNextMovie() : void {

@@ -13,6 +13,9 @@ export class MovieService {
     private baseUrlMovies: string = environment.baseUrlMovie;
     private baseUrlWatchlist: string = environment.baseUrlWatchlist;
 
+    headers = new HttpHeaders({'Content-Type' : 'application/json',
+                               'Authorization' : `Bearer ${localStorage.jwt}`});
+
     constructor(private http: HttpClient) {}
 
     addMovieToWatchlist(movie: MovieDto) {
@@ -23,12 +26,16 @@ export class MovieService {
         }, (error)=>{
             Swal.fire({
                 title: 'Ooops',
-                text: 'error.reason',
+                text: 'Already in watchlist',
                 icon: 'error',
                 confirmButtonText: 'OK',
                 position: 'top-right'
             });
         })
+    }
+
+    getWatchlist() : Observable<MovieDto[]> {
+        return this.http.get<MovieDto[]>(this.baseUrlWatchlist, {headers: this.headers});
     }
 
     getAllMovies() : Observable<MovieDto[]> {
