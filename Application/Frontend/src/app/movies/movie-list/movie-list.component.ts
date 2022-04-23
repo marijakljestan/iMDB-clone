@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MovieDto } from 'src/app/model/movie-dto.model';
 import { User } from 'src/app/model/user.model';
+import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
   selector: 'movie-list',
@@ -16,12 +17,16 @@ export class MovieListComponent implements OnInit {
   initialMovieIndex: number = 0;
   loggedUser: User | any;
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() : void {
     this.displayMovieList();
     if(localStorage.getItem("loggedUser") !== null)
         this.loggedUser = JSON.parse(localStorage.getItem("loggedUser")!);
+  }
+
+  addToWatchlist(movie: MovieDto) {
+    this.movieService.addMovieToWatchlist(movie);
   }
 
   getNextMovie() : void {

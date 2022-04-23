@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
-    @Query("SELECT distinct m FROM Movie m LEFT JOIN FETCH m.images")
-    List<Movie> findAll();
+   /* @Query("SELECT distinct m FROM Movie m LEFT JOIN FETCH m.images")
+    List<Movie> findAll();*/
 }

@@ -34,7 +34,7 @@ public class Movie {
    private String storyline;
    @Column(nullable = false)
    private String coverImage;
-   @ElementCollection(fetch = FetchType.LAZY)
+   @ElementCollection(fetch = FetchType.EAGER)
    @CollectionTable(name = "movie_images", joinColumns = @JoinColumn(name = "movie_id"))
    @Column(name = "image", nullable = false)
    private Set<String> images;

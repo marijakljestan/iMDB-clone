@@ -1,6 +1,7 @@
 package com.example.backend.dto;
 
 import com.example.backend.model.Movie;
+import com.example.backend.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,4 +20,8 @@ public class RegisteredUserDTO {
     private String email;
     private String password;
     private List<Movie> watchlist;
+    private Boolean blocked = false;
+    private Boolean deleted = false;
+    private boolean enabled;
+    private Role role;
 }
