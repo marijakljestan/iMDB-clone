@@ -18,7 +18,7 @@
     </div>
     <div class="user-rating">
         <h5> Your rating</h5>
-        <star-rating [rate]="newRate"></star-rating>
+        <star-rating (rate)="newRate"></star-rating>
         <h5> Your review</h5>
         <textarea class="comment" placeholder="Write your review here" [(ngModel)]="newReview.content"></textarea>
         <div class="submit-btns">

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'star-rating',
@@ -6,9 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./star-rating.component.css']
 })
 export class StarRatingComponent implements OnInit {
-  @Input() rate: number = 0;
-  constructor() { }
+    @Output() rate = new EventEmitter<Number>();
+    constructor() { }
 
-  ngOnInit(): void {}
+    ngOnInit(): void {}
+
+    onAddSearchParam() {
+        //this.rate.emit(this.rate);
+    }
 
 }

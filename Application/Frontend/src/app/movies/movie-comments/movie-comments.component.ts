@@ -25,6 +25,8 @@ export class MovieCommentsComponent implements OnInit {
         this.newReview.mark = this.newRate;
         this.newReview.movieId = this.movie.id;
         this.reviewService.addReview(this.newReview).subscribe(data => this.movie.reviews = data);
+        this.newReview = { content: '', mark: 0, movieId: 1};
+        (document.querySelector('#add-comment-modal') as HTMLElement).style.display = 'none';
     }
 
     addComment(event: MouseEvent) : void{
