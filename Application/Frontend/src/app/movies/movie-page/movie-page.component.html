@@ -1,9 +1,9 @@
 <div class="page" *ngIf="movie">
-    <navbar></navbar>
+    <navbar *ngIf="movie"></navbar>
     <div class="dark-part">
-        <movie-caption [movie]="movie"></movie-caption>
-        <image-gallery [images]="movie.images"></image-gallery>
-        <movie-details [movie]="movie"></movie-details>
+        <movie-caption *ngIf="movie" [movie]="movie"></movie-caption>
+        <image-gallery *ngIf="movie" [images]="movie.images"></image-gallery>
+        <movie-details *ngIf="movie" [movie]="movie"></movie-details>
     </div>
     <div class="light-part">
         <div class="description">
@@ -13,7 +13,7 @@
             </div>
             <div class="storyline"> <p> {{movie.storyline}} </p> </div>
             <actor-list [actors]="movie.actors"></actor-list>
-            <movie-comments  *ngIf="movie" [movie]="movie" [reviews]="[movie.reviews[0]]"></movie-comments>
+            <movie-comments  *ngIf="movie" [movie]="movie" [reviews]="[movie.reviews[0], movie.reviews[1]]"></movie-comments>
         </div>
         <div class="details">
             <div class="title-wrapper">
