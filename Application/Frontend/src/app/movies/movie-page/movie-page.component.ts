@@ -14,7 +14,6 @@ import { MovieService } from 'src/app/service/movie.service';
 export class MoviePageComponent implements OnInit {
   movieId: string | any;
   movie: Movie | any;
-  actors: Actor[] = [];
   recommendation: string = "More like this";
   moviesRecommended: any[] = [];
   reviews: any[] = [];
@@ -28,11 +27,8 @@ export class MoviePageComponent implements OnInit {
         this.movie = response ;
         this.movieCrewService.getMovieDirectors(this.movieId).subscribe(data => this.movie.directors = data);
         this.movieCrewService.getMovieWritters(this.movieId).subscribe(data =>  this.movie.writters = data);
+        this.movieCrewService.getMovieActors(this.movieId).subscribe(data => this.movie.actors = data);
     });
-    this.actors = [
-      new Actor('Marlon', 'Brando', '../../../assets/images/actors/marlon-brando.jpg', 'Don Vito Corleone'),
-      new Actor('Al', 'Pacino', '../../../assets/images/actors/al-pacino.jpg', 'Michael Corleone')
-    ];
 
     this.moviesRecommended = [
       {

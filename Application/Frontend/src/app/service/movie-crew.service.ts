@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Actor } from '../model/actor.model';
 import { CrewMember } from '../model/crew-member.model';
 
 @Injectable({
@@ -10,8 +11,13 @@ import { CrewMember } from '../model/crew-member.model';
 export class MovieCrewService {
 
     private baseUrlMovieCrew: string = environment.baseUrlMovieCrew;  
+    private baseUrlActor: string = environment.baseUrlActor;
 
     constructor(private http: HttpClient) {}
+
+    getMovieActors(id: number) : Observable<Actor[]> {
+        return this.http.get<Actor[]>(this.baseUrlActor + +id);
+    }
 
     getMovieDirectors(id: number) : Observable<CrewMember[]> {
         return this.http.get<CrewMember[]>(this.baseUrlMovieCrew + 'directors/'+id);

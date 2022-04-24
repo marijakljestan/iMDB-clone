@@ -6,7 +6,6 @@ import { MovieDto } from '../model/movie-dto.model';
 import Swal from 'sweetalert2';
 import { MovieCrewService } from './movie-crew.service';
 import { Movie } from '../model/movie.model';
-import { CrewMember } from '../model/crew-member.model';
 
 @Injectable({
   providedIn: 'root'
