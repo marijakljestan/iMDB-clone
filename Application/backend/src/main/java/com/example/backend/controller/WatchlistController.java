@@ -32,4 +32,10 @@ public class WatchlistController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<RegisteredUserDTO> removeMovieFromWatchlist(Principal principal, @PathVariable("id") Integer movieId){
+        RegisteredUserDTO user = watchlistService.deleteMovieFromWatchlist(principal.getName(), movieId);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }

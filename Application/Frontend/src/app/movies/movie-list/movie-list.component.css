@@ -58,6 +58,18 @@
 .btn:hover{
     background-color: rgb(93, 87, 87);
 }
+
+.btn-rm{
+    width: 100%;
+    height: 38px;
+    color: #f3ce13;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(66, 60, 60);
+}
+.btn-rm:hover{
+    background-color: rgb(93, 87, 87);
+}
 .arrow-btn-wrapper{
     display: flex;
     flex-direction: column;

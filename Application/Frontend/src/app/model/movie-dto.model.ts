@@ -4,6 +4,7 @@ export class MovieDto {
     public year: number;
     public coverImage: string;
     public averageGrade: number;
+    public notInWatchlist: boolean = true;
 
     constructor(id: number, name: string, year: number, coverImage: string, averageGrade: number){
         this.id = id;

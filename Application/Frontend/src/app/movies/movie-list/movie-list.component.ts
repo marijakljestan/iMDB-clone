@@ -16,6 +16,7 @@ export class MovieListComponent implements OnInit {
   @Input() displayedMoviesLength: number = 5 ;
   initialMovieIndex: number = 0;
   loggedUser: User | any;
+  showAddButton: boolean = true;
 
   constructor(private movieService: MovieService) { }
 
@@ -23,19 +24,30 @@ export class MovieListComponent implements OnInit {
     this.displayMovieList();
     if(localStorage.getItem("loggedUser") !== null)
         this.loggedUser = JSON.parse(localStorage.getItem("loggedUser")!);
+
+  }
+
+  removeFromWatchlist(movie: MovieDto) {
+    this.movieService.removeMovieFromWatchlist(movie);
+    for(let mv of this.movies)
+        if(mv.id === movie.id){
+            mv.notInWatchlist = true;
+            break;
+        }
   }
 
   addToWatchlist(movie: MovieDto) {
     this.movieService.addMovieToWatchlist(movie);
-    const index = this.movies.indexOf(movie, 0);
-    if (index > -1) 
-        this.movies.splice(index, 1);
-    
+    for(let mv of this.movies)
+        if(mv.id === movie.id){
+            mv.notInWatchlist = false;
+            break;
+        }
   }
 
   getNextMovie() : void {
     if(this.initialMovieIndex == this.movies.length - 1)
-      return;
+        return;
 
     ++this.initialMovieIndex;
     this.displayMovieList();
@@ -43,7 +55,7 @@ export class MovieListComponent implements OnInit {
 
   getPreviousMovie() : void {
     if(this.initialMovieIndex ==  0)
-      return;
+        return;
 
     --this.initialMovieIndex;
     this.displayMovieList();
@@ -51,7 +63,10 @@ export class MovieListComponent implements OnInit {
 
   displayMovieList() : void{
     this.moviesForDisplay = [];
-    for(let i = this.initialMovieIndex; i < this.initialMovieIndex + this.displayedMoviesLength ; i++)
-      this.moviesForDisplay.push(this.movies[i]); 
+    if(this.movies.length >= this.displayedMoviesLength)
+        for(let i = this.initialMovieIndex; i < this.initialMovieIndex + this.displayedMoviesLength ; i++)
+            this.moviesForDisplay.push(this.movies[i]); 
+    else
+        this.moviesForDisplay = this.movies;
   }
 }

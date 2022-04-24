@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieDto } from '../model/movie-dto.model';
+import { User } from '../model/user.model';
 import { MovieService } from '../service/movie.service';
 
 @Component({
@@ -15,12 +16,16 @@ export class HomePageComponent implements OnInit {
     images: string[] = [];
     searchParam: string = "";
     searchResults: any[] = [];
+    loggedUser: User | any;
     
     constructor(private movieService: MovieService) {}
     
-    ngOnInit() {     
+    ngOnInit() {   
+        if(localStorage.getItem("loggedUser") !== null){
+            this.loggedUser = JSON.parse(localStorage.getItem("loggedUser")!);  
+            this.fetchWatchlist();
+        }
         this.fetchMovies();
-      
         this.images = [
             "../../../assets/images/cover/batman.jpg",
             "../../../assets/images/cover/dark-knight.jpg",
@@ -34,9 +39,21 @@ export class HomePageComponent implements OnInit {
     private fetchMovies() {
         this.movieService.getAllMovies().subscribe(response => {
             this.allMovies = [...response];
-            this.topRatedList = [...response];
+            for(let movie of this.allMovies) {
+                if(!this.watchList.some((item) => item.id == movie.id))
+                    movie.notInWatchlist = true;
+                else
+                    movie.notInWatchlist = false;
+            }
+            this.topRatedList = this.allMovies;
             this.topRatedList.sort((a, b) => (a.averageGrade > b.averageGrade ? -1 : 1));
-            this.trendingList = [...response];
+            this.trendingList = this.allMovies;
+        });
+    }
+
+    private fetchWatchlist() {
+        this.movieService.getWatchlist().subscribe(response => {
+            this.watchList = response;
         });
     }
 

@@ -19,7 +19,11 @@ export class UserProfileComponent implements OnInit {
         if(localStorage.getItem("loggedUser") !== null)
             this.user = JSON.parse(localStorage.getItem("loggedUser")!);
      //}, 50);
-        this.movieService.getWatchlist().subscribe(data => this.watchlist = data);
+        this.movieService.getWatchlist().subscribe(data => {
+            this.watchlist = data;
+            for(let movie of this.watchlist)
+                movie.notInWatchlist = false;
+        });
   }
 
   showChangePasswordForm(event: MouseEvent) : void{

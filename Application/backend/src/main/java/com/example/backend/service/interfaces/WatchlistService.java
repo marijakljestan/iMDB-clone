@@ -10,4 +10,6 @@ public interface WatchlistService {
     List<MovieDTO> getUsersWatchlist(String username);
 
     RegisteredUserDTO addMovieToWatchlist(String username, MovieDTO movie);
+
+    RegisteredUserDTO deleteMovieFromWatchlist(String username, Integer movieId);
 }
