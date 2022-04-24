@@ -1,8 +1,8 @@
-<div class="page">
+<div class="page" *ngIf="movie">
     <navbar></navbar>
     <div class="dark-part">
         <movie-caption [movie]="movie"></movie-caption>
-        <image-gallery [images]="movie.images"></image-gallery>
+        <image-gallery [images]="images"></image-gallery>
         <movie-details [movie]="movie"></movie-details>
     </div>
     <div class="light-part">

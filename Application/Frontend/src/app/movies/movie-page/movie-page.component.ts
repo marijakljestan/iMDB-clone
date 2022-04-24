@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Actor } from 'src/app/model/actor.model';
+import { Movie } from 'src/app/model/movie.model';
+import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
   selector: 'pm-movie-page',
@@ -7,15 +10,19 @@ import { Actor } from 'src/app/model/actor.model';
   styleUrls: ['./movie-page.component.css']
 })
 export class MoviePageComponent implements OnInit {
-  movie: any = {};
+  movieId: string | any;
+  movie: Movie | any;
   actors: Actor[] = [];
   recommendation: string = "More like this";
   moviesRecommended: any[] = [];
   reviews: any[] = [];
+  images: string[] = [];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private movieService: MovieService) { }
 
   ngOnInit(): void {
+    this.movieId = this.route.snapshot.paramMap.get('id')
+    this.movieService.getMovieById(this.movieId).subscribe(response => this.movie = response );
     this.actors = [
       new Actor('Marlon', 'Brando', '../../../assets/images/actors/marlon-brando.jpg', 'Don Vito Corleone'),
       new Actor('Al', 'Pacino', '../../../assets/images/actors/al-pacino.jpg', 'Michael Corleone')
@@ -72,39 +79,10 @@ export class MoviePageComponent implements OnInit {
           content: `There is very little that I can add to the reviews on here, that have explained what is so wonderful about The Godfather so well. I have seen many amazing movies, as well as some clunkers, but The Godfather was beyond amazing. There are so many images, details and scenes that I seriously cannot get out of my head since watching it for the first time just nine hours ago. The Godfather is so incredibly well-made and acted that it stands out among the rest of those other amazing films I've seen, so much so I couldn't think of a single flaw, and I am struggling to think of a good enough reason to why I didn't see this film before now.`
         }
        
-      ];
-
-    this.movie = {
-      id: 1,
-      name: 'The Godfather',
-      averageGrade : 9.1,
-      coverImage: "../../../assets/images/godfather.jpg",
-      images: [
+    ];
+    this.images= [
         "../../../assets/images/cover/godfather-2.jpg",
         "../../../assets/images/cover/godfather.jpg"
-      ],
-      genres: [
-        'Action', 'Drama', 'Crime'
-      ],
-      countryOfOrigin: 'USA',
-      durationInMinutes: 175,
-      year: 1972,
-      directors: ['Francis Ford Coppola'],
-      writters: ['Mario Puzo', 'Francis Ford Coppola'],
-      actors: [
-        'Marlon Brando', 
-        'Al Pacino', 
-        'James Caan'
-      ],
-      description: 'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.',
-      storyline: `The Godfather "Don" Vito Corleone is the head of the Corleone mafia family in New York. 
-      He is at the event of his daughter\'s wedding. Michael, Vito's youngest son and a decorated WW II Marine 
-      is also present at the wedding. Michael seems to be uninterested in being a part of the family business. 
-      Vito is a powerful man, and is kind to all those who give him respect but is ruthless against those who do not. 
-      But when a powerful and treacherous rival wants to sell drugs and needs the Don's influence for the same, 
-      Vito refuses to do it. What follows is a clash between Vito's fading old values and the new ways which may cause Michael 
-      to do the thing he was most reluctant in doing and wage a mob war against all the other mafia families which could tear the Corleone family apart.`,
-    };
+    ];
   }
-
 }

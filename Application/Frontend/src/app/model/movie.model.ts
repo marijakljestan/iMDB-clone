@@ -27,16 +27,10 @@ export class Movie {
     public coverImage: string;
     public images: string[];
     public averageGrade: number;
-    public directors?: string[];
-    public writters?: string[];
-    public actors?: string[];
-    public reviews: Review[];
-
 
 
     constructor (id: number, name: string, year: number, countryOfOrigin: string, durationInMinutes: number, genres: Genre[],
-                 description: string, storyline: string, coverImage: string, images: string[], averageGrade: number,
-                 directors: string[], writters: string[], actors: string[], reviews: Review[]){
+                 description: string, storyline: string, coverImage: string, images: string[], averageGrade: number){
         this.id = id;
         this.name = name;
         this.year = year;
@@ -48,9 +42,5 @@ export class Movie {
         this.coverImage = coverImage;
         this.images = images;
         this.averageGrade = averageGrade;
-        this.directors = directors;
-        this.writters = writters;
-        this.actors = actors;
-        this.reviews = reviews;
     }
 }

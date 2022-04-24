@@ -44,6 +44,10 @@ export class MovieService {
         })
     }
 
+    getMovieById(id: number) : Observable<MovieDto> {
+        return this.http.get<MovieDto>(this.baseUrlMovies + id);
+    }
+
     getWatchlist() : Observable<MovieDto[]> {
         return this.http.get<MovieDto[]>(this.baseUrlWatchlist, {headers: this.headers});
     }

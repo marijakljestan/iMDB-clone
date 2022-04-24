@@ -8,6 +8,7 @@ import { Genre, Movie } from 'src/app/model/movie.model';
 })
 export class CommentsListComponent implements OnInit {
   movie: Movie;
+  reviews: any[] = [];
 
   constructor() { 
     this.movie = {
@@ -33,14 +34,8 @@ export class CommentsListComponent implements OnInit {
         "../../../assets/images/cover/godfather.jpg"
       ],
       averageGrade : 9.1,
-      directors: ['Francis Ford Coppola'],
-      writters: ['Mario Puzo', 'Francis Ford Coppola'],
-      actors: [
-        'Marlon Brando', 
-        'Al Pacino', 
-        'James Caan'
-      ],
-      reviews: [
+    };
+    this.reviews= [
         {
           mark: 10,
           content: `Up until today, I haven't bothered to review "The Godfather". After all, everyone pretty much knows it's one of the greatest films ever made. It's #2 on IMDb's Top 100. It won the Best Picture Oscar. And, there are nearly 1600 reviews on IMDb. So what's one more review?! Well, after completing 14,000 reviews (because I am nuts), I guess it's time I got around to reviewing a film I should have reviewed a long time ago. So, here goes....the film is perfect and only a dope wouldn't watch it. Unfortunately, IMDb requires me to say more to meet it's 10 line minimum for reviews. So, I'll point out that you do NOT need to like gangster films to enjoy this film. Yes, it's violent and nasty in spots--but it's also brilliantly written and produced from start to finish and deserves the accolades it's received.
@@ -53,8 +48,7 @@ export class CommentsListComponent implements OnInit {
           content: `There is very little that I can add to the reviews on here, that have explained what is so wonderful about The Godfather so well. I have seen many amazing movies, as well as some clunkers, but The Godfather was beyond amazing. There are so many images, details and scenes that I seriously cannot get out of my head since watching it for the first time just nine hours ago. The Godfather is so incredibly well-made and acted that it stands out among the rest of those other amazing films I've seen, so much so I couldn't think of a single flaw, and I am struggling to think of a good enough reason to why I didn't see this film before now.`
         }
        
-      ]
-    };
+    ];
   }
 
   ngOnInit(): void {}
