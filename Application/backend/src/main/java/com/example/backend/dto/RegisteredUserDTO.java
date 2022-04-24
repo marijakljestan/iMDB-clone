@@ -1,12 +1,12 @@
 package com.example.backend.dto;
 
 import com.example.backend.model.Movie;
+import com.example.backend.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,5 +19,9 @@ public class RegisteredUserDTO {
     private String lastName;
     private String email;
     private String password;
-    private Set<Movie> watchlist;
+    private List<Movie> watchlist;
+    private Boolean blocked = false;
+    private Boolean deleted = false;
+    private boolean enabled;
+    private Role role;
 }

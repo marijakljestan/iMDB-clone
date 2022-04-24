@@ -2,7 +2,6 @@ package com.example.backend.controller;
 
 import com.example.backend.dto.RegisteredUserDTO;
 import com.example.backend.service.interfaces.RegisteredUserService;
-import com.example.backend.util.TokenUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,7 +18,6 @@ import java.security.Principal;
 public class RegisteredUserController {
 
     private final RegisteredUserService userService;
-    private final TokenUtils tokenUtils;
 
     @PostMapping("/")
     public RegisteredUserDTO registerUser(@RequestBody RegisteredUserDTO userDTO){
@@ -28,8 +26,8 @@ public class RegisteredUserController {
 
     @GetMapping("/whoami")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<RegisteredUserDTO> user(Principal principal) {
-        RegisteredUserDTO user = userService.findLoggedUserByUsername(principal.getName());
+    public ResponseEntity<RegisteredUserDTO> getLoggedInUser(Principal principal) {
+        RegisteredUserDTO user = userService.fetchUserWithWatchlist(principal.getName());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

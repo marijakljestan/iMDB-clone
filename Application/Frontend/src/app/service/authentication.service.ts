@@ -24,9 +24,6 @@ export class AuthenticationService {;
             localStorage.setItem("jwt", response.accessToken);
             this.customHeaders = new HttpHeaders({'Content-Type' : 'application/json',
                                                   'Authorization' : `Bearer ${localStorage.jwt}`})
-            /*this.httpClient.get<User>(this.baseUrlUsers + "whoami", {headers : this.customHeaders}).toPromise().then(data => { 
-                localStorage.setItem("loggedUser", JSON.stringify(data));
-             });*/
             this.getLoggedUser();
           }, (error)=>{
             Swal.fire({

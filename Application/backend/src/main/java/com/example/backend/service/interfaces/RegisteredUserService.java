@@ -6,5 +6,7 @@ public interface RegisteredUserService {
 
     RegisteredUserDTO registerUser(RegisteredUserDTO userDTO);
 
-    RegisteredUserDTO findLoggedUserByUsername(String username);
+    RegisteredUserDTO fetchUserWithWatchlist(String username);
+
+    RegisteredUserDTO saveUser(RegisteredUserDTO userDTO);
 }

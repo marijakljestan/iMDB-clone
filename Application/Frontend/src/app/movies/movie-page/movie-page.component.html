@@ -28,6 +28,6 @@
         </div>
     </div>
     <div class="dark-footer">
-        <movie-list [title]="recommendation" [movies]="moviesRecommended" [displayedMoviesLength]="4"></movie-list>
+        <movie-list *ngIf="moviesRecommended" [title]="recommendation" [movies]="moviesRecommended" [displayedMoviesLength]="4"></movie-list>
     </div>
 </div>

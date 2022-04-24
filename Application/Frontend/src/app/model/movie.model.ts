@@ -16,21 +16,22 @@ export enum Genre {
 }
 
 export class Movie {
-    public id?: number;
+    public id: number;
     public name: string;
     public year: number;
-    public countryOfOrigin: string;
-    public durationInMinutes: number;
-    public genres: Genre[];
-    public description: string;
-    public storyline: string;
+    public countryOfOrigin?: string;
+    public durationInMinutes?: number;
+    public genres?: Genre[];
+    public description?: string;
+    public storyline?: string;
     public coverImage: string;
     public images: string[];
     public averageGrade: number;
-    public directors: string[];
-    public writters: string[];
-    public actors: string[];
+    public directors?: string[];
+    public writters?: string[];
+    public actors?: string[];
     public reviews: Review[];
+
 
 
     constructor (id: number, name: string, year: number, countryOfOrigin: string, durationInMinutes: number, genres: Genre[],
