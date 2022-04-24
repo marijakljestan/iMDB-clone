@@ -1,12 +1,12 @@
 <div class="wrapper">
     <div class="movie-genre">
-        <span><button class="btn-genre" *ngFor="let genre of movie.genre"> {{genre}} </button></span>
+        <span><button class="btn-genre" *ngFor="let genre of movie.genres"> {{genre}} </button></span>
         <button class="btn-add" ><i class="fa fa-plus"></i> Add to watch list</button>
     </div>
     <div class="description">
-        <p>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.</p>
+        <p>{{movie.description}}</p>
     </div><hr/>
-    <p class="crew"><span class="role">Director </span><span *ngFor="let director of movie.directors" class="multiple"> {{director}} </span></p><hr/>
-    <p class="crew"><span class="role">Writters </span><span *ngFor="let writter of movie.writters" class="multiple"> {{writter}} </span> </p><hr/>
-    <p class="crew"><span class="role">Stars    </span><span *ngFor="let actor of movie.actors" class="stars multiple"> {{actor}}</span> </p><hr/>
+    <p class="crew"><span class="role">Director </span><span *ngFor="let director of movie.directors" class="multiple"> {{director.firstName}} {{director.lastName}}</span></p><hr/>
+    <p class="crew"><span class="role">Writters </span><span *ngFor="let writter of movie.writters" class="multiple"> {{writter.firstName}} {{writter.lastName}} </span> </p><hr/>
+    <p class="crew"><span class="role">Stars    </span><span *ngFor="let actor of movie.actors" class="stars multiple"> {{actor.firstName}} {{actor.lastName}}</span> </p><hr/>
 </div>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MovieDto } from '../model/movie-dto.model';
 import Swal from 'sweetalert2';
+import { MovieCrewService } from './movie-crew.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class MovieService {
     headers = new HttpHeaders({'Content-Type' : 'application/json',
                                'Authorization' : `Bearer ${localStorage.jwt}`});
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private movieCrewService: MovieCrewService) {}
 
     addMovieToWatchlist(movie: MovieDto) {
         return this.http.post<MovieDto>(this.baseUrlWatchlist, movie, {headers : this.headers}).subscribe((value)=>{
@@ -42,6 +43,10 @@ export class MovieService {
                 position: 'top-right'
             });
         })
+    }
+
+    getMovieById(id: number) : Observable<MovieDto> {
+        return this.http.get<MovieDto>(this.baseUrlMovies + id);
     }
 
     getWatchlist() : Observable<MovieDto[]> {

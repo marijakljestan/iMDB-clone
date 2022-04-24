@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" *ngIf="movie">
     <navbar></navbar>
     <div class="dark-part">
         <movie-caption [movie]="movie"></movie-caption>
@@ -12,8 +12,8 @@
                 <h3 class="title">Storyline</h3>
             </div>
             <div class="storyline"> <p> {{movie.storyline}} </p> </div>
-            <actor-list [actors]="actors"></actor-list>
-            <movie-comments [movie]="movie" [reviews]="[movie.reviews[0]]"></movie-comments>
+            <actor-list [actors]="movie.actors"></actor-list>
+            <movie-comments  *ngIf="movie" [movie]="movie" [reviews]="[movie.reviews[0]]"></movie-comments>
         </div>
         <div class="details">
             <div class="title-wrapper">
@@ -23,7 +23,7 @@
             <div class="details-light">
                 <p class="crew"><span class="role">Release date </span><span class="multiple-details">{{movie.year}} </span> </p><hr/>
                 <p class="crew"><span class="role">Country of origin </span> <span class="multiple-details">{{movie.countryOfOrigin}}</span></p><hr/>
-                <p class="crew"><span class="role">Runtime    </span> <span class="multiple-details">{{movie.runtime}} </span></p><hr/>
+                <p class="crew"><span class="role">Runtime    </span> <span class="multiple-details">{{movie.durationInMinutes}} </span></p><hr/>
             </div>
         </div>
     </div>

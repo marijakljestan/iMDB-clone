@@ -1,6 +1,10 @@
 INSERT INTO role(id, name) VALUES (nextval('role_seq_gen'), 'ROLE_ADMIN');
 INSERT INTO role(id, name) VALUES (nextval('role_seq_gen'), 'ROLE_USER');
 
+INSERT INTO registered_user(user_id, blocked, deleted, email, enabled, first_name, last_name, password, role_id)
+VALUES (nextval('user_seq_gen'), false, false, 'admin@gmail.com', true, 'Marko', 'Markovic', '$2a$10$3kfQZW0qQFJIlfDcadR9UOmPwUDDz4wwkcxxAi1aQmfqZqRxAU/FW', 1),
+       (nextval('user_seq_gen'), false, false, 'marijakljestan@gmail.com', true, 'Marija', 'Kljestan', '$2a$10$3kfQZW0qQFJIlfDcadR9UOmPwUDDz4wwkcxxAi1aQmfqZqRxAU/FW', 2);
+
 INSERT INTO actor(actor_id, first_name, image, last_name)
 VALUES (nextval('actor_seq_gen'), 'Marlon', '../../../assets/images/actors/marlon-brando.jpg', 'Brando'),
        (nextval('actor_seq_gen'), 'Al',     '../../../assets/images/actors/al-pacino.jpg',     'Pacino'),
@@ -52,22 +56,22 @@ VALUES (nextval('movie_seq_gen'), 9.2, 'USA', '../../../assets/images/godfather.
        (nextval('movie_seq_gen'), 9.3, 'USA', '../../../assets/images/shawshank.jfif', 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', 142,  'The Shawshank Redemption', 'Chronicles the experiences of a formerly successful banker as a prisoner in the gloomy jailhouse of Shawshank after being found guilty of a crime he did not commit. The film portrays the man''s unique way of dealing with his new, torturous life; along the way he befriends a number of fellow prisoners, most notably a wise long-term inmate named Red.', 1994),
        (nextval('movie_seq_gen'), 8.2, 'USA', '../../../assets/images/shutter.jfif', 'In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane.', 138,  'Shutter Island', 'In 1954, up-and-coming U.S. marshal Teddy Daniels is assigned to investigate the disappearance of a patient from Boston''s Shutter Island Ashecliffe Hospital. He''s been pushing for an assignment on the island for personal reasons, but before long he thinks he''s been brought there as part of a twisted plot by hospital doctors whose radical treatments range from unethical to illegal to downright sinister. Teddy`s shrewd investigating skills soon provide a promising lead, but the hospital refuses him access to records he suspects would break the case wide open. As a hurricane cuts off communication with the mainland, more dangerous criminals "escape" in the confusion, and the puzzling, improbable clues multiply, Teddy begins to doubt everything - his memory, his partner, even his own sanity.', 2010);
 
-INSERT INTO movie_crew(crew_member_id, movie_id)
-VALUES (1,1),
-       (2,1),
-       (3,2),
-       (4,2),
-       (5,3),
-       (6,3),
-       (3,4),
-       (7,5),
-       (8,6),
-       (9,6),
-       (10,7),
-       (11,7),
-       (12,8),
-       (13,9),
-       (14, 10);
+INSERT INTO movie_crew(crew_member_id, movie_id, member_role)
+VALUES (1,1,0),
+       (2,1,1),
+       (3,2,0),
+       (4,2,1),
+       (5,3,0),
+       (6,3,1),
+       (3,4,0),
+       (7,5,0),
+       (8,6,0),
+       (9,6,1),
+       (10,7,0),
+       (11,7,1),
+       (12,8,0),
+       (13,9,1),
+       (14, 10,0);
 
 INSERT INTO movie_genres(movie_id, genre)
 VALUES (1, 0),
@@ -92,6 +96,10 @@ VALUES (1, 0),
        (10,6),
        (10,8);
 
+INSERT INTO movie_images(movie_id, image)
+VALUES (1, '../../../assets/images/cover/godfather.jpg'),
+       (1, '../../../assets/images/cover/godfather-2.jpg');
+
 INSERT INTO movie_role(role_id, role_name, actor_id, movie_id)
 VALUES (nextval('role_seq_gen'), 'Don Vito Corleone', 1, 1),
        (nextval('role_seq_gen'), 'Michael Corleone', 2, 1),
@@ -115,3 +123,7 @@ VALUES (nextval('role_seq_gen'), 'Don Vito Corleone', 1, 1),
        (nextval('role_seq_gen'), 'Ellis Boyd `Red` Redding', 20, 9),
        (nextval('role_seq_gen'), 'Teddy Daniels', 8, 10),
        (nextval('role_seq_gen'), 'Rachel 1', 21, 10);
+
+INSERT INTO review(review_id, content, is_reviewed, mark, movie_id, user_id)
+VALUES (nextval('review_seq_gen'), 'Up until today, I haven''t bothered to review "The Godfather". After all, everyone pretty much knows it''s one of the greatest films ever made. It''s #2 on IMDb''s Top 100. It won the Best Picture Oscar. And, there are nearly 1600 reviews on IMDb. So what''s one more review?! Well, after completing 14,000 reviews (because I am nuts), I guess it''s time I got around to reviewing a film I should have reviewed a long time ago. So, here goes....the film is perfect and only a dope wouldn''t watch it. Unfortunately, IMDb requires me to say more to meet it''s 10 line minimum for reviews.', true, 10, 1, 2),
+       (nextval('review_seq_gen'), 'There is very little that I can add to the reviews on here, that have explained what is so wonderful about The Godfather so well. I have seen many amazing movies, as well as some clunkers, but The Godfather was beyond amazing. There are so many images, details and scenes that I seriously cannot get out of my head since watching it for the first time just nine hours ago. The Godfather is so incredibly well-made and acted that it stands out among the rest of those other amazing films I''ve seen, so much so I couldn''t think of a single flaw, and I am struggling to think of a good enough reason to why I didn''t see this film before now.', true, 10, 1, 2);

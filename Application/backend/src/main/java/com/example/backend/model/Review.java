@@ -16,8 +16,8 @@ public class Review {
    @Column(name = "review_id", unique = true, nullable = false)
    private int id;
    @Column(nullable = false)
-   private int mark;
-   @Column(nullable = false)
+   private double mark;
+   @Column(nullable = false, length = 1096)
    private String content;
    @Column
    private Boolean isReviewed;
