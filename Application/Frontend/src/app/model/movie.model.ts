@@ -32,6 +32,7 @@ export class Movie {
     public directors?: CrewMember[] = [];
     public writters?: CrewMember[] = [];
     public actors?: Actor[] = [];
+    public reviews?: Review[] = [];
 
     constructor (id: number, name: string, year: number, countryOfOrigin: string, durationInMinutes: number, genres: Genre[],
                  description: string, storyline: string, coverImage: string, images: string[], averageGrade: number){

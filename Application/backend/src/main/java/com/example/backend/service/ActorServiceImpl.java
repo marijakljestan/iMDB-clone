@@ -18,8 +18,6 @@ public class ActorServiceImpl implements ActorService {
 
     @Override
     public List<ActorDTO> getActorsFromMovie(Integer movieId) {
-        //List<Actor> actors = actorRepository.getActorsByMovieId(movieId);
-        //return CollectionMapper.mapList(actors, ActorDTO.class);
         return actorRepository.getActorsByMovieId(movieId);
     }
 }

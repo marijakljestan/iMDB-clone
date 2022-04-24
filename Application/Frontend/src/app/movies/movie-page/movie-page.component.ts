@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Actor } from 'src/app/model/actor.model';
-import { CrewMember } from 'src/app/model/crew-member.model';
 import { Movie } from 'src/app/model/movie.model';
 import { MovieCrewService } from 'src/app/service/movie-crew.service';
+import { MovieReviewService } from 'src/app/service/movie-review.service';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
@@ -16,10 +15,9 @@ export class MoviePageComponent implements OnInit {
   movie: Movie | any;
   recommendation: string = "More like this";
   moviesRecommended: any[] = [];
-  reviews: any[] = [];
-  images: string[] = [];
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService, private movieCrewService: MovieCrewService) { }
+  constructor(private route: ActivatedRoute, private movieService: MovieService, 
+              private movieCrewService: MovieCrewService, private movieReviewService: MovieReviewService) { }
 
   ngOnInit(): void {
     this.movieId = this.route.snapshot.paramMap.get('id')
@@ -28,6 +26,7 @@ export class MoviePageComponent implements OnInit {
         this.movieCrewService.getMovieDirectors(this.movieId).subscribe(data => this.movie.directors = data);
         this.movieCrewService.getMovieWritters(this.movieId).subscribe(data =>  this.movie.writters = data);
         this.movieCrewService.getMovieActors(this.movieId).subscribe(data => this.movie.actors = data);
+        this.movieReviewService.getMovieReviews(this.movieId).subscribe(data => this.movie.reviews = data);
     });
 
     this.moviesRecommended = [
@@ -66,25 +65,6 @@ export class MoviePageComponent implements OnInit {
         coverImage: "../../../assets/images/pulp fiction.jpg",
         year: 1994
       }
-    ];
-
-    this.reviews= [
-        {
-          mark: 10,
-          content: `Up until today, I haven't bothered to review "The Godfather". After all, everyone pretty much knows it's one of the greatest films ever made. It's #2 on IMDb's Top 100. It won the Best Picture Oscar. And, there are nearly 1600 reviews on IMDb. So what's one more review?! Well, after completing 14,000 reviews (because I am nuts), I guess it's time I got around to reviewing a film I should have reviewed a long time ago. So, here goes....the film is perfect and only a dope wouldn't watch it. Unfortunately, IMDb requires me to say more to meet it's 10 line minimum for reviews. So, I'll point out that you do NOT need to like gangster films to enjoy this film. Yes, it's violent and nasty in spots--but it's also brilliantly written and produced from start to finish and deserves the accolades it's received.
-
-          My advice is that instead of just watching "The Godfather" and "The Godfather: Part II", see the combined version they created for television--with additional scenes that made it a very rich experience.
-          `
-        },
-        {
-          mark: 9,
-          content: `There is very little that I can add to the reviews on here, that have explained what is so wonderful about The Godfather so well. I have seen many amazing movies, as well as some clunkers, but The Godfather was beyond amazing. There are so many images, details and scenes that I seriously cannot get out of my head since watching it for the first time just nine hours ago. The Godfather is so incredibly well-made and acted that it stands out among the rest of those other amazing films I've seen, so much so I couldn't think of a single flaw, and I am struggling to think of a good enough reason to why I didn't see this film before now.`
-        }
-       
-    ];
-    this.images= [
-        "../../../assets/images/cover/godfather-2.jpg",
-        "../../../assets/images/cover/godfather.jpg"
     ];
   }
 }

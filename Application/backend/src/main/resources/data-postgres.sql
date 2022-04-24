@@ -1,6 +1,10 @@
 INSERT INTO role(id, name) VALUES (nextval('role_seq_gen'), 'ROLE_ADMIN');
 INSERT INTO role(id, name) VALUES (nextval('role_seq_gen'), 'ROLE_USER');
 
+INSERT INTO registered_user(user_id, blocked, deleted, email, enabled, first_name, last_name, password, role_id)
+VALUES (nextval('user_seq_gen'), false, false, 'admin@gmail.com', true, 'Marko', 'Markovic', '$2a$10$3kfQZW0qQFJIlfDcadR9UOmPwUDDz4wwkcxxAi1aQmfqZqRxAU/FW', 1),
+       (nextval('user_seq_gen'), false, false, 'marijakljestan@gmail.com', true, 'Marija', 'Kljestan', '$2a$10$3kfQZW0qQFJIlfDcadR9UOmPwUDDz4wwkcxxAi1aQmfqZqRxAU/FW', 2);
+
 INSERT INTO actor(actor_id, first_name, image, last_name)
 VALUES (nextval('actor_seq_gen'), 'Marlon', '../../../assets/images/actors/marlon-brando.jpg', 'Brando'),
        (nextval('actor_seq_gen'), 'Al',     '../../../assets/images/actors/al-pacino.jpg',     'Pacino'),
@@ -92,6 +96,10 @@ VALUES (1, 0),
        (10,6),
        (10,8);
 
+INSERT INTO movie_images(movie_id, image)
+VALUES (1, '../../../assets/images/cover/godfather.jpg'),
+       (1, '../../../assets/images/cover/godfather-2.jpg');
+
 INSERT INTO movie_role(role_id, role_name, actor_id, movie_id)
 VALUES (nextval('role_seq_gen'), 'Don Vito Corleone', 1, 1),
        (nextval('role_seq_gen'), 'Michael Corleone', 2, 1),
@@ -115,3 +123,7 @@ VALUES (nextval('role_seq_gen'), 'Don Vito Corleone', 1, 1),
        (nextval('role_seq_gen'), 'Ellis Boyd `Red` Redding', 20, 9),
        (nextval('role_seq_gen'), 'Teddy Daniels', 8, 10),
        (nextval('role_seq_gen'), 'Rachel 1', 21, 10);
+
+INSERT INTO review(review_id, content, is_reviewed, mark, movie_id, user_id)
+VALUES (nextval('review_seq_gen'), 'Up until today, I haven''t bothered to review "The Godfather". After all, everyone pretty much knows it''s one of the greatest films ever made. It''s #2 on IMDb''s Top 100. It won the Best Picture Oscar. And, there are nearly 1600 reviews on IMDb. So what''s one more review?! Well, after completing 14,000 reviews (because I am nuts), I guess it''s time I got around to reviewing a film I should have reviewed a long time ago. So, here goes....the film is perfect and only a dope wouldn''t watch it. Unfortunately, IMDb requires me to say more to meet it''s 10 line minimum for reviews.', true, 10, 1, 2),
+       (nextval('review_seq_gen'), 'There is very little that I can add to the reviews on here, that have explained what is so wonderful about The Godfather so well. I have seen many amazing movies, as well as some clunkers, but The Godfather was beyond amazing. There are so many images, details and scenes that I seriously cannot get out of my head since watching it for the first time just nine hours ago. The Godfather is so incredibly well-made and acted that it stands out among the rest of those other amazing films I''ve seen, so much so I couldn''t think of a single flaw, and I am struggling to think of a good enough reason to why I didn''t see this film before now.', true, 10, 1, 2);

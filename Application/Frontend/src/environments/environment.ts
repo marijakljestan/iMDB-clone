@@ -9,6 +9,7 @@ export const environment = {
   baseUrlMovie: "http://localhost:8082/movie/",
   baseUrlActor: "http://localhost:8082/movie/actor/",
   baseUrlMovieCrew: "http://localhost:8082/movie/crew/",
+  baseUrlMovieReview: "http://localhost:8082/movie/review/",
   baseUrlWatchlist: "http://localhost:8082/watchlist/"
 };
 

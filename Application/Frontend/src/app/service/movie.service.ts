@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 import { MovieDto } from '../model/movie-dto.model';
 import Swal from 'sweetalert2';
 import { MovieCrewService } from './movie-crew.service';
-import { Movie } from '../model/movie.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,6 @@ export class MovieService {
 
     private baseUrlMovies: string = environment.baseUrlMovie;
     private baseUrlWatchlist: string = environment.baseUrlWatchlist;
-    private movie: Movie | any;
 
     headers = new HttpHeaders({'Content-Type' : 'application/json',
                                'Authorization' : `Bearer ${localStorage.jwt}`});
