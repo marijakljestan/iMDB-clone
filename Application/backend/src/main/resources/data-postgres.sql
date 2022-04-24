@@ -52,22 +52,22 @@ VALUES (nextval('movie_seq_gen'), 9.2, 'USA', '../../../assets/images/godfather.
        (nextval('movie_seq_gen'), 9.3, 'USA', '../../../assets/images/shawshank.jfif', 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', 142,  'The Shawshank Redemption', 'Chronicles the experiences of a formerly successful banker as a prisoner in the gloomy jailhouse of Shawshank after being found guilty of a crime he did not commit. The film portrays the man''s unique way of dealing with his new, torturous life; along the way he befriends a number of fellow prisoners, most notably a wise long-term inmate named Red.', 1994),
        (nextval('movie_seq_gen'), 8.2, 'USA', '../../../assets/images/shutter.jfif', 'In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane.', 138,  'Shutter Island', 'In 1954, up-and-coming U.S. marshal Teddy Daniels is assigned to investigate the disappearance of a patient from Boston''s Shutter Island Ashecliffe Hospital. He''s been pushing for an assignment on the island for personal reasons, but before long he thinks he''s been brought there as part of a twisted plot by hospital doctors whose radical treatments range from unethical to illegal to downright sinister. Teddy`s shrewd investigating skills soon provide a promising lead, but the hospital refuses him access to records he suspects would break the case wide open. As a hurricane cuts off communication with the mainland, more dangerous criminals "escape" in the confusion, and the puzzling, improbable clues multiply, Teddy begins to doubt everything - his memory, his partner, even his own sanity.', 2010);
 
-INSERT INTO movie_crew(crew_member_id, movie_id)
-VALUES (1,1),
-       (2,1),
-       (3,2),
-       (4,2),
-       (5,3),
-       (6,3),
-       (3,4),
-       (7,5),
-       (8,6),
-       (9,6),
-       (10,7),
-       (11,7),
-       (12,8),
-       (13,9),
-       (14, 10);
+INSERT INTO movie_crew(crew_member_id, movie_id, member_role)
+VALUES (1,1,0),
+       (2,1,1),
+       (3,2,0),
+       (4,2,1),
+       (5,3,0),
+       (6,3,1),
+       (3,4,0),
+       (7,5,0),
+       (8,6,0),
+       (9,6,1),
+       (10,7,0),
+       (11,7,1),
+       (12,8,0),
+       (13,9,1),
+       (14, 10,0);
 
 INSERT INTO movie_genres(movie_id, genre)
 VALUES (1, 0),
