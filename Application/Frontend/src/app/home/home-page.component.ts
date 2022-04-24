@@ -57,7 +57,6 @@ export class HomePageComponent implements OnInit {
         });
     }
 
-
     displaySearchResults(eventData: string){
         this.searchResults = [];
         for(let movie of this.topRatedList){

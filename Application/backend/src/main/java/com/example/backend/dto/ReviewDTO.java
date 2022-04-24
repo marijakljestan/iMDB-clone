@@ -15,5 +15,5 @@ public class ReviewDTO {
     private String content;
     private double mark;
     private int movieId;
-    private int userId;
+    private String username;
 }

@@ -5,7 +5,6 @@ import { Authentication } from '../model/authentication.model';
 import Swal from 'sweetalert2';
 import { JwtToken } from '../model/jwtToken.model';
 import { User } from '../model/user.model';
-import { async } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

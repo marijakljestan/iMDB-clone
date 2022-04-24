@@ -13,7 +13,7 @@
             </div>
             <div class="storyline"> <p> {{movie.storyline}} </p> </div>
             <actor-list [actors]="movie.actors"></actor-list>
-            <movie-comments  *ngIf="movie" [movie]="movie" [reviews]="[movie.reviews[0]]"></movie-comments>
+            <movie-comments  *ngIf="movie" [movie]="movie" [reviews]="[movie.reviews[0], movie.reviews[1]]"></movie-comments>
         </div>
         <div class="details">
             <div class="title-wrapper">
