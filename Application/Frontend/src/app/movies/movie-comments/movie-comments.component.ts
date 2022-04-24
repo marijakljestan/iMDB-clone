@@ -34,6 +34,10 @@ export class MovieCommentsComponent implements OnInit {
         (document.querySelector('#add-comment-modal') as HTMLElement).style.display = 'flex';
     }
 
+    getRate(eventData: number) {
+        this.newRate = eventData;
+    }
+
     closeModal() : void{
         this.newRate = 0;
         (document.querySelector('#add-comment-modal') as HTMLElement).style.display = 'none';

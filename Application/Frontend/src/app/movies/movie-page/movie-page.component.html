@@ -1,9 +1,9 @@
 <div class="page" *ngIf="movie">
-    <navbar></navbar>
+    <navbar *ngIf="movie"></navbar>
     <div class="dark-part">
-        <movie-caption [movie]="movie"></movie-caption>
-        <image-gallery [images]="movie.images"></image-gallery>
-        <movie-details [movie]="movie"></movie-details>
+        <movie-caption *ngIf="movie" [movie]="movie"></movie-caption>
+        <image-gallery *ngIf="movie" [images]="movie.images"></image-gallery>
+        <movie-details *ngIf="movie" [movie]="movie"></movie-details>
     </div>
     <div class="light-part">
         <div class="description">
