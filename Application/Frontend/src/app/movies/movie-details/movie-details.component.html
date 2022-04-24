@@ -6,7 +6,7 @@
     <div class="description">
         <p>{{movie.description}}</p>
     </div><hr/>
-    <p class="crew"><span class="role">Director </span><span *ngFor="let director of movie.directors" class="multiple"> {{director}} </span></p><hr/>
-    <p class="crew"><span class="role">Writters </span><span *ngFor="let writter of movie.writters" class="multiple"> {{writter}} </span> </p><hr/>
+    <p class="crew"><span class="role">Director </span><span *ngFor="let director of movie.directors" class="multiple"> {{director.firstName}} {{director.lastName}}</span></p><hr/>
+    <p class="crew"><span class="role">Writters </span><span *ngFor="let writter of movie.writters" class="multiple"> {{writter.firstName}} {{writter.lastName}} </span> </p><hr/>
     <p class="crew"><span class="role">Stars    </span><span *ngFor="let actor of movie.actors" class="stars multiple"> {{actor}}</span> </p><hr/>
 </div>

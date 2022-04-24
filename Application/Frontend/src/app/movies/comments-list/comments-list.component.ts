@@ -18,7 +18,7 @@ export class CommentsListComponent implements OnInit {
       countryOfOrigin: 'USA',
       durationInMinutes: 175,
       genres: [
-        Genre.action, Genre.drama, Genre.crime
+        Genre.Action, Genre.Drama, Genre.Crime
       ],
       description: '',
       storyline: `The Godfather "Don" Vito Corleone is the head of the Corleone mafia family in New York. 

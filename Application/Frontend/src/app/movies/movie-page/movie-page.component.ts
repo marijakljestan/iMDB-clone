@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Actor } from 'src/app/model/actor.model';
+import { CrewMember } from 'src/app/model/crew-member.model';
 import { Movie } from 'src/app/model/movie.model';
+import { MovieCrewService } from 'src/app/service/movie-crew.service';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
@@ -18,11 +20,15 @@ export class MoviePageComponent implements OnInit {
   reviews: any[] = [];
   images: string[] = [];
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService) { }
+  constructor(private route: ActivatedRoute, private movieService: MovieService, private movieCrewService: MovieCrewService) { }
 
   ngOnInit(): void {
     this.movieId = this.route.snapshot.paramMap.get('id')
-    this.movieService.getMovieById(this.movieId).subscribe(response => this.movie = response );
+    this.movieService.getMovieById(this.movieId).subscribe(response => {
+        this.movie = response ;
+        this.movieCrewService.getMovieDirectors(this.movieId).subscribe(data => this.movie.directors = data);
+        this.movieCrewService.getMovieWritters(this.movieId).subscribe(data =>  this.movie.writters = data);
+    });
     this.actors = [
       new Actor('Marlon', 'Brando', '../../../assets/images/actors/marlon-brando.jpg', 'Don Vito Corleone'),
       new Actor('Al', 'Pacino', '../../../assets/images/actors/al-pacino.jpg', 'Michael Corleone')

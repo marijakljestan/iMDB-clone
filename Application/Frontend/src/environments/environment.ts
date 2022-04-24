@@ -7,6 +7,7 @@ export const environment = {
   baseUrlUsers: "http://localhost:8082/user/",
   baseUrlAuth:  "http://localhost:8082/auth/",
   baseUrlMovie: "http://localhost:8082/movie/",
+  baseUrlMovieCrew: "http://localhost:8082/movie/crew/",
   baseUrlWatchlist: "http://localhost:8082/watchlist/"
 };
 

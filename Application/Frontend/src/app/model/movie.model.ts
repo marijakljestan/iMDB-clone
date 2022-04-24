@@ -1,18 +1,20 @@
+import { Actor } from "./actor.model";
+import { CrewMember } from "./crew-member.model";
 import { Review } from "./review.model";
 
 export enum Genre {
-   action,
-   drama,
-   crime,
-   comedy,
-   fantasy,
-   horror,
-   mystery,
-   romance,
-   thriller,
-   western,
-   scienceFiction,
-   biography
+   Action,
+   Drama,
+   Crime,
+   Comedy,
+   Fantasy,
+   Horror,
+   Mystery,
+   Romance,
+   Thriller,
+   Western,
+   ScienceFiction,
+   Biography
 }
 
 export class Movie {
@@ -27,7 +29,9 @@ export class Movie {
     public coverImage: string;
     public images: string[];
     public averageGrade: number;
-
+    public directors?: CrewMember[] = [];
+    public writters?: CrewMember[] = [];
+    public actors?: Actor[] = [];
 
     constructor (id: number, name: string, year: number, countryOfOrigin: string, durationInMinutes: number, genres: Genre[],
                  description: string, storyline: string, coverImage: string, images: string[], averageGrade: number){
