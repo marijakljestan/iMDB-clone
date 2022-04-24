@@ -5,8 +5,9 @@ export class Review {
     public movieId?: number;
     public userId?: number;
 
-    constructor (mark: number, content: string) {
+    constructor (mark: number, content: string, movieId: number) {
         this.mark = mark;
         this.content = content;
+        this.movieId = movieId;
     }
 }

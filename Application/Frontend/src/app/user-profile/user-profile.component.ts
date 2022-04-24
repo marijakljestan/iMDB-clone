@@ -8,36 +8,34 @@ import { MovieService } from '../service/movie.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user: any;
-  watchlist: MovieDto[] = [];
-  newPassword: string = "";
+    user: any;
+    watchlist: MovieDto[] = [];
+    newPassword: string = "";
 
-  constructor(private movieService: MovieService) { }
+    constructor(private movieService: MovieService) { }
 
-  ngOnInit(): void {
-    //setTimeout(() => {
+    ngOnInit(): void {
         if(localStorage.getItem("loggedUser") !== null)
             this.user = JSON.parse(localStorage.getItem("loggedUser")!);
-     //}, 50);
         this.movieService.getWatchlist().subscribe(data => {
             this.watchlist = data;
             for(let movie of this.watchlist)
                 movie.notInWatchlist = false;
         });
-  }
+    }
 
-  showChangePasswordForm(event: MouseEvent) : void{
-    event.preventDefault();
-    (document.querySelector('.password') as HTMLElement).style.display = 'block';
-  }
+    showChangePasswordForm(event: MouseEvent) : void{
+        event.preventDefault();
+        (document.querySelector('.password') as HTMLElement).style.display = 'block';
+    }
 
-  editProfile(event: MouseEvent) : void{
-    event.preventDefault();
-    (document.querySelector('#edit-profile-modal') as HTMLElement).style.display = 'flex';
-  }
+    editProfile(event: MouseEvent) : void{
+        event.preventDefault();
+        (document.querySelector('#edit-profile-modal') as HTMLElement).style.display = 'flex';
+    }
 
-  closeModal() : void{
-    (document.querySelector('.password') as HTMLElement).style.display = 'none';
-    (document.querySelector('#edit-profile-modal') as HTMLElement).style.display = 'none';
-  }
+    closeModal() : void{
+        (document.querySelector('.password') as HTMLElement).style.display = 'none';
+        (document.querySelector('#edit-profile-modal') as HTMLElement).style.display = 'none';
+    }
 }

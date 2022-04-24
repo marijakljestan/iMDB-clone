@@ -9,7 +9,7 @@ import java.util.*;
 
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
-    @Query(value = "select new com.example.backend.dto.ReviewDTO(r.id, r.content, r.mark, r.movie.id, r.registeredUser.id) " +
+    @Query(value = "select new com.example.backend.dto.ReviewDTO(r.id, r.content, r.mark, r.movie.id, r.registeredUser.email) " +
                    "from Review r where r.movie.id=?1")
     List<ReviewDTO> getReviewsByMovieId(Integer movieId);
 }

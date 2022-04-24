@@ -20,12 +20,12 @@ public class Review {
    @Column(nullable = false, length = 1096)
    private String content;
    @Column
-   private Boolean isReviewed;
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   private Boolean isReviewed = false;
+   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
    @JoinColumn(name = "movie_id")
    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
    private Movie movie;
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
    @JoinColumn(name = "user_id")
    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
    private RegisteredUser registeredUser;
