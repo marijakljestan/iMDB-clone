@@ -12,6 +12,7 @@ import { UserService } from '../service/user.service';
 export class UserProfileComponent implements OnInit {
     user: User | any;
     watchlist: MovieDto[] = [];
+    reviewedByUser: MovieDto[] = [];
     newPassword: string = "";
 
     constructor(private userService: UserService, private movieService: MovieService) { }
@@ -22,6 +23,11 @@ export class UserProfileComponent implements OnInit {
         this.movieService.getWatchlist().subscribe(data => {
             this.watchlist = data;
             for(let movie of this.watchlist)
+                movie.notInWatchlist = false;
+        });
+        this.movieService.getMoviesReviewedByUser(this.user.id).subscribe(data => {
+            this.reviewedByUser = data;
+            for(let movie of this.reviewedByUser)
                 movie.notInWatchlist = false;
         });
     }

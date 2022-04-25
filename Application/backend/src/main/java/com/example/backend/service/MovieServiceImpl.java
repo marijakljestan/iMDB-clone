@@ -26,25 +26,31 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public MovieDTO getMovieById(Integer id) {
-        return modelMapper.map(movieRepository.findById(id).get(), MovieDTO.class);
+        return modelMapper.map(this.movieRepository.findById(id).get(), MovieDTO.class);
     }
 
     @Override
     public MovieDTO addMovie(MovieDTO movieDTO) {
         Movie newMovie = modelMapper.map(movieDTO, Movie.class);
-        movieRepository.save(newMovie);
+        this.movieRepository.save(newMovie);
         return movieDTO;
     }
 
     @Override
     public MovieDTO editMovie(MovieDTO movieDTO) {
         Movie editedMovie = modelMapper.map(movieDTO, Movie.class);
-        movieRepository.save(editedMovie);
+        this.movieRepository.save(editedMovie);
         return movieDTO;
     }
 
     @Override
     public void deleteMovie(Integer id) {
-        movieRepository.deleteById(id);
+        this.movieRepository.deleteById(id);
+    }
+
+    @Override
+    public List<MovieDTO> getMoviesReviewedByUser(Integer userId) {
+        List<Movie> movies = this.movieRepository.findMoviesReviewedByUser(userId);
+        return CollectionMapper.mapList(movies, MovieDTO.class);
     }
 }

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,6 +24,12 @@ public class MovieController {
     @GetMapping("/{id}")
     public ResponseEntity<MovieDTO> getMovieById(@PathVariable("id") Integer id){
         return new ResponseEntity<>(movieService.getMovieById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/reviewed-by-user/{id}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public ResponseEntity<Iterable<MovieDTO>> getMoviesReviewedByUser(@PathVariable("id") Integer userId){
+        return new ResponseEntity<>(movieService.getMoviesReviewedByUser(userId), HttpStatus.OK);
     }
 
     @PostMapping("/")
