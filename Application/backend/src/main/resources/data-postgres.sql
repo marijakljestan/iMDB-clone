@@ -104,7 +104,26 @@ VALUES (1, 0),
 
 INSERT INTO movie_images(movie_id, image)
 VALUES (1, '../../../assets/images/cover/godfather.jpg'),
-       (1, '../../../assets/images/cover/godfather-2.jpg');
+       (1, '../../../assets/images/cover/godfather-2.jpg'),
+       (2, '../../../assets/images/cover/dark-knight.jpg'),
+       (2, '../../../assets/images/cover/dark-knight-2.jpg'),
+       (3, '../../../assets/images/cover/fight-club.jpg'),
+       (3, '../../../assets/images/cover/fight-club-2.jpg'),
+       (4, '../../../assets/images/cover/inception.jpg'),
+       (4, '../../../assets/images/cover/inception-2.jpg'),
+       (5, '../../../assets/images/cover/pulp-fiction.jpg'),
+       (5, '../../../assets/images/cover/pulp-fiction-2.jpg'),
+       (6, '../../../assets/images/cover/la-vita-e-bella.jpg'),
+       (6, '../../../assets/images/cover/la-vita-e-bella-2.jfif'),
+       (6, '../../../assets/images/cover/la-vita-e-bella-3.jpg'),
+       (7, '../../../assets/images/cover/schindlers-list.jpg'),
+       (7, '../../../assets/images/cover/schindlers-list-2.jpg'),
+       (8, '../../../assets/images/cover/joker.jpg'),
+       (8, '../../../assets/images/cover/joker-2.jpg'),
+       (9, '../../../assets/images/cover/shawshank-redemption.jpg'),
+       (9, '../../../assets/images/cover/shawshank-redemption-2.jpg'),
+       (10, '../../../assets/images/cover/shutter-island.jpg'),
+       (10, '../../../assets/images/cover/shutter-island-2.jpg');
 
 INSERT INTO movie_role(role_id, role_name, actor_id, movie_id)
 VALUES (nextval('role_seq_gen'), 'Don Vito Corleone', 1, 1),
