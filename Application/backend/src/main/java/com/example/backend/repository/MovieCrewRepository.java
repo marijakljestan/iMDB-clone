@@ -13,6 +13,6 @@ public interface MovieCrewRepository extends JpaRepository<CrewMember, Integer> 
     List<CrewMember> getMovieDirectors(Integer movieId);
 
     @Query(value = "select c from CrewMember c where c.id in" +
-            "(select m.crewMember.id from MovieCrew  m where m.movie.id = ?1 and m.crewMemberRole = 0)")
+                   "(select m.crewMember.id from MovieCrew  m where m.movie.id = ?1 and m.crewMemberRole = 0)")
     List<CrewMember> getMovieWritters(Integer movieId);
 }
