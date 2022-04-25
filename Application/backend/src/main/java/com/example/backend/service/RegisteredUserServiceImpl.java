@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.EditUserDTO;
 import com.example.backend.dto.RegisteredUserDTO;
 import com.example.backend.model.RegisteredUser;
 import com.example.backend.model.Role;
@@ -27,7 +28,7 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         newUser.setRole(role);
         newUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         newUser.setEnabled(true);
-        userRepository.save(newUser);
+        this.userRepository.save(newUser);
         return userDTO;
     }
 
@@ -43,5 +44,14 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         RegisteredUser user = modelMapper.map(userDTO, RegisteredUser.class);
         this.userRepository.save(user);
         return userDTO;
+    }
+
+    @Override
+    public RegisteredUserDTO editUser(EditUserDTO userDTO) {
+        RegisteredUser user = this.userRepository.fetchUserWithWatchlist(userDTO.getEmail());
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
+        this.userRepository.save(user);
+        return modelMapper.map(user, RegisteredUserDTO.class);
     }
 }

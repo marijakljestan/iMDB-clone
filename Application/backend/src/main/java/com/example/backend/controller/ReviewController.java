@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.MovieDTO;
 import com.example.backend.dto.ReviewDTO;
 import com.example.backend.service.interfaces.ReviewService;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Iterable<ReviewDTO>> getMoviesReview(@PathVariable("id") Integer movieId){
+    public ResponseEntity<Iterable<ReviewDTO>> getMoviesReviews(@PathVariable("id") Integer movieId){
         return new ResponseEntity<>(reviewService.getMoviesReview(movieId), HttpStatus.OK);
     }
 

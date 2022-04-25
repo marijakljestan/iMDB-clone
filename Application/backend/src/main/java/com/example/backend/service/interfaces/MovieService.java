@@ -14,4 +14,6 @@ public interface MovieService {
     MovieDTO editMovie(MovieDTO movieDTO);
 
     void deleteMovie(Integer id);
+
+    List<MovieDTO> getMoviesReviewedByUser(Integer userId);
 }
