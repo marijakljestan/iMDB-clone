@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.dto.RegisteredUserDTO;
+import com.example.backend.dto.EditUserDTO;
 import com.example.backend.service.interfaces.RegisteredUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,9 +26,16 @@ public class RegisteredUserController {
     }
 
     @GetMapping("/whoami")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<RegisteredUserDTO> getLoggedInUser(Principal principal) {
         RegisteredUserDTO user = userService.fetchUserWithWatchlist(principal.getName());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
+    @PutMapping("/")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public ResponseEntity<RegisteredUserDTO> editUserProfile(@RequestBody EditUserDTO userDTO){
+        return new ResponseEntity<>(userService.editUser(userDTO), HttpStatus.OK);
+    }
+
 }

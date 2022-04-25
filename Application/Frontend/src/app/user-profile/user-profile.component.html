@@ -3,7 +3,7 @@
     <div class="sign-up-content">
       <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.firstName" type="text"  class="form-input"> </div><br/>
       <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.lastName"  type="text"  class="form-input"> </div><br/>
-      <div class="email"><i class="fas fa-at fa-2x"></i>  <input [(ngModel)]="user.email"     type="text"  class="form-input"> </div><br/>
+      <div class="email"><i class="fas fa-at fa-2x"></i>  <input [(ngModel)]="user.email"  [readonly]="true"   type="text"  class="form-input"> </div><br/>
       <div class="change-password link-light item"> <label (click)="showChangePasswordForm($event)">Change password?</label> </div><br/>
       <div class="password">
         <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Current password" type="password" class="form-input"></div><br/>
@@ -12,7 +12,7 @@
       </div>
       
     </div><hr/>
-    <div class="btn-submit-wrapper"><button class="btn-submit">CONFIRM</button></div>
+    <div class="btn-submit-wrapper"><button class="btn-submit" (click)="editUser()">CONFIRM</button></div>
 </div>
 
 <div class="page">

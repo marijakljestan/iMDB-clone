@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieDto } from '../model/movie-dto.model';
+import { User } from '../model/user.model';
 import { MovieService } from '../service/movie.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'user-profile',
@@ -8,11 +10,11 @@ import { MovieService } from '../service/movie.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-    user: any;
+    user: User | any;
     watchlist: MovieDto[] = [];
     newPassword: string = "";
 
-    constructor(private movieService: MovieService) { }
+    constructor(private userService: UserService, private movieService: MovieService) { }
 
     ngOnInit(): void {
         if(localStorage.getItem("loggedUser") !== null)
@@ -22,6 +24,14 @@ export class UserProfileComponent implements OnInit {
             for(let movie of this.watchlist)
                 movie.notInWatchlist = false;
         });
+    }
+
+    editUser(){
+        this.userService.editUser(this.user).subscribe(data =>{
+            this.user = data;
+            localStorage.setItem("loggedUser", JSON.stringify(data));
+        });
+        this.closeModal();
     }
 
     showChangePasswordForm(event: MouseEvent) : void{

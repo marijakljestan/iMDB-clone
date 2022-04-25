@@ -16,10 +16,10 @@ export class AuthenticationService {;
     customHeaders = new HttpHeaders({'Content-Type' : 'application/json',
                     'Authorization' : `Bearer ${localStorage.jwt}`})
 
-    constructor(private httpClient : HttpClient, ) {}
+    constructor(private http: HttpClient, ) {}
 
      login(credentials: Authentication) {
-        return this.httpClient.post<JwtToken>(`${this.baseUrlAuth}login`, credentials).subscribe((response)=>{
+        return this.http.post<JwtToken>(`${this.baseUrlAuth}login`, credentials).subscribe((response)=>{
             localStorage.setItem("jwt", response.accessToken);
             this.customHeaders = new HttpHeaders({'Content-Type' : 'application/json',
                                                   'Authorization' : `Bearer ${localStorage.jwt}`})
@@ -36,7 +36,7 @@ export class AuthenticationService {;
     }
 
     async getLoggedUser() {
-        await this.httpClient.get<User>(this.baseUrlUsers + "whoami", {headers : this.customHeaders}).toPromise().then(data => { 
+        await this.http.get<User>(this.baseUrlUsers + "whoami", {headers : this.customHeaders}).toPromise().then(data => { 
             localStorage.setItem("loggedUser", JSON.stringify(data));
          });
     }
