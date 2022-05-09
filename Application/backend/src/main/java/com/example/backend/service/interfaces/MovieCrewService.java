@@ -9,4 +9,8 @@ public interface MovieCrewService {
     List<MovieCrewDTO> getMovieDirectors(Integer movieId);
 
     List<MovieCrewDTO> getMovieWritters(Integer movieId);
+
+    List<MovieCrewDTO> getAllDirectors();
+
+    List<MovieCrewDTO> getAllWritters();
 }

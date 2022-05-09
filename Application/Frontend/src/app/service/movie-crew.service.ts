@@ -26,4 +26,16 @@ export class MovieCrewService {
     getMovieWritters(id: number) : Observable<CrewMember[]> {
         return this.http.get<CrewMember[]>(this.baseUrlMovieCrew + 'writters/'+id);
     }
+
+    getAllActors() : Observable<Actor[]> {
+        return this.http.get<Actor[]>(this.baseUrlActor);
+    }
+
+    getAllDirectors() : Observable<CrewMember[]> {
+        return this.http.get<CrewMember[]>(this.baseUrlMovieCrew + 'directors');
+    }
+
+    getAllWritters() : Observable<CrewMember[]> {
+        return this.http.get<CrewMember[]>(this.baseUrlMovieCrew + 'writters');
+    }
 }

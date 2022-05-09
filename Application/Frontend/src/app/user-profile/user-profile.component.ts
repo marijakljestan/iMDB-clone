@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit {
         this.movieService.getMoviesReviewedByUser(this.user.id).subscribe(data => {
             this.reviewedByUser = data;
             for(let movie of this.reviewedByUser)
-                movie.notInWatchlist = false;
+                movie.notInWatchlist = true;
         });
     }
 

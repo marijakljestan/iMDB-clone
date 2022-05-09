@@ -18,8 +18,13 @@ public class ActorController {
 
     private final ActorService actorService;
 
+    @GetMapping("/")
+    public ResponseEntity<Iterable<ActorDTO>> getAllActors(){
+        return new ResponseEntity<>(actorService.getAllActors(), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Iterable<ActorDTO>> getAllActorsFromMovie(@PathVariable("id") Integer movieId){
+    public ResponseEntity<Iterable<ActorDTO>> getActorsFromMovie(@PathVariable("id") Integer movieId){
         return new ResponseEntity<>(actorService.getActorsFromMovie(movieId), HttpStatus.OK);
     }
 }

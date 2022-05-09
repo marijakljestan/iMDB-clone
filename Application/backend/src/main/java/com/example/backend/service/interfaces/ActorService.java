@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ActorService {
     List<ActorDTO> getActorsFromMovie(Integer movieId);
+
+    List<ActorDTO> getAllActors();
 }

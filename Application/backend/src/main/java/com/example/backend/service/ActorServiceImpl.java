@@ -20,4 +20,10 @@ public class ActorServiceImpl implements ActorService {
     public List<ActorDTO> getActorsFromMovie(Integer movieId) {
         return actorRepository.getActorsByMovieId(movieId);
     }
+
+    @Override
+    public List<ActorDTO> getAllActors() {
+        List<Actor> actors = actorRepository.findAll();
+        return CollectionMapper.mapList(actors, ActorDTO.class);
+    }
 }

@@ -1,5 +1,11 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { Actor } from 'src/app/model/actor.model';
+import { CrewMember } from 'src/app/model/crew-member.model';
+import { Movie } from 'src/app/model/movie.model';
+import { MovieCrewService } from 'src/app/service/movie-crew.service';
+import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
   selector: 'add-movie',
@@ -7,18 +13,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./add-movie.component.css']
 })
 export class AddMovieComponent implements OnInit {
-  newMovie: any = {
-    name: '',
-    year: undefined,
-    countryOfOrigin: '',
-    durationInMinutes: undefined,
-    genres: [],
-    description: '',
-    storyline: '',
-    coverImage: '',
-    images: [],
-    rate: 10,
-  };
+  newMovie: Movie | any;
   writtersNum: number = 1;
   wNumbers: number[] = Array(this.writtersNum).fill(0).map((x,i)=>i);
   actorsNum: number = 1;
@@ -26,9 +21,11 @@ export class AddMovieComponent implements OnInit {
   imagePoster: string = "";
   imagesFrontend: string[] = [];
   genres: any[] = [];
+  allWritters: CrewMember[] = [];
+  allDirectors: CrewMember[] = [];
+  allActors: Actor[] = [];
 
-
-  constructor() {
+  constructor(private movieService: MovieService, private movieCrewService: MovieCrewService, private router: Router) {
     this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
       this.genres = [
         'Action', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Science Fiction', 'Thriller', 'Western',
@@ -36,7 +33,15 @@ export class AddMovieComponent implements OnInit {
       ]
     }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+      this.movieCrewService.getAllDirectors().subscribe(data => this.allDirectors = data);
+      this.movieCrewService.getAllWritters().subscribe(data => this.allDirectors = data);
+    
+  }
+
+  addMovie() {
+      
+  }
 
   increaseActorsNum(event: Event) : void {
     this.actorsNum += 1;
@@ -102,6 +107,10 @@ export class AddMovieComponent implements OnInit {
       }
     }
     reader.readAsDataURL(file);
+  }
+
+  cancelHandler() {
+    this.router.navigate(['/homePage']);
   }
 }
 

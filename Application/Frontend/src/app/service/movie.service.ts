@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { MovieDto } from '../model/movie-dto.model';
 import Swal from 'sweetalert2';
 import { MovieCrewService } from './movie-crew.service';
+import { Movie } from '../model/movie.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,10 @@ export class MovieService {
                 position: 'top-right'
             });
         })
+    }
+
+    addMovie(movie: Movie) : Observable<Movie> {
+        return this.http.post<Movie>(this.baseUrlMovies, movie, {headers: this.headers});
     }
 
     getMovieById(id: number) : Observable<MovieDto> {

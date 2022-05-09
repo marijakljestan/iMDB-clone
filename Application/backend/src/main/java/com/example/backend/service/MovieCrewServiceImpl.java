@@ -27,4 +27,16 @@ public class MovieCrewServiceImpl implements MovieCrewService {
         List<CrewMember> crew = movieCrewRepository.getMovieWritters(movieId);
         return CollectionMapper.mapList(crew, MovieCrewDTO.class);
     }
+
+    @Override
+    public List<MovieCrewDTO> getAllDirectors() {
+        List<CrewMember> crew = movieCrewRepository.getAllDirectors();
+        return CollectionMapper.mapList(crew, MovieCrewDTO.class);
+    }
+
+    @Override
+    public List<MovieCrewDTO> getAllWritters() {
+        List<CrewMember> crew = movieCrewRepository.getAllWritters();
+        return CollectionMapper.mapList(crew, MovieCrewDTO.class);
+    }
 }

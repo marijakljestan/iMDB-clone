@@ -33,16 +33,19 @@ public class MovieController {
     }
 
     @PostMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<MovieDTO> addMovie(@RequestBody MovieDTO movieDTO){
         return new ResponseEntity<>(movieService.addMovie(movieDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<MovieDTO> editMovie(@RequestBody MovieDTO movieDTO){
         return new ResponseEntity<>(movieService.editMovie(movieDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteMovie(@PathVariable("id") Integer id){
         movieService.deleteMovie(id);
         return new ResponseEntity<>("Movie deleted!", HttpStatus.OK);

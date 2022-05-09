@@ -30,4 +30,14 @@ public class MovieCrewController {
         return new ResponseEntity<>(movieCrewService.getMovieWritters(movieId), HttpStatus.OK);
     }
 
+    @GetMapping("/directors")
+    public ResponseEntity<List<MovieCrewDTO>> getAllDirectors(){
+        return new ResponseEntity<>(movieCrewService.getAllDirectors(), HttpStatus.OK);
+    }
+
+    @GetMapping("/writters")
+    public ResponseEntity<List<MovieCrewDTO>> getMAllWritters(){
+        return new ResponseEntity<>(movieCrewService.getAllWritters(), HttpStatus.OK);
+    }
+
 }
