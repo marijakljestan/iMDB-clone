@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ActorDTO {
     private int id;
-    private String firstName;
-    private String lastName;
+    private String name;
     private String image;
     private String roleName;
 }

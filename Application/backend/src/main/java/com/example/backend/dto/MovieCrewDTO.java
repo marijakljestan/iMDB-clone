@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class MovieCrewDTO {
     private int id;
-    private String firstName;
-    private String lastName;
+    private String name;
     private CrewRole role;
 }
