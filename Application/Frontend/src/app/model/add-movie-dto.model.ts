@@ -1,6 +1,4 @@
 import { Actor } from "./actor.model";
-import { CrewMember } from "./crew-member.model";
-import { Review } from "./review.model";
 
 export enum Genre {
    Action,
@@ -19,7 +17,7 @@ export enum Genre {
 
 export class AddMovieDto {
     public name: string;
-    public year: number;
+    public year?: number;
     public countryOfOrigin?: string;
     public durationInMinutes?: number;
     public genres: string[];
@@ -28,10 +26,10 @@ export class AddMovieDto {
     public coverImage: string;
     public images: string[];
     public averageGrade: number;
-    public directors: CrewMember[] = [];
-    public writters: CrewMember[] = [];
+    public directors: string[] = [];
+    public writters: string[] = [];
     public actors: Actor[] = [];
-    public reviews: Review[] = [];
+
 
     constructor (name: string, year: number, countryOfOrigin: string, durationInMinutes: number, genres: string[],
                  description: string, storyline: string, coverImage: string, images: string[], averageGrade: number){

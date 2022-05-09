@@ -26,5 +26,5 @@ public class AddMovieDTO {
     private double averageGrade;
     private Set<String> directors = new HashSet<>();
     private Set<String> writters = new HashSet<>();
-    private Set<String> actors = new HashSet<>();
+    private Set<ActorDTO> actors = new HashSet<>();
 }

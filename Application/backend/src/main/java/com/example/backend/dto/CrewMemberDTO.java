@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MovieCrewDTO {
+public class CrewMemberDTO {
     private int id;
     private String name;
     private CrewRole role;

@@ -1,13 +1,11 @@
 export class Actor {
     public id?: number;
-    public firstName: string;
-    public lastName: string;
-    public image: string;
+    public name: string;
+    public image?: string;
     public roleName: string;
 
-    constructor (firstName: string, lastName: string, image: string, role: string){
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor (name: string, image: string, role: string){
+        this.name = name;
         this.image = image;
         this.roleName = role;
     }

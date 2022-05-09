@@ -6,16 +6,17 @@
     </div>
     <div class="form-wrapper">
         <div class="left-side">
-            <input class="form-input" type="text"  [(ngModel)]="newMovie.name"  placeholder="Name*" ><br/>
-            <input class="form-input" type="number" placeholder="Duration in minutes*"><br/>
-            <input class="form-input" type="text"   placeholder="Country of origin*"><br/><hr/><br/>
-            <textarea placeholder="Description*"   class="description" ></textarea><br/>
-            <textarea placeholder="Storyline*"     class="storyline"></textarea><br/><hr/><br/>
+            <input class="form-input" type="text"    [(ngModel)]="newMovie.name"  placeholder="Name*" ><br/>
+            <input class="form-input" type="number"  [(ngModel)]="newMovie.durationInMinutes" placeholder="Duration in minutes*"><br/>
+            <input class="form-input" type="number"  [(ngModel)]="newMovie.year" placeholder="Year*"><br/>
+            <input class="form-input" type="text"    [(ngModel)]="newMovie.countryOfOrigin" placeholder="Country of origin*"><br/><hr/><br/>
+            <textarea placeholder="Description*"     [(ngModel)]="newMovie.description" class="description" ></textarea><br/>
+            <textarea placeholder="Storyline*"       [(ngModel)]="newMovie.storyline" class="storyline"></textarea><br/><hr/><br/>
              <!-- Director -->
              <div class="director-wrapper">
                 <h6> Director: </h6><br/>
                 <ul> <li class="col-sm-9">
-                    <ng2-completer [ngModel]="newDirector" [inputClass]="'form-control'" [datasource]="filteredDirectors" [minSearchLength]="1"></ng2-completer>
+                    <ng2-completer [textNoResults]="'false'" [(ngModel)]="newDirector" [inputClass]="'form-control'" [datasource]="filteredDirectors" [minSearchLength]="1"></ng2-completer>
                 </li></ul><br/><hr/><br/>
             </div>
              <!-- Writters -->
@@ -28,7 +29,7 @@
             </div>
             <ul *ngIf="writtersNum">
                 <li class="col-sm-9" *ngFor="let w of wNumbers">
-                    <ng2-completer [ngModel]="newWritters[w-1]" [inputClass]="'form-control'" [datasource]="filteredWritters" [minSearchLength]="1"></ng2-completer>
+                    <ng2-completer  [textSearching]="'false'" [textNoResults]="'false'" (selected)="onWritterSelect($event)" [inputClass]="'form-control'" [datasource]="filteredWritters" [minSearchLength]="1"></ng2-completer>
                 </li>
             </ul><hr/><br/>
              <!--Actors-->
@@ -41,7 +42,7 @@
             </div>
             <ul *ngIf="actorsNum">
                 <li class="col-sm-9" *ngFor="let a of aNumbers">
-                    <ng2-completer [ngModel]="newActors[a-1]" [inputClass]="'form-control'" [datasource]="filteredActors" [minSearchLength]="2"></ng2-completer>
+                    <ng2-completer [textNoResults]="'false'" (selected)="onActorSelect($event)" [inputClass]="'form-control'" [datasource]="filteredActors" [minSearchLength]="2"></ng2-completer>
                 </li>
             </ul><hr/><br/>           
         </div>
@@ -124,7 +125,7 @@
             </div><br/><hr/><br/>
             <div class="btn-div">
                 <button class="btn cancel-button" (click)="cancelHandler">Cancel</button>
-                <button class="btn save-button"   (click)="addMovie">Confirm</button> 
+                <button class="btn save-button"   (click)="addMovie($event)">Confirm</button> 
             </div>
         </div>
     </div>

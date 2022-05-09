@@ -1,10 +1,10 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { CompleterItem } from 'ng2-completer';
 import { Actor } from 'src/app/model/actor.model';
 import { AddMovieDto } from 'src/app/model/add-movie-dto.model';
 import { CrewMember } from 'src/app/model/crew-member.model';
-import { Movie } from 'src/app/model/movie.model';
 import { MovieCrewService } from 'src/app/service/movie-crew.service';
 import { MovieService } from 'src/app/service/movie.service';
 
@@ -16,7 +16,7 @@ import { MovieService } from 'src/app/service/movie.service';
     export class AddMovieComponent implements OnInit {
     newMovie: AddMovieDto = {
         name: '',
-        year: 0,
+        year: undefined,
         countryOfOrigin: '',
         durationInMinutes: undefined,
         genres: [],
@@ -27,13 +27,14 @@ import { MovieService } from 'src/app/service/movie.service';
         averageGrade: 10,
         directors: [],
         writters: [],
-        reviews: [],
         actors: [],
     };
     writtersNum: number = 1;
     wNumbers: number[] = Array(this.writtersNum).fill(0).map((x,i)=>i);
     actorsNum: number = 1;
     aNumbers: number[] = Array(this.actorsNum).fill(0).map((x,i)=>i);
+    rolesNum: number = 1;
+    rNumbers: number[] = Array(this.rolesNum).fill(0).map((x,i)=>i);
     imagePoster: string = "";
     imagesFrontend: string[] = [];
     genres: any[] = [];
@@ -45,10 +46,11 @@ import { MovieService } from 'src/app/service/movie.service';
     filteredWritters: string[] = [];
     newWritters: string[] = [];
     filteredActors: string[] = [];
-    newActors: string[] = [];
+    newActors: Actor[] = [];
 
     constructor(private movieService: MovieService, private movieCrewService: MovieCrewService, private router: Router) {
         this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
+        this.aNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
         this.genres = [
             'Action', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Science Fiction', 'Thriller', 'Western',
             'Biography'
@@ -70,25 +72,36 @@ import { MovieService } from 'src/app/service/movie.service';
         });
     }
 
-    addMovie() {
-        alert(this.newMovie);
+    addMovie(event: Event) {
+        event.preventDefault();
+        this.newMovie.directors.push(this.newDirector);
+        alert(JSON.stringify(this.newMovie));
+    }
+
+    onActorSelect(selected: CompleterItem){
+        if(selected)
+          this.newMovie.actors.push(selected.originalObject);
+    }
+
+    onWritterSelect(selected: CompleterItem){
+        if(selected)
+          this.newMovie.writters.push(selected.originalObject);
     }
 
     getActorsList(){
 		for(let actor of this.allActors)
-            this.filteredActors.push(actor.firstName + ' ' + actor.lastName);
+            this.filteredActors.push(actor.name);
     }
 
     getWrittersList(){
 		for(let writter of this.allWritters)
-            this.filteredWritters.push(writter.firstName + ' ' + writter.lastName);
+            this.filteredWritters.push(writter.name);
     }
  
 	getDirectorsList(){
 		for(let director of this.allDirectors)
-            this.filteredDirectors.push(director.firstName + ' ' + director.lastName);
+            this.filteredDirectors.push(director.name);
     }
-
 
     increaseActorsNum(event: Event) : void {
         this.actorsNum += 1;

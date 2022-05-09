@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.AddMovieDTO;
 import com.example.backend.dto.MovieDTO;
 import com.example.backend.service.interfaces.MovieService;
 import lombok.AllArgsConstructor;
@@ -34,7 +35,7 @@ public class MovieController {
 
     @PostMapping("/")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<MovieDTO> addMovie(@RequestBody MovieDTO movieDTO){
+    public ResponseEntity<Integer> addMovie(@RequestBody AddMovieDTO movieDTO){
         return new ResponseEntity<>(movieService.addMovie(movieDTO), HttpStatus.CREATED);
     }
 
