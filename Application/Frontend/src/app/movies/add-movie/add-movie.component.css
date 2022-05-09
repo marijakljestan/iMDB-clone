@@ -43,6 +43,13 @@ h1{
     border-radius: 10px;
     text-indent: 10px;
 }
+.role-input{
+    height: 40px;
+    width: 35%;
+    border-width: 1px;
+    border-radius: 10px;
+    text-indent: 10px;
+}
 .form-control{
     width: 75%;
     margin-right: 25%;
@@ -74,9 +81,13 @@ h6, p{
 li{
     margin-bottom: 10px;
 }
-.completer-no-results {
-    display: none !important;
-  }
+.actor-and-role{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 15%;
+    
+}
 .icons span{
     margin-left: 10px;
 }

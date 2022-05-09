@@ -46,7 +46,8 @@ import { MovieService } from 'src/app/service/movie.service';
     filteredWritters: string[] = [];
     newWritters: string[] = [];
     filteredActors: string[] = [];
-    newActors: Actor[] = [];
+    newActors: string[] = [];
+    newRoles: string[] = [];
 
     constructor(private movieService: MovieService, private movieCrewService: MovieCrewService, private router: Router) {
         this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
@@ -75,12 +76,16 @@ import { MovieService } from 'src/app/service/movie.service';
     addMovie(event: Event) {
         event.preventDefault();
         this.newMovie.directors.push(this.newDirector);
-        alert(JSON.stringify(this.newMovie));
+        for(let i in this.newActors){
+            let actor = new Actor(this.newActors[i], "", this.newRoles[i]);
+            this.newMovie.actors.push(actor);
+        }
+        this.movieService.addMovie(this.newMovie);
     }
 
     onActorSelect(selected: CompleterItem){
         if(selected)
-          this.newMovie.actors.push(selected.originalObject);
+          this.newActors.push(selected.originalObject);
     }
 
     onWritterSelect(selected: CompleterItem){
@@ -106,11 +111,15 @@ import { MovieService } from 'src/app/service/movie.service';
     increaseActorsNum(event: Event) : void {
         this.actorsNum += 1;
         this.aNumbers = Array(this.actorsNum).fill(0).map((x,i)=>i); 
+        this.rolesNum += 1;
+        this.rNumbers = Array(this.rolesNum).fill(0).map((x,i)=>i); 
     }
 
     decreaseActorsNum(event: Event) : void {
         this.actorsNum -= 1;
         this.aNumbers = Array(this.actorsNum).fill(0).map((x,i)=>i);
+        this.rolesNum -= 1;
+        this.rNumbers = Array(this.rolesNum).fill(0).map((x,i)=>i); 
     }
 
     increaseWrittersNum(event: Event) : void {
