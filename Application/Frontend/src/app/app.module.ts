@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Ng2CompleterModule } from 'ng2-completer';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -42,6 +43,7 @@ import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
   imports: [
     BrowserModule,
     FormsModule,
+    Ng2CompleterModule,
     HttpClientModule, 
     [SweetAlert2Module.forRoot()],
     RouterModule.forRoot([

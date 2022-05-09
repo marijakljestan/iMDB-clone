@@ -20,9 +20,4 @@ public class CrewMember {
    private String firstName;
    @Column(name = "last_name", nullable = false)
    private String lastName;
-
-   /*@ManyToMany(fetch = FetchType.LAZY)
-   @JoinTable(name="movie_crew", joinColumns = @JoinColumn(name="crew_member_id", referencedColumnName = "crew_member_id"),
-                          inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "movie_id"))
-   private Set<Movie> movies;*/
 }

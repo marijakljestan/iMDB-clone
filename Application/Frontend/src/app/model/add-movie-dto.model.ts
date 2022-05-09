@@ -17,13 +17,12 @@ export enum Genre {
    Biography
 }
 
-export class Movie {
-    public id?: number;
+export class AddMovieDto {
     public name: string;
     public year: number;
     public countryOfOrigin?: string;
     public durationInMinutes?: number;
-    public genres?: Genre[];
+    public genres: string[];
     public description?: string;
     public storyline?: string;
     public coverImage: string;
@@ -34,9 +33,8 @@ export class Movie {
     public actors: Actor[] = [];
     public reviews: Review[] = [];
 
-    constructor (id: number, name: string, year: number, countryOfOrigin: string, durationInMinutes: number, genres: Genre[],
+    constructor (name: string, year: number, countryOfOrigin: string, durationInMinutes: number, genres: string[],
                  description: string, storyline: string, coverImage: string, images: string[], averageGrade: number){
-        this.id = id;
         this.name = name;
         this.year = year;
         this.countryOfOrigin = countryOfOrigin;
