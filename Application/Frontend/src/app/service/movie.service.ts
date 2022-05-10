@@ -47,8 +47,8 @@ export class MovieService {
         })
     }
 
-    addMovie(movie: AddMovieDto) : Observable<Movie> {
-        return this.http.post<Movie>(this.baseUrlMovies, movie, {headers: this.headers});
+    addMovie(movie: AddMovieDto) : Observable<Number> {
+        return this.http.post<Number>(this.baseUrlMovies, movie, {headers: this.headers});
     }
 
     getMovieById(id: number) : Observable<MovieDto> {

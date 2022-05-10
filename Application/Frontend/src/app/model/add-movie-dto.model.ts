@@ -20,7 +20,7 @@ export class AddMovieDto {
     public year?: number;
     public countryOfOrigin?: string;
     public durationInMinutes?: number;
-    public genres: string[];
+    public genres: number[];
     public description?: string;
     public storyline?: string;
     public coverImage: string;
@@ -31,7 +31,7 @@ export class AddMovieDto {
     public actors: Actor[] = [];
 
 
-    constructor (name: string, year: number, countryOfOrigin: string, durationInMinutes: number, genres: string[],
+    constructor (name: string, year: number, countryOfOrigin: string, durationInMinutes: number, genres: number[],
                  description: string, storyline: string, coverImage: string, images: string[], averageGrade: number){
         this.name = name;
         this.year = year;

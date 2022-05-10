@@ -18,5 +18,4 @@ public class CrewMember {
    private int id;
    @Column(name = "name", nullable = false)
    private String name;
-   private String lastName;
 }

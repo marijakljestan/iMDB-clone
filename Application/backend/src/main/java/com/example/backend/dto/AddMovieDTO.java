@@ -14,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 public class AddMovieDTO {
+    private int id;
     private String name;
     private int year;
     private String countryOfOrigin;

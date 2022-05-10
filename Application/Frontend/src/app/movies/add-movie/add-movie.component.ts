@@ -7,6 +7,7 @@ import { AddMovieDto } from 'src/app/model/add-movie-dto.model';
 import { CrewMember } from 'src/app/model/crew-member.model';
 import { MovieCrewService } from 'src/app/service/movie-crew.service';
 import { MovieService } from 'src/app/service/movie.service';
+import Swal from 'sweetalert2';
 
     @Component({
     selector: 'add-movie',
@@ -80,7 +81,24 @@ import { MovieService } from 'src/app/service/movie.service';
             let actor = new Actor(this.newActors[i], "", this.newRoles[i]);
             this.newMovie.actors.push(actor);
         }
-        this.movieService.addMovie(this.newMovie);
+        this.movieService.addMovie(this.newMovie).subscribe(response => {
+            Swal.fire({
+                title: 'Success!',
+                text: 'New movie added!',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                position: 'top-right'
+              });    
+            },  (error) => {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Internal server error!',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                position: 'top-right'
+              })
+            }
+        );
     }
 
     onActorSelect(selected: CompleterItem){
@@ -134,7 +152,7 @@ import { MovieService } from 'src/app/service/movie.service';
 
     onCheckboxChange(event: Event) {
         const element = event.currentTarget as HTMLInputElement;
-        this.newMovie.genres.push(element.value);
+        this.newMovie.genres.push(+element.value);
     }
 
     posterAdded(event: Event) {
@@ -179,7 +197,7 @@ import { MovieService } from 'src/app/service/movie.service';
     }
 
     cancelHandler() {
-        this.router.navigate(['/homePage']);
+        this.router.navigate(['/home']);
     }
 }
 
