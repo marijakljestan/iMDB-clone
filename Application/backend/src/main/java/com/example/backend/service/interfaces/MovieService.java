@@ -1,5 +1,6 @@
 package com.example.backend.service.interfaces;
 
+import com.example.backend.dto.AddMovieDTO;
 import com.example.backend.dto.MovieDTO;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface MovieService {
 
     MovieDTO getMovieById(Integer id);
 
-    MovieDTO addMovie(MovieDTO movieDTO);
+    int addMovie(AddMovieDTO movieDTO);
 
     MovieDTO editMovie(MovieDTO movieDTO);
 

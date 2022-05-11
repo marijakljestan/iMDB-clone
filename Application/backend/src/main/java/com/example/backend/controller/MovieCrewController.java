@@ -1,7 +1,7 @@
 package com.example.backend.controller;
 
-import com.example.backend.dto.MovieCrewDTO;
-import com.example.backend.service.interfaces.MovieCrewService;
+import com.example.backend.dto.CrewMemberDTO;
+import com.example.backend.service.interfaces.CrewMemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,16 +18,26 @@ import java.util.List;
 @AllArgsConstructor
 public class MovieCrewController {
 
-    private final MovieCrewService movieCrewService;
+    private final CrewMemberService movieCrewService;
 
     @GetMapping("/directors/{id}")
-    public ResponseEntity<List<MovieCrewDTO>> getMovieDirectors(@PathVariable("id") Integer movieId){
+    public ResponseEntity<List<CrewMemberDTO>> getMovieDirectors(@PathVariable("id") Integer movieId){
         return new ResponseEntity<>(movieCrewService.getMovieDirectors(movieId), HttpStatus.OK);
     }
 
     @GetMapping("/writters/{id}")
-    public ResponseEntity<List<MovieCrewDTO>> getMovieWritters(@PathVariable("id") Integer movieId){
+    public ResponseEntity<List<CrewMemberDTO>> getMovieWritters(@PathVariable("id") Integer movieId){
         return new ResponseEntity<>(movieCrewService.getMovieWritters(movieId), HttpStatus.OK);
+    }
+
+    @GetMapping("/directors")
+    public ResponseEntity<List<CrewMemberDTO>> getAllDirectors(){
+        return new ResponseEntity<>(movieCrewService.getAllDirectors(), HttpStatus.OK);
+    }
+
+    @GetMapping("/writters")
+    public ResponseEntity<List<CrewMemberDTO>> getMAllWritters(){
+        return new ResponseEntity<>(movieCrewService.getAllWritters(), HttpStatus.OK);
     }
 
 }

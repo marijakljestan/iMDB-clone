@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.AddMovieDTO;
 import com.example.backend.dto.MovieDTO;
 import com.example.backend.service.interfaces.MovieService;
 import lombok.AllArgsConstructor;
@@ -33,16 +34,19 @@ public class MovieController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<MovieDTO> addMovie(@RequestBody MovieDTO movieDTO){
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Integer> addMovie(@RequestBody AddMovieDTO movieDTO){
         return new ResponseEntity<>(movieService.addMovie(movieDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<MovieDTO> editMovie(@RequestBody MovieDTO movieDTO){
         return new ResponseEntity<>(movieService.editMovie(movieDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteMovie(@PathVariable("id") Integer id){
         movieService.deleteMovie(id);
         return new ResponseEntity<>("Movie deleted!", HttpStatus.OK);

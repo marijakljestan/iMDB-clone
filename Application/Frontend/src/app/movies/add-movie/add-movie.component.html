@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" *ngIf="filteredDirectors.length > 0">
     <navbar></navbar>
     <div class="title-wrapper">
         <span class="vl"></span>
@@ -6,14 +6,19 @@
     </div>
     <div class="form-wrapper">
         <div class="left-side">
-            <input class="form-input" type="text" placeholder="Name*" ><br/>
-            <input class="form-input" type="numver" placeholder="Duration in minutes*"><br/>
-            <input class="form-input" type="text"   placeholder="Country of origin*"><br/><hr/><br/>
-            <textarea placeholder="Description*"   class="description" ></textarea><br/>
-            <textarea placeholder="Storyline*"     class="storyline"></textarea><br/><hr/><br/>
+            <input class="form-input" type="text"    [(ngModel)]="newMovie.name"  placeholder="Name*" ><br/>
+            <input class="form-input" type="number"  [(ngModel)]="newMovie.durationInMinutes" placeholder="Duration in minutes*"><br/>
+            <input class="form-input" type="number"  [(ngModel)]="newMovie.year" placeholder="Year*"><br/>
+            <input class="form-input" type="text"    [(ngModel)]="newMovie.countryOfOrigin" placeholder="Country of origin*"><br/><hr/><br/>
+            <textarea placeholder="Description*"     [(ngModel)]="newMovie.description" class="description" ></textarea><br/>
+            <textarea placeholder="Storyline*"       [(ngModel)]="newMovie.storyline" class="storyline"></textarea><br/><hr/><br/>
              <!-- Director -->
-            <h6> Director: </h6><br/>
-            <ul> <li><input class="form-input" type="text"><br/></li></ul><br/><hr/><br/>
+             <div class="director-wrapper">
+                <h6> Director: </h6><br/>
+                <ul> <li class="col-sm-9">
+                    <ng2-completer [textNoResults]="'false'" [(ngModel)]="newDirector" [inputClass]="'form-control'" [datasource]="filteredDirectors" [minSearchLength]="1"></ng2-completer>
+                </li></ul><br/><hr/><br/>
+            </div>
              <!-- Writters -->
              <div class="multiple-inputs">
                 <h6> Writters: </h6>
@@ -23,7 +28,9 @@
                 </div>
             </div>
             <ul *ngIf="writtersNum">
-                <li *ngFor="let w of wNumbers"> <input type="text" class="form-input"/> </li>
+                <li class="col-sm-9" *ngFor="let w of wNumbers">
+                    <ng2-completer  [textSearching]="'false'" [textNoResults]="'false'" (selected)="onWritterSelect($event)" [inputClass]="'form-control'" [datasource]="filteredWritters" [minSearchLength]="1"></ng2-completer>
+                </li>
             </ul><hr/><br/>
              <!--Actors-->
              <div class="multiple-inputs">
@@ -33,8 +40,12 @@
                     <span><i class="fas fa-minus-square fa-2x icon" (click)="decreaseActorsNum($event)"></i></span>
                 </div>
             </div>
-            <ul *ngIf="actorsNum">
-                <li *ngFor="let a of aNumbers"><input type="text" class="form-input"/> </li>
+            <ul class="actor-and-role" *ngFor="let a of aNumbers">
+                <li class="col-sm-4" >
+                    <ng2-completer [textNoResults]="'false'" (selected)="onActorSelect($event)" [inputClass]="'form-control'" [datasource]="filteredActors" [minSearchLength]="2"></ng2-completer>
+                </li>
+                <label > as </label>
+                <input  class="role-input" type="text"    [(ngModel)]="newRoles[a]"  placeholder="Role*" ><br/>
             </ul><hr/><br/>           
         </div>
 
@@ -115,8 +126,8 @@
                 </div>       
             </div><br/><hr/><br/>
             <div class="btn-div">
-                <button class="btn cancel-button">Cancel</button>
-                <button class="btn save-button" >Confirm</button> 
+                <button class="btn cancel-button" (click)="cancelHandler()">Cancel</button>
+                <button class="btn save-button"   (click)="addMovie($event)">Confirm</button> 
             </div>
         </div>
     </div>
