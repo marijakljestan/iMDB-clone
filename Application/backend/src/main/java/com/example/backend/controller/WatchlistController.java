@@ -20,20 +20,20 @@ public class WatchlistController {
     private final WatchlistService watchlistService;
 
     @GetMapping("/")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<Iterable<MovieDTO>> getUserWatchlist(Principal principal){
         return new ResponseEntity<>(watchlistService.getUsersWatchlist(principal.getName()), HttpStatus.OK);
     }
 
     @PostMapping("/")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<RegisteredUserDTO> addMovieToWatchlist(Principal principal, @RequestBody MovieDTO movie){
         RegisteredUserDTO user = watchlistService.addMovieToWatchlist(principal.getName(), movie);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<RegisteredUserDTO> removeMovieFromWatchlist(Principal principal, @PathVariable("id") Integer movieId){
         RegisteredUserDTO user = watchlistService.deleteMovieFromWatchlist(principal.getName(), movieId);
         return new ResponseEntity<>(user, HttpStatus.OK);

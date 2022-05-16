@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
@@ -35,7 +37,7 @@ public class MovieController {
 
     @PostMapping("/")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Integer> addMovie(@RequestBody AddMovieDTO movieDTO){
+    public ResponseEntity<Integer> addMovie(@RequestBody AddMovieDTO movieDTO) throws IOException {
         return new ResponseEntity<>(movieService.addMovie(movieDTO), HttpStatus.CREATED);
     }
 

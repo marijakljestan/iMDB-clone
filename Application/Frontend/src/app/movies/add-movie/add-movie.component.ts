@@ -160,17 +160,16 @@ import Swal from 'sweetalert2';
         let file;
         if(element.files !== null){
             file = element.files[0];
-            this.createBase64Image(file);
             this.imagePoster = URL.createObjectURL(file);
-
             const reader= new FileReader();
             reader.onload = (e) =>{
-                let img;
-                if(e.target !== null){
-                    img = e.target.result;
-                    if(img != null) this.newMovie.coverImage = img.toString();
-                }
+            let img;
+            if(e.target !== null){
+                img = e.target.result;
+                if(img != null) this.newMovie.coverImage = img.toString();
             }
+            }
+            reader.readAsDataURL(file);
         }
     }
 
@@ -178,9 +177,9 @@ import Swal from 'sweetalert2';
         const element = event.currentTarget as HTMLInputElement;
         let file;
         if(element.files !== null){
-        file = element.files[0];
-        this.createBase64Image(file);
-        this.imagesFrontend.push(URL.createObjectURL(file));
+            file = element.files[0];
+            this.createBase64Image(file);
+            this.imagesFrontend.push(URL.createObjectURL(file));
         }
     }
 

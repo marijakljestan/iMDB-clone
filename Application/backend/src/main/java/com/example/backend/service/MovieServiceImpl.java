@@ -12,7 +12,10 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -22,6 +25,7 @@ public class MovieServiceImpl implements MovieService {
     private final MovieCrewService movieCrewService;
     private final MovieRoleService movieRoleService;
     private final ActorService actorService;
+    private final S3Services s3Services;
     private final MovieRepository movieRepository;
     private final ModelMapper modelMapper;
 
@@ -37,8 +41,17 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public int addMovie(AddMovieDTO movieDTO) {
+    public int addMovie(AddMovieDTO movieDTO) throws IOException {
         Movie newMovie = modelMapper.map(movieDTO, Movie.class);
+        newMovie.setCoverImage(s3Services.saveFileToS3("posters/" + movieDTO.getName().replaceAll("\\s+","")+".png", movieDTO.getCoverImage()));
+        newMovie.setImages(new HashSet<>());
+        int i = 1;
+        for(String image: movieDTO.getImages()) {
+            Set<String> images = newMovie.getImages();
+            images.add(s3Services.saveFileToS3(movieDTO.getName().replaceAll("\\s+","") + i + ".png", image));
+            newMovie.setImages(images);
+            ++i;
+        }
         Movie savedMovie = this.movieRepository.save(newMovie);
         movieDTO.setId(savedMovie.getId());
         saveMovieCrew(movieDTO);
