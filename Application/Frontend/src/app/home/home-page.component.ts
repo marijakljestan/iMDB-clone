@@ -60,7 +60,7 @@ export class HomePageComponent implements OnInit {
     displaySearchResults(eventData: string){
         this.searchResults = [];
         for(let movie of this.topRatedList){
-        if(movie.name.toLowerCase().indexOf(eventData) !== -1)
+        if(movie.name.toLowerCase().indexOf(eventData.toLowerCase()) !== -1)
             this.searchResults.push(movie);
         }
     }

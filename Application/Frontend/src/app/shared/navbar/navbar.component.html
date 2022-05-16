@@ -35,7 +35,7 @@
         <table  class="dropdown-menu dropdown-menu-dark" aria-labelledby="search-field" style="width: 54%;"> 
           <label *ngIf="searchResults.length === 0">No results found</label>
           <tr class="dropdown-item result-header" *ngFor="let movie of searchResults">
-              <img class="movie-img" [src]=movie.image />
+              <img class="movie-img" [src]=movie.coverImage />
               <div class="title-and-image">
                   <label> {{movie.name}} </label>
                   <label>{{movie.year}}</label>
