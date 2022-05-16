@@ -50,7 +50,7 @@ public class S3ServicesImpl implements S3Services {
         InputStream fis = new ByteArrayInputStream(bI);
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(bI.length);
-        metadata.setContentType("image/png");
+        metadata.setContentType("image/jpeg");
         metadata.setCacheControl("public, max-age=31536000");
         s3Client.putObject(bucketName, keyName, fis, metadata);
         return s3Client.getUrl(bucketName, keyName).toString();

@@ -43,12 +43,12 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public int addMovie(AddMovieDTO movieDTO) throws IOException {
         Movie newMovie = modelMapper.map(movieDTO, Movie.class);
-        newMovie.setCoverImage(s3Services.saveFileToS3("posters/" + movieDTO.getName().replaceAll("\\s+","")+".png", movieDTO.getCoverImage()));
+        newMovie.setCoverImage(s3Services.saveFileToS3("posters/" + movieDTO.getName().replaceAll("\\s+","-")+".jpg", movieDTO.getCoverImage()));
         newMovie.setImages(new HashSet<>());
         int i = 1;
         for(String image: movieDTO.getImages()) {
             Set<String> images = newMovie.getImages();
-            images.add(s3Services.saveFileToS3(movieDTO.getName().replaceAll("\\s+","") + i + ".png", image));
+            images.add(s3Services.saveFileToS3(movieDTO.getName().replaceAll("\\s+","-") + "/" + movieDTO.getName().replaceAll("\\s+","-") + i + ".jpg", image));
             newMovie.setImages(images);
             ++i;
         }
