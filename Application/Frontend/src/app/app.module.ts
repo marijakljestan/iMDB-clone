@@ -21,6 +21,8 @@ import { StarRatingComponent } from './shared/star-rating/star-rating.component'
 import { CommentsListComponent } from './movies/comments-list/comments-list.component';
 import { AddMovieComponent } from './movies/add-movie/add-movie.component';
 import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
     StarRatingComponent,
     CommentsListComponent,
     AddMovieComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    LandingPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,7 @@ import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
        { path: 'comments/:id', component: CommentsListComponent},
        { path: 'movie/:id', component: MoviePageComponent},
        { path: 'home', component: HomePageComponent },
+       { path: 'landing-page', component: LandingPageComponent },
        { path: '',   redirectTo: 'home', pathMatch: 'full'},
        { path: '**', redirectTo: 'home', pathMatch: 'full'}
     ])
