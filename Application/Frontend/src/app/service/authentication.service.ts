@@ -5,6 +5,7 @@ import { Authentication } from '../model/authentication.model';
 import Swal from 'sweetalert2';
 import { JwtToken } from '../model/jwtToken.model';
 import { User } from '../model/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthenticationService {;
     customHeaders = new HttpHeaders({'Content-Type' : 'application/json',
                     'Authorization' : `Bearer ${localStorage.jwt}`})
 
-    constructor(private http: HttpClient, ) {}
+    constructor(private http: HttpClient, private router : Router) {}
 
      login(credentials: Authentication) {
         return this.http.post<JwtToken>(`${this.baseUrlAuth}login`, credentials).subscribe((response)=>{
@@ -24,6 +25,7 @@ export class AuthenticationService {;
             this.customHeaders = new HttpHeaders({'Content-Type' : 'application/json',
                                                   'Authorization' : `Bearer ${localStorage.jwt}`})
             this.getLoggedUser();
+            this.router.navigate(['/home'])
           }, (error)=>{
             Swal.fire({
                 title: 'Ooops',

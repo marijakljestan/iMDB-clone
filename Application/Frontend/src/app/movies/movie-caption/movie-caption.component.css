@@ -15,8 +15,9 @@
 .duration-and-year{
     display: flex;
     flex-direction: row;
+    width: 200px;
     justify-content: space-around;
-    padding: 0 10%;
+    padding-left: 0%;
 }
 .rating span{
     font-size: 20px;

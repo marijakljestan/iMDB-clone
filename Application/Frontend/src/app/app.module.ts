@@ -67,7 +67,7 @@ import { RegisterComponent } from './register/register.component';
     [SweetAlert2Module.forRoot()],
     RouterModule.forRoot([
        { path: 'add-movie', component: AddMovieComponent},
-       { path: 'user/:id',  component: UserProfileComponent},
+       { path: 'user',  component: UserProfileComponent},
        { path: 'comments/:id', component: CommentsListComponent},
        { path: 'movie/:id', component: MoviePageComponent},
        { path: 'home', component: HomePageComponent },

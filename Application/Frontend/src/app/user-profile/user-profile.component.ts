@@ -11,6 +11,7 @@ import { UserService } from '../service/user.service';
 })
 export class UserProfileComponent implements OnInit {
     user: User | any;
+    role: string = "";
     watchlist: MovieDto[] = [];
     reviewedByUser: MovieDto[] = [];
     newPassword: string = "";
@@ -18,8 +19,10 @@ export class UserProfileComponent implements OnInit {
     constructor(private userService: UserService, private movieService: MovieService) { }
 
     ngOnInit(): void {
-        if(localStorage.getItem("loggedUser") !== null)
+        if(localStorage.getItem("loggedUser") !== null){
             this.user = JSON.parse(localStorage.getItem("loggedUser")!);
+            this.role = this.user.role.name;
+        }
         this.movieService.getWatchlist().subscribe(data => {
             this.watchlist = data;
             for(let movie of this.watchlist)
