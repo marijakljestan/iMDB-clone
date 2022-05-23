@@ -26,7 +26,6 @@
             </div>
             <i class="fas fa-solid fa-pen" (click)="editProfile($event)"></i>
         </div><br/>
-        <hr/><br/>
         <movie-list *ngIf="watchlist.length > 0"      [title]="'Your watchlist'" [movies]="watchlist"  [displayedMoviesLength]="3"></movie-list><br/>
         <movie-list *ngIf="reviewedByUser.length > 0" [title]="'Your ratings'"   [movies]="reviewedByUser"  [displayedMoviesLength]="3"></movie-list><br/>
     </div>

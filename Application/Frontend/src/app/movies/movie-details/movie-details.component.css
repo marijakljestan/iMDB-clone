@@ -33,6 +33,16 @@
     height: 50px;
     border: none;
 }
+.btn-watchlisted{
+    background-color: rgb(49, 47, 47);
+    color: #f3ce13;
+    width: 200px;
+    height: 50px;
+    border: none;
+}
+.btn-watchlisted:hover{
+    background-color: rgb(92, 86, 86);
+}
 .fa{
     margin-right: 10px;
 }
