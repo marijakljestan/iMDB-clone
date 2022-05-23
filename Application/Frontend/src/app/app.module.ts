@@ -29,6 +29,7 @@ import { AddMovieComponent } from './movies/add-movie/add-movie.component';
 import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LoginComponent } from './login/login.component';
     AddMovieComponent,
     SafeUrlPipe,
     LandingPageComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +71,7 @@ import { LoginComponent } from './login/login.component';
        { path: 'comments/:id', component: CommentsListComponent},
        { path: 'movie/:id', component: MoviePageComponent},
        { path: 'home', component: HomePageComponent },
+       { path: 'register', component: RegisterComponent },
        { path: 'login', component: LoginComponent },
        { path: 'landing-page', component: LandingPageComponent },
        { path: '',   redirectTo: 'landing-page', pathMatch: 'full'},
