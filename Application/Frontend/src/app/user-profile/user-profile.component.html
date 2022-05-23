@@ -15,18 +15,17 @@
     <div class="btn-submit-wrapper"><button class="btn-submit" (click)="editUser()">CONFIRM</button></div>
 </div>
 
-<div class="page">
+<div class="page" *ngIf="user">
     <navbar></navbar>
     <div class="profile">
         <div class="user-details">
             <div class="data">
                 <h3> {{user.firstName}} {{user.lastName}} </h3>
                 <h6> {{user.email}}</h6><br/><br/>
-                <a [routerLink]="['/add-movie']" ><div> Add new movie</div></a>
+                <a *ngIf="role == 'ROLE_ADMIN'" [routerLink]="['/add-movie']" ><div> Add new movie</div></a>
             </div>
             <i class="fas fa-solid fa-pen" (click)="editProfile($event)"></i>
         </div><br/>
-        <hr/><br/>
         <movie-list *ngIf="watchlist.length > 0"      [title]="'Your watchlist'" [movies]="watchlist"  [displayedMoviesLength]="3"></movie-list><br/>
         <movie-list *ngIf="reviewedByUser.length > 0" [title]="'Your ratings'"   [movies]="reviewedByUser"  [displayedMoviesLength]="3"></movie-list><br/>
     </div>

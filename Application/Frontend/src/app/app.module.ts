@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,6 +27,9 @@ import { StarRatingComponent } from './shared/star-rating/star-rating.component'
 import { CommentsListComponent } from './movies/comments-list/comments-list.component';
 import { AddMovieComponent } from './movies/add-movie/add-movie.component';
 import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -38,22 +47,35 @@ import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
     StarRatingComponent,
     CommentsListComponent,
     AddMovieComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    LandingPageComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule,
     FormsModule,
+    MatIconModule,
+    MatFormFieldModule,
     Ng2CompleterModule,
     HttpClientModule, 
     [SweetAlert2Module.forRoot()],
     RouterModule.forRoot([
        { path: 'add-movie', component: AddMovieComponent},
-       { path: 'user/:id',  component: UserProfileComponent},
+       { path: 'user',  component: UserProfileComponent},
        { path: 'comments/:id', component: CommentsListComponent},
        { path: 'movie/:id', component: MoviePageComponent},
        { path: 'home', component: HomePageComponent },
-       { path: '',   redirectTo: 'home', pathMatch: 'full'},
-       { path: '**', redirectTo: 'home', pathMatch: 'full'}
+       { path: 'register', component: RegisterComponent },
+       { path: 'login', component: LoginComponent },
+       { path: 'landing-page', component: LandingPageComponent },
+       { path: '',   redirectTo: 'landing-page', pathMatch: 'full'},
+       { path: '**', redirectTo: 'landing-page', pathMatch: 'full'}
     ])
   ],
   bootstrap: [AppComponent]

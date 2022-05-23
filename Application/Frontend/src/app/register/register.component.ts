@@ -1,0 +1,33 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../model/user.model';
+import { UserService } from '../service/user.service';
+
+@Component({
+  selector: 'register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
+})
+export class RegisterComponent implements OnInit {
+
+    newUser: User = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: ''
+    };
+
+    registerForm = new FormGroup({
+        firstName : new FormControl('',[Validators.required, Validators.maxLength(10)]),
+        lastName : new FormControl('', [Validators.required]),
+        email : new FormControl('',[Validators.required, Validators.email]),
+        password : new FormControl('', [Validators.required, Validators.minLength(6)]),
+    })
+
+    constructor(private userService: UserService, private router: Router) {}
+
+    ngOnInit(): void {}
+
+    onRegister(){  this.userService.registerUser(this.newUser); }
+}

@@ -4,6 +4,7 @@ import { User } from '../model/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class UserService {
     headers = new HttpHeaders({'Content-Type' : 'application/json',
                 'Authorization' : `Bearer ${localStorage.jwt}`})
 
-    constructor(private http : HttpClient) {}
+    constructor(private http : HttpClient, private router : Router) {}
 
         getLoggedUser() : Observable<User> {
             return this.http.get<User>(this.baseUrlUsers + "whoami", {headers : this.headers});
@@ -33,12 +34,12 @@ export class UserService {
             return this.http.post<User>(this.baseUrlUsers, user).subscribe((value)=>{
                 Swal.fire({
                 title: 'Success!',
-                text: 'You successfully registered, check your email!',
+                text: 'You successfully registered!',
                 icon: 'success',
                 confirmButtonText: 'OK',
                 position: 'top-right'
                 });
-                //this.router.navigate(['/login']);
+                this.router.navigate(['/login']);
             }, (error)=>{
                 Swal.fire({
                     title: 'Ooops',
