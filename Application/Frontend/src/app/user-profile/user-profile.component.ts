@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MovieDto } from '../model/movie-dto.model';
 import { User } from '../model/user.model';
 import { MovieService } from '../service/movie.service';
-import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'user-profile',
@@ -14,9 +13,8 @@ export class UserProfileComponent implements OnInit {
     role: string = "";
     watchlist: MovieDto[] = [];
     reviewedByUser: MovieDto[] = [];
-    newPassword: string = "";
 
-    constructor(private userService: UserService, private movieService: MovieService) { }
+    constructor(private movieService: MovieService) { }
 
     ngOnInit(): void {
         if(localStorage.getItem("loggedUser") !== null){
@@ -33,28 +31,5 @@ export class UserProfileComponent implements OnInit {
             for(let movie of this.reviewedByUser)
                 movie.notInWatchlist = true;
         });
-    }
-
-    editUser(){
-        this.userService.editUser(this.user).subscribe(data =>{
-            this.user = data;
-            localStorage.setItem("loggedUser", JSON.stringify(data));
-        });
-        this.closeModal();
-    }
-
-    showChangePasswordForm(event: MouseEvent) : void{
-        event.preventDefault();
-        (document.querySelector('.password') as HTMLElement).style.display = 'block';
-    }
-
-    editProfile(event: MouseEvent) : void{
-        event.preventDefault();
-        (document.querySelector('#edit-profile-modal') as HTMLElement).style.display = 'flex';
-    }
-
-    closeModal() : void{
-        (document.querySelector('.password') as HTMLElement).style.display = 'none';
-        (document.querySelector('#edit-profile-modal') as HTMLElement).style.display = 'none';
     }
 }
