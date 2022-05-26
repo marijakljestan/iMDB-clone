@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user.model';
 import { UserService } from '../service/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from '../service/authentication.service';
+import { ChangePassword } from '../model/change-password.model';
 
 @Component({
   selector: 'edit-profile',
@@ -11,7 +13,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class EditProfileComponent implements OnInit {
     user: User | any;
     role: string = "";
-    newPassword: string = "";
+    changePasswordDto: ChangePassword = {
+        email: "",
+        currentPassword: "",
+        newPassword: ""
+    }
     displayChangePasswordForm: boolean = false;
 
     changePasswordForm = new FormGroup({
@@ -20,7 +26,7 @@ export class EditProfileComponent implements OnInit {
         confirmPassword : new FormControl('', [Validators.required, Validators.minLength(6)]),
     })
 
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService, private authService: AuthenticationService) { }
 
     ngOnInit(): void {
         if(localStorage.getItem("loggedUser") !== null){
@@ -30,7 +36,8 @@ export class EditProfileComponent implements OnInit {
     }
 
     changePassword() {
-
+        this.changePasswordDto.email = this.user.email;
+        this.authService.changePassword(this.changePasswordDto);
     }
 
     editUser(){

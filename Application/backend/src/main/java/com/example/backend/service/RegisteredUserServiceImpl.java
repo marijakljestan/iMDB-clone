@@ -1,7 +1,9 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.ChangePasswordDTO;
 import com.example.backend.dto.EditUserDTO;
 import com.example.backend.dto.RegisteredUserDTO;
+import com.example.backend.exception.PasswordsNotMatchException;
 import com.example.backend.model.RegisteredUser;
 import com.example.backend.model.Role;
 import com.example.backend.repository.RegisteredUserRepository;
@@ -53,5 +55,15 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         user.setLastName(userDTO.getLastName());
         this.userRepository.save(user);
         return modelMapper.map(user, RegisteredUserDTO.class);
+    }
+
+    @Override
+    public void changePassword(ChangePasswordDTO changePasswordDTO) {
+        RegisteredUser user = this.userRepository.findByEmail(changePasswordDTO.getEmail());
+//        if(!user.getPassword().equals(passwordEncoder.encode(changePasswordDTO.getCurrentPassword())))
+//            throw new PasswordsNotMatchException();
+
+        user.setPassword(passwordEncoder.encode(changePasswordDTO.getNewPassword()));
+        this.userRepository.save(user);
     }
 }

@@ -20,9 +20,9 @@
             <div class="change-info" id="password">
                 <label id="pass-label" *ngIf="!displayChangePasswordForm" (click)="showChangePasswordForm($event)">Change password?</label>
                 <div class="password-fields" *ngIf="displayChangePasswordForm">
-                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Current password" required  type="password" class="form-input"></div><br/>
-                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="New password" required  [(ngModel)]="newPassword" type="password" class="form-input"> </div><br/>
-                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Confirm password" required validateEqual="newPassword" type="password" class="form-input"> </div>
+                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Current password" required  [(ngModel)]="changePasswordDto.currentPassword" type="password" class="form-input"></div><br/>
+                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="New password"     required  [(ngModel)]="changePasswordDto.newPassword" type="password" class="form-input"> </div><br/>
+                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Confirm password" required validateEqual="changePasswordDto.newPassword" type="password" class="form-input"> </div>
                     <div class="buttons" style="margin-top: 15%">
                         <button  class="btn-change-password" (click)="changePassword()">Change password</button>
                     </div>
