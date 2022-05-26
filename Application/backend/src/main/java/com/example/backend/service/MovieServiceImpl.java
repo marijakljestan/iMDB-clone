@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,6 +39,20 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public MovieDTO getMovieById(Integer id) {
         return modelMapper.map(this.movieRepository.findById(id).get(), MovieDTO.class);
+    }
+
+    @Override
+    public List<MovieDTO> getMoviesWithSameGenre(Integer id) {
+        List<MovieDTO> moviesWithSameGenre = new ArrayList<>();
+        Set<Genre> filter = getMovieById(id).getGenres();
+        for (MovieDTO movie : getAllMovies())
+            for (Genre genre : movie.getGenres())
+                if (filter.contains(genre) && movie.getId() != id) {
+                    moviesWithSameGenre.add(movie);
+                    break;
+                }
+
+        return moviesWithSameGenre;
     }
 
     @Override

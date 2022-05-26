@@ -12,7 +12,7 @@ export class MovieListComponent implements OnInit {
   
   @Input() title : string = "";
   @Input() movies : MovieDto[] = [];
-  moviesForDisplay: any[] = [];
+  moviesForDisplay: MovieDto[] = [];
   @Input() displayedMoviesLength: number = 5 ;
   initialMovieIndex: number = 0;
   loggedUser: User | any;

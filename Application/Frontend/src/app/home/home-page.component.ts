@@ -47,7 +47,8 @@ export class HomePageComponent implements OnInit {
             }
             this.topRatedList = this.allMovies;
             this.topRatedList.sort((a, b) => (a.averageGrade > b.averageGrade ? -1 : 1));
-            this.trendingList = this.allMovies;
+            this.trendingList = this.allMovies.slice();
+            this.trendingList.sort(() => Math.random() - 0.5);
         });
     }
 
