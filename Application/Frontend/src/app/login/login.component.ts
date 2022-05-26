@@ -26,9 +26,5 @@ export class LoginComponent implements OnInit {
     
     async onLogin(){
         this.authSerive.login(this.loginCredentials);
-        /*await this.userService.getLoggedUser().subscribe(data => { 
-            this.loggedUser = data;
-        });*/
     }
-
 }
