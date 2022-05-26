@@ -1,34 +1,8 @@
 <div class="header">
     <a id="logo" [routerLink]="['/home']">{{title}}</a> 
     <div class="search">
-      <div class="filter">
-          <a href="#" class="link-light dropdown-toggle item" 
-           role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All</a>
-          <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Movies</a>
-            <a class="dropdown-item" href="#">TV shows</a>
-          </div>
-      </div>
-      <div class="search-field-wrapper">
-        <input id="search-field" class="link-dark dropdown-toggle item" type="search" (keyup.enter)="onAddSearchParam()" (focusout)="onFocusLost($event)" [(ngModel)]='searchParam' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <table  class="dropdown-menu dropdown-menu-dark" aria-labelledby="search-field" style="width: 54%;"> 
-          <label *ngIf="searchResults.length === 0">No results found</label>
-          <tr class="dropdown-item result-header" *ngFor="let movie of searchResults">
-              <img class="movie-img" [src]=movie.coverImage />
-              <div class="title-and-image">
-                  <label> {{movie.name}} </label>
-                  <label>{{movie.year}}</label>
-                  <label>Marlon Brando, Al Pacino</label>
-              </div><hr/>
-          </tr>
-        </table>
-      </div>
-      
+      <search-movies style="width: 90%"></search-movies> 
     </div>
-    <!--div class="login" *ngIf="!loggedUser">
-      <a class="link-light item" (click)="openSignUpModal($event)">Sign up</a>
-      <a class="link-light item" (click)="openLoginModal($event)" >Log in</a>
-    </div-->
     <div class="login" >
       <a class="link-light item" routerLink="/user"> My profile</a>
       <a class="link-light item" (click)="logout($event)">Log out</a>

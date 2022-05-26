@@ -30,6 +30,7 @@ import { SafeUrlPipe } from './movies/add-movie/add-movie.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SearchMoviesComponent } from './shared/search-movies/search-movies.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { RegisterComponent } from './register/register.component';
     SafeUrlPipe,
     LandingPageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchMoviesComponent
   ],
   imports: [
     BrowserModule,
