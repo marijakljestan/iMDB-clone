@@ -35,6 +35,11 @@ public class MovieController {
         return new ResponseEntity<>(movieService.getMoviesReviewedByUser(userId), HttpStatus.OK);
     }
 
+    @GetMapping("/genre/{id}")
+    public ResponseEntity<Iterable<MovieDTO>> getMoviesBySameGenre(@PathVariable("id") Integer movieId){
+        return new ResponseEntity<>(movieService.getMoviesWithSameGenre(movieId), HttpStatus.OK);
+    }
+
     @PostMapping("/")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Integer> addMovie(@RequestBody AddMovieDTO movieDTO) throws IOException {

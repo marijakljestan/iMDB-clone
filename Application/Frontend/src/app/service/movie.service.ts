@@ -66,4 +66,8 @@ export class MovieService {
     getAllMovies() : Observable<MovieDto[]> {
         return this.http.get<MovieDto[]>(this.baseUrlMovies);
     }
+
+    getMoviesWithSameGenre(movieId: number) : Observable<MovieDto[]> {
+        return this.http.get<MovieDto[]>(this.baseUrlMovies + 'genre/' + movieId);
+    }
 }
