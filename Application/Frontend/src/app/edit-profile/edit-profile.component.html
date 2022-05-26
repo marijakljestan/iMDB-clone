@@ -1,0 +1,33 @@
+<div class="page" *ngIf="user">
+    <navbar></navbar>
+    <div class="profile">
+        <div class="user-details">
+            <div class="data">
+                <h3> {{user.firstName}} {{user.lastName}} </h3>
+                <h6> {{user.email}}</h6><br/><br/>
+            </div>
+        </div><br/>
+        <div class="change-profile-form">
+            <div class="change-info">
+                <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.firstName" type="text"  class="form-input"> </div><br/>
+                <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.lastName"  type="text"  class="form-input"> </div><br/>
+                <div class="email"><i class="fas fa-at fa-2x"></i>  <input [(ngModel)]="user.email"  [readonly]="true"   type="text"  class="form-input"> </div><br/>
+                <div class="buttons">
+                   <button class="btn-cancel" routerLink="/profile"> Cancel</button>
+                   <button  class="btn-submit" (click)="editUser()">Confirm</button>
+                </div>
+            </div>
+            <div class="change-info" id="password">
+                <label id="pass-label" *ngIf="!displayChangePasswordForm" (click)="showChangePasswordForm($event)">Change password?</label>
+                <div class="password-fields" *ngIf="displayChangePasswordForm">
+                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Current password" type="password" class="form-input"></div><br/>
+                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="New password" [(ngModel)]="newPassword" type="password" class="form-input"> </div><br/>
+                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Confirm password" type="password" class="form-input"> </div>
+                    <div class="buttons" style="margin-top: 15%">
+                        <button  class="btn-change-password" (click)="changePassword()">Change password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
