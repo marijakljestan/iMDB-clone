@@ -53,6 +53,18 @@
     text-decoration: underline;
     cursor: pointer;
 }
+.password-fields .form-input{
+    width: 17vw;
+}
+.password-fields{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.password-fields span {
+    color: red;
+    margin-left: 10%;
+}
 .btn-change-password{
     width: 10em;
     height: 2.1em;
@@ -62,12 +74,21 @@
     border-radius: 10px;
     border: none;
 }
+.btn-change-password:hover{
+    background-color: #85a8e3;
+}
+.btn-change-password:disabled{
+    background-color: #363535;
+}
 .buttons{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-top: 10%;
+}
+.password-fields .buttons{
+    margin-left: 10%;
 }
 .btn-cancel{
     width: 5em;
