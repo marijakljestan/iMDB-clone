@@ -1,0 +1,50 @@
+.title-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin: 2% 18%;
+    justify-content: baseline;
+}
+.vl{
+    border-left: 6px solid #f3ce13;
+    height: 40px;
+}
+.title{
+    margin-left: 15px;
+}
+.actors-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2% 18%;
+}
+.actor-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 20vw;
+    height: 25vh;
+    margin: 20px;
+}
+.actor-role{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-top: 20%;
+}
+.name{
+    font-weight: bold;
+    font-size: 20px;
+}
+.role{
+    color: rgb(105, 102, 102);
+}
+.img-div{
+    height: 70%;
+    width: 40%;
+    margin-top: 10%;
+}
+.img-class{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}

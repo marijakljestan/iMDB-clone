@@ -1,0 +1,41 @@
+<div class="title-wrapper">
+    <span class="title-wrap">
+        <span class="vl"></span>
+        <h3 class="title"> &nbsp; User reviews</h3>
+        <span class="number-of-rates"> {{movie.reviews.length}} </span>
+        <a class="link-light item" [routerLink]="['/comments', movie.id]" *ngIf="movie.reviews.length > 2"><i class="fas fa-thin fa-chevron-right fa-3x"></i></a>
+    </span>
+    <button class="add-review-btn" (click)="addComment($event)"><i class="fas fa-plus"></i>&nbsp; <span> Review </span></button>
+</div>
+
+<div id="add-comment-modal" >
+    <div class="add-comment-header">
+        <img class="movie-img" [attr.src]=movie.coverImage/>
+        <div class="title-and-image">
+            <h4> {{movie.name}} </h4><hr/>
+            <h3> Add your review</h3>
+        </div><hr/>
+    </div>
+    <div class="user-rating">
+        <h5> Your rating</h5>
+        <star-rating (rate)="getRate($event)"></star-rating>
+        <h5> Your review</h5>
+        <textarea class="comment" placeholder="Write your review here" [(ngModel)]="newReview.content"></textarea>
+        <div class="submit-btns">
+            <button class="cancel-btn" (click)="closeModal()"> Cancel </button>
+            <button class="submit-btn" (click)="submitReview()"> Submit </button>
+        </div>
+    </div>
+</div>
+
+<div class="comments-wrapper" *ngIf="movie.reviews.length > 0">
+    <div class="comment-card" *ngFor="let review of reviews">
+        <div class="comment">
+            <div class="rate">
+                <span class="rating-star"><i class="fas fa-star fa-1x" style="color:#f3ce13"></i>  {{review.mark}}/10</span>
+            </div>
+            <p class="content"> {{review.content}} </p>
+        </div>
+    </div>
+</div>
+    

@@ -1,0 +1,33 @@
+<div class="page" *ngIf="movie">
+    <navbar *ngIf="movie"></navbar>
+    <div class="dark-part">
+        <movie-caption *ngIf="movie" [movie]="movie"></movie-caption>
+        <image-gallery *ngIf="movie" [images]="movie.images"></image-gallery>
+        <movie-details *ngIf="movie" [movie]="movie"></movie-details>
+    </div>
+    <div class="light-part">
+        <div class="description">
+            <div class="title-wrapper">
+                <span class="vl"></span>
+                <h3 class="title">Storyline</h3>
+            </div>
+            <div class="storyline"> <p> {{movie.storyline}} </p> </div>
+            <actor-list *ngIf="movie" [actors]="movie.actors"></actor-list>
+            <movie-comments  *ngIf="movie && movie.reviews" [movie]="movie" [reviews]="[movie.reviews[0], movie.reviews[1]]"></movie-comments>
+        </div>
+        <div class="details">
+            <div class="title-wrapper">
+                <span class="vl"></span>
+                <h3 class="title">Details</h3>
+            </div>
+            <div class="details-light">
+                <p class="crew"><span class="role">Release date </span><span class="multiple-details">{{movie.year}} </span> </p><hr/>
+                <p class="crew"><span class="role">Country of origin </span> <span class="multiple-details">{{movie.countryOfOrigin}}</span></p><hr/>
+                <p class="crew"><span class="role">Runtime    </span> <span class="multiple-details">{{movie.durationInMinutes}} </span></p><hr/>
+            </div>
+        </div>
+    </div>
+    <div class="dark-footer">
+        <movie-list *ngIf="moviesRecommended" [title]="recommendation" [movies]="moviesRecommended" [displayedMoviesLength]="4"></movie-list>
+    </div>
+</div>

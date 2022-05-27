@@ -1,0 +1,24 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2% 18%;
+    padding: 1% 0%;
+    color: white;
+    background-color: transparent;
+    margin-bottom: 0px !important;
+}
+.movie .rating{
+    display: flex;
+    flex-direction: column;
+}
+.duration-and-year{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    justify-content: space-around;
+    padding-left: 0%;
+}
+.rating span{
+    font-size: 20px;
+}

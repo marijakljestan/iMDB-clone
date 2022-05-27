@@ -1,0 +1,9 @@
+<div class="page">
+    <navbar></navbar>
+    <image-gallery [images]="images" ></image-gallery>
+    <div class="movie-list">
+        <h1> What to watch</h1><br/>
+        <movie-list *ngIf="topRatedList.length > 0" [title]="'Top picks'" [movies]="topRatedList"></movie-list>
+        <movie-list *ngIf="topRatedList.length > 0" [title]="'Fan favorites'" [movies]="trendingList"></movie-list>
+    </div>
+</div>

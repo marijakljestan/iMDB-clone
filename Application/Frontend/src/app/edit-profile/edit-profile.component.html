@@ -1,0 +1,40 @@
+<div class="page" *ngIf="user">
+    <navbar></navbar>
+    <div class="profile">
+        <div class="user-details">
+            <div class="data">
+                <h3> {{user.firstName}} {{user.lastName}} </h3>
+                <h6> {{user.email}}</h6><br/><br/>
+            </div>
+        </div><br/>
+        <div class="change-profile-form">
+            <div class="change-info">
+                <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.firstName" type="text"  class="form-input"> </div><br/>
+                <div class="name"><i class="fas fa-user fa-2x"></i> <input [(ngModel)]="user.lastName"  type="text"  class="form-input"> </div><br/>
+                <div class="email"><i class="fas fa-at fa-2x"></i>  <input [(ngModel)]="user.email"  [readonly]="true"   type="text"  class="form-input"> </div><br/>
+                <div class="buttons">
+                   <button class="btn-cancel" routerLink="/user"> Cancel</button>
+                   <button  class="btn-submit" (click)="editUser()">Confirm</button>
+                </div>
+            </div>
+            <div class="change-info" id="password">
+                <label id="pass-label" *ngIf="!displayChangePasswordForm" (click)="showChangePasswordForm($event)">Change password?</label>
+                <div class="password-fields" *ngIf="displayChangePasswordForm">
+                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Current password" required  [(ngModel)]="changePasswordDto.currentPassword" type="password" class="form-input"></div>
+                    <span *ngIf="changePasswordDto.currentPassword.length < 6" > Current password is required!</span>
+                    <br *ngIf="changePasswordDto.currentPassword.length >= 6"/>
+                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="New password"     required  [(ngModel)]="changePasswordDto.newPassword" type="password" class="form-input"> </div>
+                    <span *ngIf="changePasswordDto.newPassword.length < 6" > Minimum password length is 6!</span>
+                    <br *ngIf="changePasswordDto.newPassword.length >= 6"/>
+                    <div class="name"><i class="fas fa-lock fa-2x"></i> <input placeholder="Confirm password" required [(ngModel)]="confirmPassword" validateEqual="changePasswordDto.newPassword" type="password" class="form-input"> </div>
+                    <span *ngIf="confirmPassword.length < 6" > Minimum password length is 6!</span>
+                    <span *ngIf="confirmPassword != changePasswordDto.newPassword && changePasswordDto.newPassword.length >=6"> Passwords not match!</span>
+                    <br *ngIf="confirmPassword.length >= 6 && changePasswordDto.newPassword.length >=6 && confirmPassword == changePasswordDto.newPassword"/>
+                    <div class="buttons" style="margin-top: 10%">
+                        <button  [disabled]="changePasswordDto.currentPassword.length < 6 || changePasswordDto.newPassword.length < 6 || confirmPassword.length < 6 || confirmPassword != changePasswordDto.newPassword" class="btn-change-password" (click)="changePassword()">Change password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

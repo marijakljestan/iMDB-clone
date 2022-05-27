@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <div class="movie-genre">
+        <span><button class="btn-genre" *ngFor="let genre of movie.genres"> {{genre}} </button></span>
+        <span *ngIf="user.role.name == 'ROLE_USER'">
+            <button class="btn-add" *ngIf="!inWatchlist" (click)="addToWatchlistHandler()"><i class="fa fa-plus"></i> Add to watch list</button>
+            <button class="btn-watchlisted" *ngIf="inWatchlist" (click)="removeFromWatchlistHandler()"><i class="fa fa-check"></i> Watchlisted</button>
+        </span>
+        <span *ngIf="user.role.name == 'ROLE_ADMIN'">
+            <button class="btn-edit" [routerLink]="['/edit-movie', movie.id]" ><i class="fas fa-pen"></i> Edit movie</button>
+           
+        </span>
+    </div>
+    <div class="description">
+        <p>{{movie.description}}</p>
+    </div><hr/>
+    <p class="crew"><span class="role">Director </span><span *ngFor="let director of movie.directors" class="multiple"> {{director.name}}</span></p><hr/>
+    <p class="crew"><span class="role">Writters </span><span *ngFor="let writter of movie.writters" class="multiple"> {{writter.name}}</span> </p><hr/>
+    <p class="crew"><span class="role">Stars    </span><span *ngFor="let actor of movie.actors" class="stars multiple"> {{actor.name}} </span> </p><hr/>
+</div>

@@ -1,0 +1,14 @@
+<div class="search-field-wrapper" *ngIf="allMovies">
+    <input id="search-field" class="link-dark dropdown-toggle item" type="search" (keyup.enter)="onAddSearchParam()" (focusout)="onFocusLost($event)" [(ngModel)]='searchParam' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <table  class="dropdown-menu dropdown-menu-dark" aria-labelledby="search-field" style="width: 54%;"> 
+      <!--label *ngIf="searchResults.length === 0">No results found</label-->
+      <tr class="dropdown-item result-header" *ngFor="let movie of searchResults" (click)="showMovie(movie)">
+          <img class="movie-img" [src]=movie.coverImage />
+          <div class="title-and-image">
+              <label> {{movie.name}} </label>
+              <label>{{movie.year}}</label>
+              <span class="actor"> {{movie.actors[0].name}} {{movie.actors[1].name}}</span>
+          </div><hr/>
+      </tr>
+    </table>
+  </div>
