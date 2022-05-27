@@ -32,6 +32,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchMoviesComponent } from './shared/search-movies/search-movies.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditMovieComponent } from './movies/edit-movie/edit-movie.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     LoginComponent,
     RegisterComponent,
     SearchMoviesComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    EditMovieComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     HttpClientModule, 
     [SweetAlert2Module.forRoot()],
     RouterModule.forRoot([
+       { path: 'edit-movie/:id', component: EditMovieComponent},
        { path: 'add-movie', component: AddMovieComponent},
        { path: 'edit-profile', component: EditProfileComponent},
        { path: 'user',  component: UserProfileComponent},

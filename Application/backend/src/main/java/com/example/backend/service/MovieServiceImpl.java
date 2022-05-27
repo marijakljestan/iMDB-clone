@@ -1,9 +1,6 @@
 package com.example.backend.service;
 
-import com.example.backend.dto.ActorDTO;
-import com.example.backend.dto.AddMovieDTO;
-import com.example.backend.dto.CrewMemberDTO;
-import com.example.backend.dto.MovieDTO;
+import com.example.backend.dto.*;
 import com.example.backend.mapper.CollectionMapper;
 import com.example.backend.model.*;
 import com.example.backend.repository.MovieRepository;
@@ -56,7 +53,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public int addMovie(AddMovieDTO movieDTO) throws IOException {
+    public int addMovie(AddMovieDTO movieDTO) {
         Movie newMovie = modelMapper.map(movieDTO, Movie.class);
         newMovie.setCoverImage(s3Services.saveFileToS3("posters/" + movieDTO.getName().replaceAll("\\s+","-")+".jpg", movieDTO.getCoverImage()));
         newMovie.setImages(new HashSet<>());
@@ -90,10 +87,28 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public MovieDTO editMovie(MovieDTO movieDTO) {
+    public EditMovieDTO editMovie(EditMovieDTO movieDTO) {
         Movie editedMovie = modelMapper.map(movieDTO, Movie.class);
         this.movieRepository.save(editedMovie);
+       // editMovieCrew(movieDTO);
         return movieDTO;
+    }
+
+    private void editMovieCrew(EditMovieDTO movieDTO) {
+        Movie newMovie = modelMapper.map(movieDTO, Movie.class);
+        this.movieCrewService.deleteMovieCrew(newMovie.getId());
+        for(CrewMember director: movieDTO.getDirectors()) {
+            CrewMember crewMember = this.crewMemberService.saveCrewMember(CrewMemberDTO.builder().name(director.getName()).role(CrewRole.director).build());
+            this.movieCrewService.saveMovieCrew(MovieCrew.builder().movie(newMovie).crewMember(director).crewMemberRole(CrewRole.director).build());
+        }
+        for(CrewMember writter: movieDTO.getWritters()) {
+            CrewMember crewMember = this.crewMemberService.saveCrewMember(CrewMemberDTO.builder().name(writter.getName()).role(CrewRole.writter).build());
+            this.movieCrewService.saveMovieCrew(MovieCrew.builder().movie(newMovie).crewMember(writter).crewMemberRole(CrewRole.writter).build());
+        }
+//        for(ActorDTO actor: movieDTO.getActors()) {
+//            Actor savedActor = this.actorService.saveActor(ActorDTO.builder().name(actor.getName()).roleName(actor.getRoleName()).build());
+//            this.movieRoleService.saveRole(MovieRole.builder().roleName(actor.getRoleName()).movie(newMovie).actor(savedActor).build());
+//        }
     }
 
     @Override

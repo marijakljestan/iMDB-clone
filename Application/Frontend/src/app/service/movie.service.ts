@@ -47,12 +47,20 @@ export class MovieService {
         })
     }
 
+    editMovie(movie: Movie): Observable<Movie> {
+        return this.http.put<Movie>(this.baseUrlMovies, movie, {headers: this.headers}); 
+    }
+
     addMovie(movie: AddMovieDto) : Observable<Number> {
         return this.http.post<Number>(this.baseUrlMovies, movie, {headers: this.headers});
     }
 
     getMovieById(id: number) : Observable<MovieDto> {
         return this.http.get<MovieDto>(this.baseUrlMovies + id);
+    }
+
+    getMovieEntityById(id: number) : Observable<Movie> {
+        return this.http.get<Movie>(this.baseUrlMovies + id);
     }
 
     getMoviesReviewedByUser(userId: number) : Observable<MovieDto[]> {

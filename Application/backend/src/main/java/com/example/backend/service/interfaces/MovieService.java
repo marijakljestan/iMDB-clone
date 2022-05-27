@@ -1,6 +1,7 @@
 package com.example.backend.service.interfaces;
 
 import com.example.backend.dto.AddMovieDTO;
+import com.example.backend.dto.EditMovieDTO;
 import com.example.backend.dto.MovieDTO;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ public interface MovieService {
 
     int addMovie(AddMovieDTO movieDTO) throws IOException;
 
-    MovieDTO editMovie(MovieDTO movieDTO);
+    EditMovieDTO editMovie(EditMovieDTO movieDTO);
 
     void deleteMovie(Integer id);
 

@@ -19,7 +19,6 @@ export class MovieDetailsComponent implements OnInit {
     ngOnInit(): void {
         if(localStorage.getItem("loggedUser") !== null)
             this.user = JSON.parse(localStorage.getItem("loggedUser")!);
-        
         this.movieService.getWatchlist().subscribe(data => {
             this.watchlist = data;
             for(let m of this.watchlist)

@@ -26,12 +26,15 @@
     height: 50px;
     border: none;
 }
-.btn-add:hover{
-    background-color: rgb(92, 86, 86);
+.btn-edit{
+    background-color: rgb(49, 47, 47);
     color: whitesmoke;
-    width: 250px;
+    width: 200px;
     height: 50px;
     border: none;
+}
+.btn-add:hover, .btn-edit:hover{
+    background-color: rgb(92, 86, 86);
 }
 .btn-watchlisted{
     background-color: rgb(49, 47, 47);

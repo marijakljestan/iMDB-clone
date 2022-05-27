@@ -1,0 +1,134 @@
+<div class="page" *ngIf="movie">
+    <navbar></navbar>
+    <div class="title-wrapper">
+        <span class="vl"></span>
+        <h1 class="title"> Edit movie</h1>
+    </div>
+    <div class="form-wrapper">
+        <div class="left-side">
+            <input class="form-input" type="text"    [(ngModel)]="movie.name"               placeholder="Name*" ><br/>
+            <input class="form-input" type="number"  [(ngModel)]="movie.durationInMinutes"  placeholder="Duration in minutes*"><br/>
+            <input class="form-input" type="number"  [(ngModel)]="movie.year"               placeholder="Year*"><br/>
+            <input class="form-input" type="text"    [(ngModel)]="movie.countryOfOrigin"    placeholder="Country of origin*"><br/><hr/><br/>
+            <textarea class="description"            [(ngModel)]="movie.description"        placeholder="Description*"  ></textarea><br/>
+            <textarea class="storyline"              [(ngModel)]="movie.storyline"          placeholder="Storyline*"></textarea><br/><hr/><br/>
+             <!-- Director -->
+             <div class="director-wrapper">
+                <h6> Director: </h6><br/>
+                <ul> <li class="col-sm-9">
+                    <ng2-completer [textNoResults]="'false'" [(ngModel)]="movie.directors[0].name" [inputClass]="'form-control'" [datasource]="filteredDirectors" [minSearchLength]="1"></ng2-completer>
+                </li></ul><br/><hr/><br/>
+            </div>
+             <!-- Writters -->
+             <div class="multiple-inputs">
+                <h6> Writters: </h6>
+                <div class="icons">
+                    <span><i class="fas fa-plus-square fa-2x icon"  (click)="increaseWrittersNum($event)"></i></span>
+                    <span><i class="fas fa-minus-square fa-2x icon" (click)="decreaseWrittersNum($event)"></i></span>
+                </div>
+            </div>
+            <ul *ngIf="writtersNum">
+                <li class="col-sm-9" *ngFor="let w of wNumbers">
+                    <ng2-completer  [(ngModel)]="movie.writters[w].name" [textSearching]="'false'" [textNoResults]="'false'" [inputClass]="'form-control'" [datasource]="filteredWritters" [minSearchLength]="1"></ng2-completer>
+                </li>
+            </ul><hr/><br/>
+             <!--Actors-->
+             <div class="multiple-inputs">
+                <h6> Actors: </h6>
+                <div class="icons">
+                    <span><i class="fas fa-plus-square fa-2x icon"  (click)="increaseActorsNum($event)"></i></span>
+                    <span><i class="fas fa-minus-square fa-2x icon" (click)="decreaseActorsNum($event)"></i></span>
+                </div>
+            </div>
+            <ul class="actor-and-role" *ngFor="let a of aNumbers">
+                <li class="col-sm-4" >
+                    <ng2-completer  [(ngModel)]="movie.actors[a].name" [textNoResults]="'false'" [inputClass]="'form-control'" [datasource]="filteredActors" [minSearchLength]="2"></ng2-completer>
+                </li>
+                <label > as </label>
+                <input  class="role-input" type="text" [(ngModel)]="movie.actors[a].roleName"  placeholder="Role*" ><br/>
+            </ul><hr/><br/>           
+        </div>
+
+        <div class="right-side">
+            <!-- Movie genres-->
+            <div class="genre">
+                <h6> Genre: </h6>
+                <div class="genre-inputs">
+                    <span>
+                        <input type="checkbox" id="action" value="0" (change)="onCheckboxChange($event)">
+                        <label for="action">Action</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="comedy" value="1" (change)="onCheckboxChange($event)">
+                        <label for="comedy">Comedy</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="crime" value="2" (change)="onCheckboxChange($event)">
+                        <label for="crime">Crime</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="drama" value="3" (change)="onCheckboxChange($event)">
+                        <label for="drama">Drama</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="fantasy" value="4" (change)="onCheckboxChange($event)">
+                        <label for="fantasy">Fantasy</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="horror" value="5" (change)="onCheckboxChange($event)">
+                        <label for="horror">Horror</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="mystery" value="6" (change)="onCheckboxChange($event)">
+                        <label for="mystery">Mystery</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="romance" value="7" (change)="onCheckboxChange($event)">
+                        <label for="romance">Romance</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="scifi" value="8" (change)="onCheckboxChange($event)">
+                        <label for="scifi">Science Fiction</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="thriller" value="9" (change)="onCheckboxChange($event)">
+                        <label for="thriller">Thriller</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="western" value="10" (change)="onCheckboxChange($event)">
+                        <label for="western">Western</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="biography" value="11" (change)="onCheckboxChange($event)">
+                        <label for="biography">Biography</label>
+                    </span>
+                </div>
+            </div><hr/><br/>
+
+            <div class="images">
+                <!--Poster image upload -->
+                <div class="upload-images">
+                    <p> Upload poster: </p>
+                    <input type="file" class="file-upload" (change)="posterAdded($event)"/>
+                </div> <br/>
+                <div  class="images-preview" *ngIf="movie.coverImage">
+                    <div> <img [src]="movie.coverImage | safeResourceUrl"/> </div>
+                </div>       
+            </div><br/><hr/><br/>
+            <div class="images">
+                <!--Images upload -->
+                <div class="upload-images">
+                    <p> Upload images: </p>
+                    <input type="file" class="file-upload" (change)="imageAdded($event)"/>
+                </div> <br/>
+                <div  class="images-preview" *ngIf="movie.images">
+                    <div *ngFor="let image of movie.images"> <img [src]="image | safeResourceUrl"/> </div>
+                </div>       
+            </div><br/><hr/><br/>
+            <div class="btn-div">
+                <button class="btn cancel-button" (click)="cancelHandler()">Cancel</button>
+                <button class="btn save-button"   (click)="editMovie($event)">Confirm</button> 
+            </div>
+        </div>
+    </div>
+</div>

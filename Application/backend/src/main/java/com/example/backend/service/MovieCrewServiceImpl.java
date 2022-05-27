@@ -16,4 +16,9 @@ public class MovieCrewServiceImpl implements MovieCrewService {
     public MovieCrew saveMovieCrew(MovieCrew movieCrew) {
         return this.movieCrewRepository.save(movieCrew);
     }
+
+    @Override
+    public void deleteMovieCrew(Integer movieId){
+        this.movieCrewRepository.deleteCrewFromMovie(movieId);
+    }
 }
