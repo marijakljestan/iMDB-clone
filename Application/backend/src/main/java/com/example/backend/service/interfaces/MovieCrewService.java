@@ -5,4 +5,6 @@ import com.example.backend.model.MovieCrew;
 public interface MovieCrewService {
 
     MovieCrew saveMovieCrew(MovieCrew movieCrew);
+
+    void deleteMovieCrew(Integer movieId);
 }

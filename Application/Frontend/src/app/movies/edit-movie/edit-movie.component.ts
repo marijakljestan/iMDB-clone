@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 import { Actor } from 'src/app/model/actor.model';
 import { CrewMember } from 'src/app/model/crew-member.model';
 import { Movie } from 'src/app/model/movie.model';
@@ -49,7 +50,7 @@ export class EditMovieComponent implements OnInit {
     newRoles: string[] = [];
 
     constructor(private movieService: MovieService, private movieCrewService: MovieCrewService, 
-                private router: Router, private route: ActivatedRoute) { 
+                private router: Router, private route: ActivatedRoute, private location: Location) { 
         this.genres = [
             'Action', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Science Fiction', 'Thriller', 'Western',
             'Biography'
@@ -109,6 +110,7 @@ export class EditMovieComponent implements OnInit {
               })
             }
         );
+        this.location.back();
     }
 
     cancelHandler() {

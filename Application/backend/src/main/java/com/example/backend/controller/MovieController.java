@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.dto.AddMovieDTO;
+import com.example.backend.dto.EditMovieDTO;
 import com.example.backend.dto.MovieDTO;
 import com.example.backend.service.interfaces.MovieService;
 import lombok.AllArgsConstructor;
@@ -48,7 +49,7 @@ public class MovieController {
 
     @PutMapping("/")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<AddMovieDTO> editMovie(@RequestBody AddMovieDTO movieDTO){
+    public ResponseEntity<EditMovieDTO> editMovie(@RequestBody EditMovieDTO movieDTO){
         return new ResponseEntity<>(movieService.editMovie(movieDTO), HttpStatus.OK);
     }
 

@@ -15,7 +15,7 @@
              <!-- Director -->
              <div class="director-wrapper">
                 <h6> Director: </h6><br/>
-                <ul> <li class="col-sm-9" *ngFor="let director of movie.directors">
+                <ul> <li class="col-sm-9">
                     <ng2-completer [textNoResults]="'false'" [(ngModel)]="movie.directors[0].name" [inputClass]="'form-control'" [datasource]="filteredDirectors" [minSearchLength]="1"></ng2-completer>
                 </li></ul><br/><hr/><br/>
             </div>
@@ -29,7 +29,7 @@
             </div>
             <ul *ngIf="writtersNum">
                 <li class="col-sm-9" *ngFor="let w of wNumbers">
-                    <ng2-completer  [(ngModel)]="movie.writters[w].name" [textSearching]="'false'" [textNoResults]="'false'" (selected)="onWritterSelect($event)" [inputClass]="'form-control'" [datasource]="filteredWritters" [minSearchLength]="1"></ng2-completer>
+                    <ng2-completer  [(ngModel)]="movie.writters[w].name" [textSearching]="'false'" [textNoResults]="'false'" [inputClass]="'form-control'" [datasource]="filteredWritters" [minSearchLength]="1"></ng2-completer>
                 </li>
             </ul><hr/><br/>
              <!--Actors-->
@@ -42,7 +42,7 @@
             </div>
             <ul class="actor-and-role" *ngFor="let a of aNumbers">
                 <li class="col-sm-4" >
-                    <ng2-completer  [(ngModel)]="movie.actors[a].name" [textNoResults]="'false'" (selected)="onActorSelect($event)" [inputClass]="'form-control'" [datasource]="filteredActors" [minSearchLength]="2"></ng2-completer>
+                    <ng2-completer  [(ngModel)]="movie.actors[a].name" [textNoResults]="'false'" [inputClass]="'form-control'" [datasource]="filteredActors" [minSearchLength]="2"></ng2-completer>
                 </li>
                 <label > as </label>
                 <input  class="role-input" type="text" [(ngModel)]="movie.actors[a].roleName"  placeholder="Role*" ><br/>
