@@ -48,7 +48,7 @@ public class MovieController {
 
     @PutMapping("/")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<MovieDTO> editMovie(@RequestBody MovieDTO movieDTO){
+    public ResponseEntity<AddMovieDTO> editMovie(@RequestBody AddMovieDTO movieDTO){
         return new ResponseEntity<>(movieService.editMovie(movieDTO), HttpStatus.OK);
     }
 

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Actor } from 'src/app/model/actor.model';
 import { CrewMember } from 'src/app/model/crew-member.model';
 import { Movie } from 'src/app/model/movie.model';
 import { MovieCrewService } from 'src/app/service/movie-crew.service';
 import { MovieService } from 'src/app/service/movie.service';
 import { CompleterItem } from 'ng2-completer';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'edit-movie',
@@ -30,29 +31,25 @@ export class EditMovieComponent implements OnInit {
         actors: [],
         reviews: []
     };
+    movieId: string | any;
     writtersNum: number = 1;
     wNumbers: number[] = Array(this.writtersNum).fill(0).map((x,i)=>i);
     actorsNum: number = 1;
     aNumbers: number[] = Array(this.actorsNum).fill(0).map((x,i)=>i);
     rolesNum: number = 1;
     rNumbers: number[] = Array(this.rolesNum).fill(0).map((x,i)=>i);
-    imagePoster: string = "";
-    imagesFrontend: string[] = [];
     genres: any[] = [];
     allWritters: CrewMember[] = [];
     allDirectors: CrewMember[] = [];
     allActors: Actor[] = [];
     filteredDirectors: string[] = [];
-    newDirector: string = "";
     filteredWritters: string[] = [];
-    newWritters: string[] = [];
     filteredActors: string[] = [];
     newActors: string[] = [];
     newRoles: string[] = [];
 
-    constructor(private movieService: MovieService, private movieCrewService: MovieCrewService, private router: Router) { 
-        //this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
-       // this.aNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
+    constructor(private movieService: MovieService, private movieCrewService: MovieCrewService, 
+                private router: Router, private route: ActivatedRoute) { 
         this.genres = [
             'Action', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Science Fiction', 'Thriller', 'Western',
             'Biography'
@@ -60,18 +57,18 @@ export class EditMovieComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.movieService.getMovieEntityById(1).subscribe(data => {
+        this.movieId = this.route.snapshot.paramMap.get('id');
+        this.movieService.getMovieEntityById(this.movieId).subscribe(data => {
             this.movie = data;
-            this.movieCrewService.getMovieDirectors(1).subscribe(data => {
+            this.movieCrewService.getMovieDirectors(this.movieId).subscribe(data => {
                 this.movie.directors = data;
             });
-            this.movieCrewService.getMovieWritters(1).subscribe(data => {
+            this.movieCrewService.getMovieWritters(this.movieId).subscribe(data => {
                 this.movie.writters = data;
                 this.writtersNum = this.movie.writters.length;
                 this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
-
             });
-            this.movieCrewService.getMovieActors(1).subscribe(data => {
+            this.movieCrewService.getMovieActors(this.movieId).subscribe(data => {
                 this.movie.actors = data;
                 this.actorsNum = this.movie.actors.length;
                 this.aNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
@@ -93,7 +90,25 @@ export class EditMovieComponent implements OnInit {
 
     editMovie(event: Event) {
         event.preventDefault();
-          
+        alert(JSON.stringify(this.movie))
+        this.movieService.editMovie(this.movie).subscribe(response => {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Movie successfully updated!',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                position: 'top-right'
+              });    
+            },  (error) => {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Internal server error!',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                position: 'top-right'
+              })
+            }
+        );
     }
 
     cancelHandler() {
@@ -102,7 +117,7 @@ export class EditMovieComponent implements OnInit {
 
     onActorSelect(selected: CompleterItem){
         if(selected)
-            this.newActors.push(selected.originalObject);
+            this.movie.actors.push(selected.originalObject);
     }
 
     onWritterSelect(selected: CompleterItem){
@@ -160,7 +175,6 @@ export class EditMovieComponent implements OnInit {
         let file;
         if(element.files !== null){
             file = element.files[0];
-            this.imagePoster = URL.createObjectURL(file);
             const reader= new FileReader();
             reader.onload = (e) =>{
                 let img;
@@ -179,7 +193,6 @@ export class EditMovieComponent implements OnInit {
         if(element.files !== null){
             file = element.files[0];
             this.createBase64Image(file);
-            this.imagesFrontend.push(URL.createObjectURL(file));
         }
     }
 

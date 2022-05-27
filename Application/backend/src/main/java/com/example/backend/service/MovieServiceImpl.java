@@ -56,7 +56,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public int addMovie(AddMovieDTO movieDTO) throws IOException {
+    public int addMovie(AddMovieDTO movieDTO) {
         Movie newMovie = modelMapper.map(movieDTO, Movie.class);
         newMovie.setCoverImage(s3Services.saveFileToS3("posters/" + movieDTO.getName().replaceAll("\\s+","-")+".jpg", movieDTO.getCoverImage()));
         newMovie.setImages(new HashSet<>());
@@ -90,9 +90,10 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public MovieDTO editMovie(MovieDTO movieDTO) {
+    public AddMovieDTO editMovie(AddMovieDTO movieDTO) {
         Movie editedMovie = modelMapper.map(movieDTO, Movie.class);
         this.movieRepository.save(editedMovie);
+        saveMovieCrew(movieDTO);
         return movieDTO;
     }
 

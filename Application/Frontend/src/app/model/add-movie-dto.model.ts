@@ -16,6 +16,7 @@ export enum Genre {
 }
 
 export class AddMovieDto {
+    public id?: number;
     public name: string;
     public year?: number;
     public countryOfOrigin?: string;

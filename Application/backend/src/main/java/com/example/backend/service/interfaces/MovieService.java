@@ -16,7 +16,7 @@ public interface MovieService {
 
     int addMovie(AddMovieDTO movieDTO) throws IOException;
 
-    MovieDTO editMovie(MovieDTO movieDTO);
+    AddMovieDTO editMovie(AddMovieDTO movieDTO);
 
     void deleteMovie(Integer id);
 

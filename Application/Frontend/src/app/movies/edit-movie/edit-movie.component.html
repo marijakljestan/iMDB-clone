@@ -6,12 +6,12 @@
     </div>
     <div class="form-wrapper">
         <div class="left-side">
-            <input class="form-input" type="text"    [(ngModel)]="movie.name"  placeholder="Name*" ><br/>
-            <input class="form-input" type="number"  [(ngModel)]="movie.durationInMinutes" placeholder="Duration in minutes*"><br/>
-            <input class="form-input" type="number"  [(ngModel)]="movie.year" placeholder="Year*"><br/>
-            <input class="form-input" type="text"    [(ngModel)]="movie.countryOfOrigin" placeholder="Country of origin*"><br/><hr/><br/>
-            <textarea placeholder="Description*"     [(ngModel)]="movie.description" class="description" ></textarea><br/>
-            <textarea placeholder="Storyline*"       [(ngModel)]="movie.storyline" class="storyline"></textarea><br/><hr/><br/>
+            <input class="form-input" type="text"    [(ngModel)]="movie.name"               placeholder="Name*" ><br/>
+            <input class="form-input" type="number"  [(ngModel)]="movie.durationInMinutes"  placeholder="Duration in minutes*"><br/>
+            <input class="form-input" type="number"  [(ngModel)]="movie.year"               placeholder="Year*"><br/>
+            <input class="form-input" type="text"    [(ngModel)]="movie.countryOfOrigin"    placeholder="Country of origin*"><br/><hr/><br/>
+            <textarea class="description"            [(ngModel)]="movie.description"        placeholder="Description*"  ></textarea><br/>
+            <textarea class="storyline"              [(ngModel)]="movie.storyline"          placeholder="Storyline*"></textarea><br/><hr/><br/>
              <!-- Director -->
              <div class="director-wrapper">
                 <h6> Director: </h6><br/>
@@ -42,10 +42,10 @@
             </div>
             <ul class="actor-and-role" *ngFor="let a of aNumbers">
                 <li class="col-sm-4" >
-                    <ng2-completer [textNoResults]="'false'" (selected)="onActorSelect($event)" [inputClass]="'form-control'" [datasource]="filteredActors" [minSearchLength]="2"></ng2-completer>
+                    <ng2-completer  [(ngModel)]="movie.actors[a].name" [textNoResults]="'false'" (selected)="onActorSelect($event)" [inputClass]="'form-control'" [datasource]="filteredActors" [minSearchLength]="2"></ng2-completer>
                 </li>
                 <label > as </label>
-                <input  class="role-input" type="text"    [(ngModel)]="newRoles[a]"  placeholder="Role*" ><br/>
+                <input  class="role-input" type="text" [(ngModel)]="movie.actors[a].roleName"  placeholder="Role*" ><br/>
             </ul><hr/><br/>           
         </div>
 
