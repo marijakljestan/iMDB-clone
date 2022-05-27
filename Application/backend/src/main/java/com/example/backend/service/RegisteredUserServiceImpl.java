@@ -60,9 +60,6 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
     @Override
     public void changePassword(ChangePasswordDTO changePasswordDTO) {
         RegisteredUser user = this.userRepository.findByEmail(changePasswordDTO.getEmail());
-//        if(!user.getPassword().equals(passwordEncoder.encode(changePasswordDTO.getCurrentPassword())))
-//            throw new PasswordsNotMatchException();
-
         user.setPassword(passwordEncoder.encode(changePasswordDTO.getNewPassword()));
         this.userRepository.save(user);
     }

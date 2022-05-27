@@ -55,6 +55,10 @@ export class MovieService {
         return this.http.get<MovieDto>(this.baseUrlMovies + id);
     }
 
+    getMovieEntityById(id: number) : Observable<Movie> {
+        return this.http.get<Movie>(this.baseUrlMovies + id);
+    }
+
     getMoviesReviewedByUser(userId: number) : Observable<MovieDto[]> {
         return this.http.get<MovieDto[]>(this.baseUrlMovies + 'reviewed-by-user/' + userId, {headers: this.headers});
     }
