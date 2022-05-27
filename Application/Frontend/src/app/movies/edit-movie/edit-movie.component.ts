@@ -51,8 +51,8 @@ export class EditMovieComponent implements OnInit {
     newRoles: string[] = [];
 
     constructor(private movieService: MovieService, private movieCrewService: MovieCrewService, private router: Router) { 
-        this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
-        this.aNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
+        //this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
+       // this.aNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
         this.genres = [
             'Action', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Science Fiction', 'Thriller', 'Western',
             'Biography'
@@ -62,22 +62,36 @@ export class EditMovieComponent implements OnInit {
     ngOnInit(): void {
         this.movieService.getMovieEntityById(1).subscribe(data => {
             this.movie = data;
+            this.movieCrewService.getMovieDirectors(1).subscribe(data => {
+                this.movie.directors = data;
+            });
+            this.movieCrewService.getMovieWritters(1).subscribe(data => {
+                this.movie.writters = data;
+                this.writtersNum = this.movie.writters.length;
+                this.wNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
+
+            });
+            this.movieCrewService.getMovieActors(1).subscribe(data => {
+                this.movie.actors = data;
+                this.actorsNum = this.movie.actors.length;
+                this.aNumbers = Array(this.writtersNum).fill(0).map((x,i)=>i);
+            });
+            this.movieCrewService.getAllDirectors().subscribe(data => {
+                this.allDirectors = data;
+                this.getDirectorsList();
+            });
+            this.movieCrewService.getAllWritters().subscribe(data => {
+                this.allWritters = data;
+                this.getWrittersList();
+            });
+            this.movieCrewService.getAllActors().subscribe(data => {
+                this.allActors = data;
+                this.getActorsList();
+            });
         })
-        this.movieCrewService.getAllDirectors().subscribe(data => {
-            this.allDirectors = data;
-            this.getDirectorsList();
-        });
-        this.movieCrewService.getAllWritters().subscribe(data => {
-            this.allWritters = data;
-            this.getWrittersList();
-        });
-        this.movieCrewService.getAllActors().subscribe(data => {
-            this.allActors = data;
-            this.getActorsList();
-        });
     }
 
-    addMovie(event: Event) {
+    editMovie(event: Event) {
         event.preventDefault();
           
     }
@@ -88,12 +102,12 @@ export class EditMovieComponent implements OnInit {
 
     onActorSelect(selected: CompleterItem){
         if(selected)
-          this.newActors.push(selected.originalObject);
+            this.newActors.push(selected.originalObject);
     }
 
     onWritterSelect(selected: CompleterItem){
         if(selected)
-          this.movie.writters.push(selected.originalObject);
+            this.movie.writters.push(selected.originalObject);
     }
 
     getActorsList(){
@@ -137,7 +151,8 @@ export class EditMovieComponent implements OnInit {
 
     onCheckboxChange(event: Event) {
         const element = event.currentTarget as HTMLInputElement;
-        //this.newMovie.genres.push(+element.value);
+        if(this.movie.genres)
+            this.movie.genres.push(+element.value);
     }
 
     posterAdded(event: Event) {
@@ -148,11 +163,11 @@ export class EditMovieComponent implements OnInit {
             this.imagePoster = URL.createObjectURL(file);
             const reader= new FileReader();
             reader.onload = (e) =>{
-            let img;
-            if(e.target !== null){
-                img = e.target.result;
-                if(img != null) this.movie.coverImage = img.toString();
-            }
+                let img;
+                if(e.target !== null){
+                    img = e.target.result;
+                    if(img != null) this.movie.coverImage = img.toString();
+                }
             }
             reader.readAsDataURL(file);
         }
