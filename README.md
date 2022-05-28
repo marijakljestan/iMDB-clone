@@ -28,5 +28,5 @@ The frontend is an Angular application. Source code is in the <i>./Application/F
 
 ### AWS deployment
 Backend application is hosted on AWS EC2 instance. \
-Frontend static files are stored in AWS S3 Bucket. \
+Frontend static files are stored in AWS S3 Bucket, with access point: \
 http://cinematic-aws.s3-website-us-east-1.amazonaws.com 
