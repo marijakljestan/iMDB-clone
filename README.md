@@ -16,7 +16,6 @@
 </p>
 <br />
 
-#### Running my project locally
 #### Backend
 The backend is a Maven Spring Boot application. Source code is in the <i>./Application/backend</i> folder. It can be started normally as a Java project in Eclipse or IntelliJ. I used Java 11 version. The server is running on port 8082.\
 PostgreSQL is needed for the backend. For that purpose, I used AWS RDS service, and connection parameters are configured 
@@ -26,5 +25,6 @@ programatically.
 The frontend is an Angular application. Source code is in the <i>./Application/Frontend</i> folder. It can be started by running <code>npm install</code> and then <code>npm start</code> in the mentioned folder. The URL address is http://localhost:4200/.
 
 #### AWS deployment
-Backend application is hosted on AWS EC2 instance
+Backend application is hosted on AWS EC2 instance. \
+Frontend static files are stored in AWS S3 Bucket.
 http://cinematic-aws.s3-website-us-east-1.amazonaws.com 
