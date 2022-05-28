@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RDSSecrets {
+public class RDSCredentials {
+
     private String username;
     private String password;
     private String host;

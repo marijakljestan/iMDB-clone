@@ -27,12 +27,12 @@ export class HomePageComponent implements OnInit {
         }
         this.fetchMovies();
         this.images = [
-            "../../../assets/images/cover/batman.jpg",
-            "../../../assets/images/cover/dark-knight.jpg",
-            "../../../assets/images/cover/fight-club.jpg",
-            "../../../assets/images/cover/inception.jpg",
-            "../../../assets/images/cover/la-vitta-e-bella.jpg",
-            "../../../assets/images/cover/godfather.jpg"
+            "https://cinematic-images.s3.amazonaws.com/Batman/Batman1.jpg",
+            "https://cinematic-images.s3.amazonaws.com/dark-knight/dark-knight.jpg",
+            "https://cinematic-images.s3.amazonaws.com/joker/joker.jpg",
+            "https://cinematic-images.s3.amazonaws.com/la-vita-e-bella/la-vita-e-bella-2.jfif",
+            "https://cinematic-images.s3.amazonaws.com/la-vita-e-bella/la-vita-e-bella-2.jfif",
+            "https://cinematic-images.s3.amazonaws.com/schindlers-list/schindlers-list.jpg"
         ];
     }
 

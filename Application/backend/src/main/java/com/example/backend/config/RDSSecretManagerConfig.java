@@ -5,7 +5,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.AWSSecretsManagerClientBuilder;
 import com.amazonaws.services.secretsmanager.model.*;
-import com.example.backend.secrets.RDSSecrets;
+import com.example.backend.secrets.RDSCredentials;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -30,7 +30,7 @@ public class RDSSecretManagerConfig {
 
     @Bean
     public DataSource getDataSource() {
-        RDSSecrets secrets = getSecret();
+        RDSCredentials secrets = getSecret();
         return DataSourceBuilder
                 .create()
                 .driverClassName("org.postgresql.Driver")
@@ -40,7 +40,7 @@ public class RDSSecretManagerConfig {
                 .build();
     }
 
-     private RDSSecrets getSecret() {
+     private RDSCredentials getSecret() {
           String secretName = "arn:aws:secretsmanager:us-east-1:163009082563:secret:cinematic-db-credentials-XnHFbw";
 
           BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, accessSecret);
@@ -69,7 +69,7 @@ public class RDSSecretManagerConfig {
 
            if (getSecretValueResult.getSecretString() != null) {
                secret = getSecretValueResult.getSecretString();
-               return gson.fromJson(secret, RDSSecrets.class);
+               return gson.fromJson(secret, RDSCredentials.class);
            }
 
            return null;
