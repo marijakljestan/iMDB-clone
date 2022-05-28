@@ -12,13 +12,11 @@
 <img align="left" alt="AWS" width="46px" src="https://imgs.search.brave.com/ZTyScVUrOdCAU11SiUM0OLXkUdpSiCR9iadQnPnAlLM/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9wbmdp/bWFnZS5uZXQvd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMDIv/YXdzLWxvZ28tcG5n/LTQucG5n"/>
 <img align="left" alt="AWS RDS" width="46px" src="https://imgs.search.brave.com/qkC8DFWUH_hgSNXm2oQiat3s4hEdXswrj_tBW68vnVM/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9jZG4u/ZnJlZWJpZXN1cHBs/eS5jb20vbG9nb3Mv/bGFyZ2UvMngvYXdz/LXJkcy1sb2dvLXBu/Zy10cmFuc3BhcmVu/dC5wbmc"/>
 <img align="left" alt="AWS EC2" width="46px" src="https://imgs.search.brave.com/ULG66m6Xxh3lT7FC05rbSx0vqw3ybTna3MTlKRtJtZI/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9jZG4u/ZnJlZWJpZXN1cHBs/eS5jb20vbG9nb3Mv/bGFyZ2UvMngvYXdz/LWVjMi1sb2dvLXBu/Zy10cmFuc3BhcmVu/dC5wbmc"/>
-<img align="left" alt="AWS S3" width="46px" src="https://imgs.search.brave.com/iBtk4fhCIdgXVD3UYnTW9QF9CwXXeg2xnfaGos-ngWM/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9jZG4u/ZnJlZWJpZXN1cHBs/eS5jb20vbG9nb3Mv/bGFyZ2UvMngvYXdz/LXMzLWxvZ28tcG5n/LXRyYW5zcGFyZW50/LnBuZw"/>
+<img align="center" alt="AWS S3" width="46px" src="https://imgs.search.brave.com/iBtk4fhCIdgXVD3UYnTW9QF9CwXXeg2xnfaGos-ngWM/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9jZG4u/ZnJlZWJpZXN1cHBs/eS5jb20vbG9nb3Mv/bGFyZ2UvMngvYXdz/LXMzLWxvZ28tcG5n/LXRyYW5zcGFyZW50/LnBuZw"/>
 </p>
 <br />
 
-<p>
 #### Runing my project localy
-</p>
 
 #### Backend
 The backend is a Maven Spring Boot application. Source code is in the <i>./Application/backend</i> folder. It can be started normally as a Java project in Eclipse or IntelliJ. I used Java 11 version. The server is running on port 8082.\
