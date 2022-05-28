@@ -54,6 +54,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk</artifactId>
             <version>1.11.379</version>
@@ -75,6 +79,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>cinematic-aws-exe</finalName>
     </build>
 
 </project>
