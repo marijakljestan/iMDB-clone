@@ -105,10 +105,10 @@ public class MovieServiceImpl implements MovieService {
             CrewMember crewMember = this.crewMemberService.saveCrewMember(CrewMemberDTO.builder().name(writter.getName()).role(CrewRole.writter).build());
             this.movieCrewService.saveMovieCrew(MovieCrew.builder().movie(newMovie).crewMember(writter).crewMemberRole(CrewRole.writter).build());
         }
-//        for(ActorDTO actor: movieDTO.getActors()) {
-//            Actor savedActor = this.actorService.saveActor(ActorDTO.builder().name(actor.getName()).roleName(actor.getRoleName()).build());
-//            this.movieRoleService.saveRole(MovieRole.builder().roleName(actor.getRoleName()).movie(newMovie).actor(savedActor).build());
-//        }
+        for(ActorDTO actor: movieDTO.getActors()) {
+            Actor savedActor = this.actorService.saveActor(ActorDTO.builder().name(actor.getName()).roleName(actor.getRoleName()).build());
+            this.movieRoleService.saveRole(MovieRole.builder().roleName(actor.getRoleName()).movie(newMovie).actor(savedActor).build());
+        }
     }
 
     @Override
