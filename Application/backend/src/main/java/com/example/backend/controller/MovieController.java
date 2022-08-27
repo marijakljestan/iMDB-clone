@@ -42,19 +42,19 @@ public class MovieController {
     }
 
     @PostMapping("/")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Integer> addMovie(@RequestBody AddMovieDTO movieDTO) throws IOException {
         return new ResponseEntity<>(movieService.addMovie(movieDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<EditMovieDTO> editMovie(@RequestBody EditMovieDTO movieDTO){
         return new ResponseEntity<>(movieService.editMovie(movieDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<?> deleteMovie(@PathVariable("id") Integer id){
         movieService.deleteMovie(id);
         return new ResponseEntity<>("Movie deleted!", HttpStatus.OK);

@@ -9,6 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 public class Actor {
+    
    @Id
    @SequenceGenerator(name = "actorSeqGen", sequenceName = "actorSeqGen", initialValue = 1, allocationSize = 1)
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "actorSeqGen")

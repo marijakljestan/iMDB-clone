@@ -91,7 +91,6 @@ export class EditMovieComponent implements OnInit {
 
     editMovie(event: Event) {
         event.preventDefault();
-        alert(JSON.stringify(this.movie))
         this.movieService.editMovie(this.movie).subscribe(response => {
             Swal.fire({
                 title: 'Success!',
