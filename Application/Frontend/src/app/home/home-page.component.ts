@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit {
         }
         this.fetchMovies();
         this.images = [
-            "https://cinematic-images.s3.amazonaws.com/Batman/Batman1.jpg",
+            "https://cinematic-images.s3.amazonaws.com/joker/batman.jpg",
             "https://cinematic-images.s3.amazonaws.com/dark-knight/dark-knight.jpg",
             "https://cinematic-images.s3.amazonaws.com/joker/joker.jpg",
             "https://cinematic-images.s3.amazonaws.com/la-vita-e-bella/la-vita-e-bella-2.jfif",

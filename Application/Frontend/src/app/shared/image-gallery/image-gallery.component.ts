@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ImageGalleryComponent implements OnInit{
   @Input() images: string[] = [];
-  currentImageSource: string = "https://cinematic-images.s3.amazonaws.com/Batman/Batman1.jpg";
+  currentImageSource: string = "https://cinematic-images.s3.amazonaws.com/joker/batman.jpg";
   currentImageIndex: number = 0;
 
   ngOnInit() : void {

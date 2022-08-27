@@ -3,7 +3,6 @@ package com.example.backend.service;
 import com.example.backend.dto.ChangePasswordDTO;
 import com.example.backend.dto.EditUserDTO;
 import com.example.backend.dto.RegisteredUserDTO;
-import com.example.backend.exception.PasswordsNotMatchException;
 import com.example.backend.model.RegisteredUser;
 import com.example.backend.model.Role;
 import com.example.backend.repository.RegisteredUserRepository;

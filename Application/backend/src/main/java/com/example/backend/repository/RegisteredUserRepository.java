@@ -10,6 +10,4 @@ public interface RegisteredUserRepository extends JpaRepository<RegisteredUser, 
     @Query(value="SELECT u FROM RegisteredUser u LEFT JOIN FETCH u.watchlist wl WHERE u.email = :username")
     RegisteredUser fetchUserWithWatchlist(String username);
 
-
-
 }

@@ -26,7 +26,7 @@ public class RDSSecretManagerConfig {
     private String accessSecret;
 
     @Value("${cloud.aws.s3.region}")
-    private String region;
+    private String region = "us-east-1";
 
     @Bean
     public DataSource getDataSource() {
