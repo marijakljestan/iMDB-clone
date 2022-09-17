@@ -1,10 +1,10 @@
 export const environment = {
     production: true,
-    baseUrlUsers: "http://ec2-54-227-111-82.compute-1.amazonaws.com:8082/user/",
-    baseUrlAuth:  "http://ec2-54-227-111-82.compute-1.amazonaws.com:8082/auth/",
-    baseUrlMovie: "http://ec2-54-227-111-82.compute-1.amazonaws.com:8082/movie/",
-    baseUrlActor: "http://ec2-54-227-111-82.compute-1.amazonaws.com:8082/movie/actor/",
-    baseUrlMovieCrew: "http://ec2-54-227-111-82.compute-1.amazonaws.com:8082/movie/crew/",
-    baseUrlMovieReview: "http://ec2-54-227-111-82.compute-1.amazonaws.com:8082/movie/review/",
-    baseUrlWatchlist: "http://ec2-54-227-111-82.compute-1.amazonaws.com:8082/watchlist/"
+    baseUrlUsers: "http://cinematic-env-1.eba-w4r9mvky.us-east-1.elasticbeanstalk.com/user/",
+    baseUrlAuth:  "http://cinematic-env-1.eba-w4r9mvky.us-east-1.elasticbeanstalk.com/auth/",
+    baseUrlMovie: "http://cinematic-env-1.eba-w4r9mvky.us-east-1.elasticbeanstalk.com/movie/",
+    baseUrlActor: "http://cinematic-env-1.eba-w4r9mvky.us-east-1.elasticbeanstalk.com/movie/actor/",
+    baseUrlMovieCrew: "http://cinematic-env-1.eba-w4r9mvky.us-east-1.elasticbeanstalk.com/movie/crew/",
+    baseUrlMovieReview: "http://cinematic-env-1.eba-w4r9mvky.us-east-1.elasticbeanstalk.com/movie/review/",
+    baseUrlWatchlist: "http://cinematic-env-1.eba-w4r9mvky.us-east-1.elasticbeanstalk.com/watchlist/"
 };
