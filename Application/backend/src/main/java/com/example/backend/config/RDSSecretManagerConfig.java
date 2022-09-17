@@ -34,14 +34,14 @@ public class RDSSecretManagerConfig {
         return DataSourceBuilder
                 .create()
                 .driverClassName("org.postgresql.Driver")
-                .url("jdbc:" + "postgresql" + "://" + secrets.getHost() + ":" + secrets.getPort() + "/cinematic")
+                .url("jdbc:" + "postgresql" + "://" + secrets.getHost() + ":" + secrets.getPort() + "/postgres")
                 .username(secrets.getUsername())
                 .password(secrets.getPassword())
                 .build();
     }
 
      private RDSCredentials getSecret() {
-          String secretName = "arn:aws:secretsmanager:us-east-1:163009082563:secret:cinematic-db-credentials-XnHFbw";
+          String secretName = "arn:aws:secretsmanager:us-east-1:163009082563:secret:cinematicdb-credentials-51WLg7";
 
           BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, accessSecret);
           AWSSecretsManager client  = AWSSecretsManagerClientBuilder.standard()
