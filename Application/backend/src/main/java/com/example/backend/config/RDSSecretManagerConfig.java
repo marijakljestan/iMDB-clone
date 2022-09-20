@@ -28,17 +28,17 @@ public class RDSSecretManagerConfig {
     @Value("${cloud.aws.s3.region}")
     private String region = "us-east-1";
 
-    @Bean
-    public DataSource getDataSource() {
-        RDSCredentials secrets = getSecret();
-        return DataSourceBuilder
-                .create()
-                .driverClassName("org.postgresql.Driver")
-                .url("jdbc:" + "postgresql" + "://" + secrets.getHost() + ":" + secrets.getPort() + "/postgres")
-                .username(secrets.getUsername())
-                .password(secrets.getPassword())
-                .build();
-    }
+//    @Bean
+//    public DataSource getDataSource() {
+//        RDSCredentials secrets = getSecret();
+//        return DataSourceBuilder
+//                .create()
+//                .driverClassName("org.postgresql.Driver")
+//                .url("jdbc:" + "postgresql" + "://" + secrets.getHost() + ":" + secrets.getPort() + "/postgres")
+//                .username(secrets.getUsername())
+//                .password(secrets.getPassword())
+//                .build();
+//    }
 
      private RDSCredentials getSecret() {
           String secretName = "arn:aws:secretsmanager:us-east-1:163009082563:secret:cinematicdb-credentials-51WLg7";
